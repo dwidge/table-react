@@ -1,0 +1,26 @@
+table-table {
+display: table;
+width: 100%;
+margin-top: 1em;
+}
+table-header, table-item {
+display: table-row;
+}
+table-header {
+background: orange;
+}
+table-header > *, table-item > * {
+display: table-cell;
+vertical-align: middle;
+padding: 0.5em;
+}
+table-item > * > input {
+width: 90%;
+}
+table-buttons {
+width: 20%;
+padding: 0;
+}
+table-buttons > button {
+width: 100%;
+}

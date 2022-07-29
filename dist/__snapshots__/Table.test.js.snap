@@ -1,0 +1,229 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table clears missing slot 1`] = `
+<table-table
+  data-testid="tableA"
+>
+  <table-header>
+    <column-header>
+      ColA
+    </column-header>
+    <column-header>
+      ColB
+    </column-header>
+  </table-header>
+  <table-item>
+    <column-text>
+      a1
+    </column-text>
+    <column-set />
+    <table-buttons>
+      <button
+        data-testid="buttonEdit1"
+      >
+        Edit
+      </button>
+      <button
+        data-testid="buttonDel1"
+      >
+        Del
+      </button>
+    </table-buttons>
+  </table-item>
+</table-table>
+`;
+
+exports[`Table confirms & clears list 1`] = `
+<table-table
+  data-testid="tableA"
+>
+  <table-header>
+    <column-header>
+      ColA
+    </column-header>
+    <column-header>
+      ColB
+    </column-header>
+  </table-header>
+  <table-item>
+    <column-text>
+      a1
+    </column-text>
+    <column-set>
+      <div>
+        c1
+      </div>
+    </column-set>
+    <table-buttons>
+      <button
+        data-testid="buttonEdit1"
+      >
+        Edit
+      </button>
+      <button
+        data-testid="buttonDel1"
+      >
+        Del
+      </button>
+    </table-buttons>
+  </table-item>
+  <table-item>
+    <column-text>
+      a2
+    </column-text>
+    <column-set />
+    <table-buttons>
+      <button
+        data-testid="buttonEdit2"
+      >
+        Edit
+      </button>
+      <button
+        data-testid="buttonDel2"
+      >
+        Del
+      </button>
+    </table-buttons>
+  </table-item>
+</table-table>
+`;
+
+exports[`Table confirms & clears list 2`] = `
+<table-table
+  data-testid="tableA"
+>
+  <table-header>
+    <column-header>
+      ColA
+    </column-header>
+    <column-header>
+      ColB
+    </column-header>
+  </table-header>
+  <table-item>
+    <column-text>
+      a1
+    </column-text>
+    <column-set>
+      <div>
+        c1
+      </div>
+    </column-set>
+    <table-buttons>
+      <button
+        data-testid="buttonEdit1"
+      >
+        Edit
+      </button>
+      <button
+        data-testid="buttonDel1"
+      >
+        Del
+      </button>
+    </table-buttons>
+  </table-item>
+  <table-item>
+    <column-text>
+      a2
+    </column-text>
+    <column-set />
+    <table-buttons>
+      <button
+        data-testid="buttonEdit2"
+      >
+        Edit
+      </button>
+      <button
+        data-testid="buttonDel2"
+      >
+        Del
+      </button>
+    </table-buttons>
+  </table-item>
+</table-table>
+`;
+
+exports[`Table confirms & clears list 3`] = `
+<table-table
+  data-testid="tableA"
+>
+  <table-header>
+    <column-header>
+      ColA
+    </column-header>
+    <column-header>
+      ColB
+    </column-header>
+  </table-header>
+</table-table>
+`;
+
+exports[`Table enables a slot 1`] = `
+<table-table
+  data-testid="tableA"
+>
+  <table-header>
+    <column-header>
+      ColA
+    </column-header>
+    <column-header>
+      ColB
+    </column-header>
+  </table-header>
+  <table-item>
+    <column-text>
+      a
+    </column-text>
+    <column-set>
+      <div>
+        c1
+      </div>
+    </column-set>
+    <table-buttons>
+      <button
+        data-testid="buttonEdit1"
+      >
+        Edit
+      </button>
+      <button
+        data-testid="buttonDel1"
+      >
+        Del
+      </button>
+    </table-buttons>
+  </table-item>
+</table-table>
+`;
+
+exports[`Table enters row into list 1`] = `
+<table-table
+  data-testid="tableA"
+>
+  <table-header>
+    <column-header>
+      ColA
+    </column-header>
+    <column-header>
+      ColB
+    </column-header>
+  </table-header>
+  <table-item>
+    <column-text>
+      a
+    </column-text>
+    <column-set />
+    <table-buttons>
+      <button
+        data-testid="buttonEdit1"
+      >
+        Edit
+      </button>
+      <button
+        data-testid="buttonDel1"
+      >
+        Del
+      </button>
+    </table-buttons>
+  </table-item>
+</table-table>
+`;
