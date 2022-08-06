@@ -44,13 +44,13 @@ var ColumnSet = function ColumnSet(name, all, toString) {
     row: function row(value) {
       return /*#__PURE__*/_react.default.createElement("column-set", {
         key: name
-      }, value.map(function (id) {
+      }, value.length ? value.map(function (id) {
         return (0, _lib.getItemById)(all, id);
       }).map(function (entry) {
         return /*#__PURE__*/_react.default.createElement("div", {
           key: entry.id
         }, toString(entry));
-      }));
+      }) : '-');
     },
     edit: function edit(value, setvalue) {
       return /*#__PURE__*/_react.default.createElement("column-set", {

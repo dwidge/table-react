@@ -22,9 +22,11 @@ export const ColumnText = (name) => ({
 export const ColumnSet = (name, all, toString) => ({
 	name,
 	row(value) {
-		return (<column-set key={name}>{value.map(id => getItemById(all, id)).map(entry =>
-			(<div key={entry.id}>{toString(entry)}</div>),
-		)}</column-set>)
+		return (<column-set key={name}>{value.length
+			? value.map(id => getItemById(all, id)).map(entry =>
+				(<div key={entry.id}>{toString(entry)}</div>),
+			)
+			: '-'}</column-set>)
 	},
 	edit(value, setvalue) {
 		return (<column-set key={name}>{all.map(entry => (id =>

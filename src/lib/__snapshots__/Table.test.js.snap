@@ -34,7 +34,9 @@ exports[`Table addDel 1`] = `
       <column-text>
         a2
       </column-text>
-      <column-set />
+      <column-set>
+        -
+      </column-set>
       <table-buttons>
         <button
           data-testid="buttonEdit2"
@@ -64,7 +66,9 @@ exports[`Table clears missing slot 1`] = `
       <column-text>
         a1
       </column-text>
-      <column-set />
+      <column-set>
+        -
+      </column-set>
       <table-buttons>
         <button
           data-testid="buttonEdit1"
@@ -131,7 +135,9 @@ exports[`Table confirms & clears list 1`] = `
       <column-text>
         a2
       </column-text>
-      <column-set />
+      <column-set>
+        -
+      </column-set>
       <table-buttons>
         <button
           data-testid="buttonEdit2"
@@ -198,7 +204,9 @@ exports[`Table confirms & clears list 2`] = `
       <column-text>
         a2
       </column-text>
-      <column-set />
+      <column-set>
+        -
+      </column-set>
       <table-buttons>
         <button
           data-testid="buttonEdit2"
@@ -319,7 +327,9 @@ exports[`Table enters row into list 1`] = `
       <column-text>
         a
       </column-text>
-      <column-set />
+      <column-set>
+        -
+      </column-set>
       <table-buttons>
         <button
           data-testid="buttonEdit1"
@@ -353,23 +363,31 @@ exports[`Table inlineHeaders 1`] = `
 >
   <table-table>
     <table-item>
-      <table-row>
+      <table-row
+        style="display: block;"
+      >
         <column-header>
           ColA
         </column-header>
-        <column-text>
-          a1
-        </column-text>
+        <div>
+          <column-text>
+            a1
+          </column-text>
+        </div>
       </table-row>
-      <table-row>
+      <table-row
+        style="display: block;"
+      >
         <column-header>
           ColB
         </column-header>
-        <column-set>
-          <div>
-            c1
-          </div>
-        </column-set>
+        <div>
+          <column-set>
+            <div>
+              c1
+            </div>
+          </column-set>
+        </div>
       </table-row>
       <table-buttons>
         <button
@@ -388,6 +406,8 @@ exports[`Table inlineHeaders 1`] = `
   <p>
     1
      - 
+    1
+     of 
     2
   </p>
   <button
@@ -452,6 +472,8 @@ exports[`Table pages 1`] = `
   <p>
     1
      - 
+    1
+     of 
     2
   </p>
   <button
@@ -516,6 +538,8 @@ exports[`Table pages next prev 1`] = `
   <p>
     1
      - 
+    1
+     of 
     2
   </p>
   <button
@@ -558,7 +582,9 @@ exports[`Table pages next prev 2`] = `
       <column-text>
         a2
       </column-text>
-      <column-set />
+      <column-set>
+        -
+      </column-set>
       <table-buttons>
         <button
           data-testid="buttonEdit2"
@@ -576,6 +602,8 @@ exports[`Table pages next prev 2`] = `
   <p>
     2
      - 
+    2
+     of 
     2
   </p>
   <button
@@ -618,7 +646,9 @@ exports[`Table pages next prev 3`] = `
       <column-text>
         a2
       </column-text>
-      <column-set />
+      <column-set>
+        -
+      </column-set>
       <table-buttons>
         <button
           data-testid="buttonEdit2"
@@ -636,6 +666,8 @@ exports[`Table pages next prev 3`] = `
   <p>
     2
      - 
+    2
+     of 
     2
   </p>
   <button
@@ -700,6 +732,8 @@ exports[`Table pages next prev 4`] = `
   <p>
     1
      - 
+    1
+     of 
     2
   </p>
   <button

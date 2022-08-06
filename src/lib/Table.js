@@ -62,7 +62,7 @@ export const Table = ({ name, schema, defaults, rows, pageLength = 100, inlineHe
 					)(row.id))}
 			</table-table>
 			{pages > 1 && (<>
-				<p>{page * pageLength + 1} - {Math.min(cleanrows.length, (page + 1) * pageLength + 1)}</p>
+				<p>{page * pageLength + 1} - {Math.min(cleanrows.length, (page + 1) * pageLength)} of {cleanrows.length}</p>
 				<button onClick={onPrev} data-testid="buttonPrev">Prev</button>
 				<button onClick={onNext} data-testid="buttonNext">Next</button>
 			</>)}
@@ -87,7 +87,7 @@ Table.propTypes = {
 const Row = ({ schema, row, inlineHeaders, addDel, onEdit, onDel }) => {
 	const { id } = row
 
-	const field = (name, value) => inlineHeaders ? (<table-row key={name}><column-header>{name}</column-header>{value}</table-row>) : value
+	const field = (name, value) => inlineHeaders ? (<table-row style={{ display: 'block' }} key={name}><column-header>{name}</column-header><div>{value}</div></table-row>) : value
 
 	return (
 		<table-item>
@@ -114,7 +114,7 @@ Row.propTypes = {
 const RowEdit = ({ schema, row, inlineHeaders, onSave, onCancel }) => {
 	const [rowEdit, setrowEdit] = useState(row)
 
-	const field = (name, value) => inlineHeaders ? (<table-row key={name}><column-header>{name}</column-header>{value}</table-row>) : value
+	const field = (name, value) => inlineHeaders ? (<table-row style={{ display: 'block' }} key={name}><column-header>{name}</column-header><div>{value}</div></table-row>) : value
 
 	return (
 		<table-item>

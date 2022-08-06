@@ -173,7 +173,7 @@ var Table = function Table(_ref) {
         onDel: onDel
       });
     }(row.id);
-  })), pages > 1 && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("p", null, page * pageLength + 1, " - ", Math.min(cleanrows.length, (page + 1) * pageLength + 1)), /*#__PURE__*/_react.default.createElement("button", {
+  })), pages > 1 && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("p", null, page * pageLength + 1, " - ", Math.min(cleanrows.length, (page + 1) * pageLength), " of ", cleanrows.length), /*#__PURE__*/_react.default.createElement("button", {
     onClick: onPrev,
     "data-testid": "buttonPrev"
   }, "Prev"), /*#__PURE__*/_react.default.createElement("button", {
@@ -210,8 +210,11 @@ var Row = function Row(_ref6) {
 
   var field = function field(name, value) {
     return inlineHeaders ? /*#__PURE__*/_react.default.createElement("table-row", {
+      style: {
+        display: 'block'
+      },
       key: name
-    }, /*#__PURE__*/_react.default.createElement("column-header", null, name), value) : value;
+    }, /*#__PURE__*/_react.default.createElement("column-header", null, name), /*#__PURE__*/_react.default.createElement("div", null, value)) : value;
   };
 
   return /*#__PURE__*/_react.default.createElement("table-item", null, Object.entries(schema).map(function (_ref7) {
@@ -256,8 +259,11 @@ var RowEdit = function RowEdit(_ref9) {
 
   var field = function field(name, value) {
     return inlineHeaders ? /*#__PURE__*/_react.default.createElement("table-row", {
+      style: {
+        display: 'block'
+      },
       key: name
-    }, /*#__PURE__*/_react.default.createElement("column-header", null, name), value) : value;
+    }, /*#__PURE__*/_react.default.createElement("column-header", null, name), /*#__PURE__*/_react.default.createElement("div", null, value)) : value;
   };
 
   return /*#__PURE__*/_react.default.createElement("table-item", null, Object.entries(schema).map(function (_ref10) {
