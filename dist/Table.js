@@ -15,11 +15,11 @@ var _lib = require("@dwidge/lib");
 
 require("./Table.css");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -43,14 +43,20 @@ var Table = function Table(_ref) {
   var name = _ref.name,
       schema = _ref.schema,
       defaults = _ref.defaults,
-      rows = _ref.rows;
+      rows = _ref.rows,
+      _ref$pageLength = _ref.pageLength,
+      pageLength = _ref$pageLength === void 0 ? 100 : _ref$pageLength,
+      _ref$inlineHeaders = _ref.inlineHeaders,
+      inlineHeaders = _ref$inlineHeaders === void 0 ? false : _ref$inlineHeaders,
+      _ref$addDel = _ref.addDel,
+      addDel = _ref$addDel === void 0 ? true : _ref$addDel;
   var schemaA = Object.entries(schema);
 
   var _rows = _slicedToArray(rows, 2),
       rawrows = _rows[0],
       setrows = _rows[1];
 
-  var _useState = (0, _react.useState)(),
+  var _useState = (0, _react.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
       idEdit = _useState2[0],
       setidEdit = _useState2[1];
@@ -59,6 +65,11 @@ var Table = function Table(_ref) {
       _useState4 = _slicedToArray(_useState3, 2),
       confirm = _useState4[0],
       setconfirm = _useState4[1];
+
+  var _useState5 = (0, _react.useState)(0),
+      _useState6 = _slicedToArray(_useState5, 2),
+      page = _useState6[0],
+      setpage = _useState6[1];
 
   var cleanup = function cleanup(row) {
     return schemaA.reduce(function (row, _ref2) {
@@ -90,6 +101,28 @@ var Table = function Table(_ref) {
     });
   };
 
+  var pages = Math.max(1, Math.ceil(cleanrows.length / pageLength));
+
+  if (page >= pages) {
+    setpage(pages - 1);
+  }
+
+  if (page < 0) {
+    setpage(0);
+  }
+
+  var onPrev = function onPrev() {
+    if (page > 0) {
+      setpage(page - 1);
+    }
+  };
+
+  var onNext = function onNext() {
+    if (page < pages - 1) {
+      setpage(page + 1);
+    }
+  };
+
   var onEdit = setidEdit;
   var onDel = delrow;
 
@@ -111,67 +144,88 @@ var Table = function Table(_ref) {
     setconfirm(!confirm);
   };
 
-  return /*#__PURE__*/_react["default"].createElement("div-page", null, /*#__PURE__*/_react["default"].createElement("table-table", {
+  return /*#__PURE__*/_react.default.createElement("div-page", {
     "data-testid": 'table' + name
-  }, /*#__PURE__*/_react["default"].createElement("table-header", null, schemaA.map(function (_ref4) {
+  }, /*#__PURE__*/_react.default.createElement("table-table", null, !inlineHeaders && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("table-header", null, schemaA.map(function (_ref4) {
     var _ref5 = _slicedToArray(_ref4, 2),
         key = _ref5[0],
         schem = _ref5[1];
 
-    return /*#__PURE__*/_react["default"].createElement("column-header", {
+    return /*#__PURE__*/_react.default.createElement("column-header", {
       key: key
     }, schem.name);
-  })), cleanrows.map(function (row) {
+  }))), cleanrows.slice(page * pageLength, (page + 1) * pageLength).map(function (row) {
     return function (key) {
-      return key === idEdit ? /*#__PURE__*/_react["default"].createElement(RowEdit, {
+      return key === idEdit ? /*#__PURE__*/_react.default.createElement(RowEdit, {
         key: key,
         schema: schema,
         row: row,
+        inlineHeaders: inlineHeaders,
         onSave: onSave,
         onCancel: onCancel
-      }) : /*#__PURE__*/_react["default"].createElement(Row, {
+      }) : /*#__PURE__*/_react.default.createElement(Row, {
         key: key,
         schema: schema,
         row: row,
+        inlineHeaders: inlineHeaders,
+        addDel: addDel,
         onEdit: onEdit,
         onDel: onDel
       });
     }(row.id);
-  })), /*#__PURE__*/_react["default"].createElement("button", {
+  })), pages > 1 && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("p", null, page * pageLength + 1, " - ", Math.min(cleanrows.length, (page + 1) * pageLength + 1)), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: onPrev,
+    "data-testid": "buttonPrev"
+  }, "Prev"), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: onNext,
+    "data-testid": "buttonNext"
+  }, "Next")), addDel && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
     onClick: onAdd,
     "data-testid": "buttonAdd"
-  }, "Add"), /*#__PURE__*/_react["default"].createElement("button", {
+  }, "Add"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: onClear,
     "data-testid": "buttonClear"
-  }, confirm ? 'Confirm' : 'Clear'));
+  }, confirm ? 'Confirm' : 'Clear')));
 };
 
 exports.Table = Table;
 Table.propTypes = {
-  name: _propTypes["default"].string.isRequired,
-  schema: _propTypes["default"].object.isRequired,
-  defaults: _propTypes["default"].object.isRequired,
-  rows: _propTypes["default"].array.isRequired
+  name: _propTypes.default.string.isRequired,
+  schema: _propTypes.default.object.isRequired,
+  defaults: _propTypes.default.object.isRequired,
+  rows: _propTypes.default.array.isRequired,
+  pageLength: _propTypes.default.number,
+  inlineHeaders: _propTypes.default.bool,
+  addDel: _propTypes.default.bool
 };
 
 var Row = function Row(_ref6) {
   var schema = _ref6.schema,
       row = _ref6.row,
+      inlineHeaders = _ref6.inlineHeaders,
+      addDel = _ref6.addDel,
       onEdit = _ref6.onEdit,
       onDel = _ref6.onDel;
   var id = row.id;
-  return /*#__PURE__*/_react["default"].createElement("table-item", null, Object.entries(schema).map(function (_ref7) {
+
+  var field = function field(name, value) {
+    return inlineHeaders ? /*#__PURE__*/_react.default.createElement("table-row", {
+      key: name
+    }, /*#__PURE__*/_react.default.createElement("column-header", null, name), value) : value;
+  };
+
+  return /*#__PURE__*/_react.default.createElement("table-item", null, Object.entries(schema).map(function (_ref7) {
     var _ref8 = _slicedToArray(_ref7, 2),
         key = _ref8[0],
         schem = _ref8[1];
 
-    return schem.row(row[key]);
-  }), /*#__PURE__*/_react["default"].createElement("table-buttons", null, /*#__PURE__*/_react["default"].createElement("button", {
+    return field(schem.name, schem.row(row[key]));
+  }), /*#__PURE__*/_react.default.createElement("table-buttons", null, /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
       return onEdit(id);
     },
     "data-testid": 'buttonEdit' + id
-  }, "Edit"), /*#__PURE__*/_react["default"].createElement("button", {
+  }, "Edit"), addDel && /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
       return onDel(id);
     },
@@ -180,45 +234,55 @@ var Row = function Row(_ref6) {
 };
 
 Row.propTypes = {
-  schema: _propTypes["default"].object.isRequired,
-  row: _propTypes["default"].object.isRequired,
-  onEdit: _propTypes["default"].func.isRequired,
-  onDel: _propTypes["default"].func.isRequired
+  schema: _propTypes.default.object.isRequired,
+  row: _propTypes.default.object.isRequired,
+  inlineHeaders: _propTypes.default.bool,
+  addDel: _propTypes.default.bool,
+  onEdit: _propTypes.default.func.isRequired,
+  onDel: _propTypes.default.func.isRequired
 };
 
 var RowEdit = function RowEdit(_ref9) {
   var schema = _ref9.schema,
       row = _ref9.row,
+      inlineHeaders = _ref9.inlineHeaders,
       onSave = _ref9.onSave,
       onCancel = _ref9.onCancel;
 
-  var _useState5 = (0, _react.useState)(row),
-      _useState6 = _slicedToArray(_useState5, 2),
-      rowEdit = _useState6[0],
-      setrowEdit = _useState6[1];
+  var _useState7 = (0, _react.useState)(row),
+      _useState8 = _slicedToArray(_useState7, 2),
+      rowEdit = _useState8[0],
+      setrowEdit = _useState8[1];
 
-  return /*#__PURE__*/_react["default"].createElement("table-item", null, Object.entries(schema).map(function (_ref10) {
+  var field = function field(name, value) {
+    return inlineHeaders ? /*#__PURE__*/_react.default.createElement("table-row", {
+      key: name
+    }, /*#__PURE__*/_react.default.createElement("column-header", null, name), value) : value;
+  };
+
+  return /*#__PURE__*/_react.default.createElement("table-item", null, Object.entries(schema).map(function (_ref10) {
     var _ref11 = _slicedToArray(_ref10, 2),
         key = _ref11[0],
         schem = _ref11[1];
 
-    return schem.edit(rowEdit[key], function (val) {
+    return field(schem.name, schem.edit(rowEdit[key], function (val) {
       return setrowEdit(_objectSpread(_objectSpread({}, rowEdit), {}, _defineProperty({}, key, val)));
-    });
-  }), /*#__PURE__*/_react["default"].createElement("table-buttons", null, /*#__PURE__*/_react["default"].createElement("button", {
+    }));
+  }), /*#__PURE__*/_react.default.createElement("table-buttons", null, /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
       return onSave(rowEdit);
     },
     "data-testid": "buttonSave"
-  }, "Save"), /*#__PURE__*/_react["default"].createElement("button", {
+  }, "Save"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: onCancel,
     "data-testid": "buttonCancel"
   }, "Cancel")));
 };
 
 RowEdit.propTypes = {
-  schema: _propTypes["default"].object.isRequired,
-  row: _propTypes["default"].object.isRequired,
-  onSave: _propTypes["default"].func.isRequired,
-  onCancel: _propTypes["default"].func.isRequired
+  schema: _propTypes.default.object.isRequired,
+  row: _propTypes.default.object.isRequired,
+  inlineHeaders: _propTypes.default.bool,
+  onSave: _propTypes.default.func.isRequired,
+  onCancel: _propTypes.default.func.isRequired
 };

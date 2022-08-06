@@ -1,229 +1,726 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Table clears missing slot 1`] = `
-<table-table
+exports[`Table addDel 1`] = `
+<div-page
   data-testid="tableA"
 >
-  <table-header>
-    <column-header>
-      ColA
-    </column-header>
-    <column-header>
-      ColB
-    </column-header>
-  </table-header>
-  <table-item>
-    <column-text>
-      a1
-    </column-text>
-    <column-set />
-    <table-buttons>
-      <button
-        data-testid="buttonEdit1"
-      >
-        Edit
-      </button>
-      <button
-        data-testid="buttonDel1"
-      >
-        Del
-      </button>
-    </table-buttons>
-  </table-item>
-</table-table>
+  <table-table>
+    <table-header>
+      <column-header>
+        ColA
+      </column-header>
+      <column-header>
+        ColB
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        a1
+      </column-text>
+      <column-set>
+        <div>
+          c1
+        </div>
+      </column-set>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+      </table-buttons>
+    </table-item>
+    <table-item>
+      <column-text>
+        a2
+      </column-text>
+      <column-set />
+      <table-buttons>
+        <button
+          data-testid="buttonEdit2"
+        >
+          Edit
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+</div-page>
+`;
+
+exports[`Table clears missing slot 1`] = `
+<div-page
+  data-testid="tableA"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        ColA
+      </column-header>
+      <column-header>
+        ColB
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        a1
+      </column-text>
+      <column-set />
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
 `;
 
 exports[`Table confirms & clears list 1`] = `
-<table-table
+<div-page
   data-testid="tableA"
 >
-  <table-header>
-    <column-header>
-      ColA
-    </column-header>
-    <column-header>
-      ColB
-    </column-header>
-  </table-header>
-  <table-item>
-    <column-text>
-      a1
-    </column-text>
-    <column-set>
-      <div>
-        c1
-      </div>
-    </column-set>
-    <table-buttons>
-      <button
-        data-testid="buttonEdit1"
-      >
-        Edit
-      </button>
-      <button
-        data-testid="buttonDel1"
-      >
-        Del
-      </button>
-    </table-buttons>
-  </table-item>
-  <table-item>
-    <column-text>
-      a2
-    </column-text>
-    <column-set />
-    <table-buttons>
-      <button
-        data-testid="buttonEdit2"
-      >
-        Edit
-      </button>
-      <button
-        data-testid="buttonDel2"
-      >
-        Del
-      </button>
-    </table-buttons>
-  </table-item>
-</table-table>
+  <table-table>
+    <table-header>
+      <column-header>
+        ColA
+      </column-header>
+      <column-header>
+        ColB
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        a1
+      </column-text>
+      <column-set>
+        <div>
+          c1
+        </div>
+      </column-set>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+    <table-item>
+      <column-text>
+        a2
+      </column-text>
+      <column-set />
+      <table-buttons>
+        <button
+          data-testid="buttonEdit2"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel2"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
 `;
 
 exports[`Table confirms & clears list 2`] = `
-<table-table
+<div-page
   data-testid="tableA"
 >
-  <table-header>
-    <column-header>
-      ColA
-    </column-header>
-    <column-header>
-      ColB
-    </column-header>
-  </table-header>
-  <table-item>
-    <column-text>
-      a1
-    </column-text>
-    <column-set>
-      <div>
-        c1
-      </div>
-    </column-set>
-    <table-buttons>
-      <button
-        data-testid="buttonEdit1"
-      >
-        Edit
-      </button>
-      <button
-        data-testid="buttonDel1"
-      >
-        Del
-      </button>
-    </table-buttons>
-  </table-item>
-  <table-item>
-    <column-text>
-      a2
-    </column-text>
-    <column-set />
-    <table-buttons>
-      <button
-        data-testid="buttonEdit2"
-      >
-        Edit
-      </button>
-      <button
-        data-testid="buttonDel2"
-      >
-        Del
-      </button>
-    </table-buttons>
-  </table-item>
-</table-table>
+  <table-table>
+    <table-header>
+      <column-header>
+        ColA
+      </column-header>
+      <column-header>
+        ColB
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        a1
+      </column-text>
+      <column-set>
+        <div>
+          c1
+        </div>
+      </column-set>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+    <table-item>
+      <column-text>
+        a2
+      </column-text>
+      <column-set />
+      <table-buttons>
+        <button
+          data-testid="buttonEdit2"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel2"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Confirm
+  </button>
+</div-page>
 `;
 
 exports[`Table confirms & clears list 3`] = `
-<table-table
+<div-page
   data-testid="tableA"
 >
-  <table-header>
-    <column-header>
-      ColA
-    </column-header>
-    <column-header>
-      ColB
-    </column-header>
-  </table-header>
-</table-table>
+  <table-table>
+    <table-header>
+      <column-header>
+        ColA
+      </column-header>
+      <column-header>
+        ColB
+      </column-header>
+    </table-header>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
 `;
 
 exports[`Table enables a slot 1`] = `
-<table-table
+<div-page
   data-testid="tableA"
 >
-  <table-header>
-    <column-header>
-      ColA
-    </column-header>
-    <column-header>
-      ColB
-    </column-header>
-  </table-header>
-  <table-item>
-    <column-text>
-      a
-    </column-text>
-    <column-set>
-      <div>
-        c1
-      </div>
-    </column-set>
-    <table-buttons>
-      <button
-        data-testid="buttonEdit1"
-      >
-        Edit
-      </button>
-      <button
-        data-testid="buttonDel1"
-      >
-        Del
-      </button>
-    </table-buttons>
-  </table-item>
-</table-table>
+  <table-table>
+    <table-header>
+      <column-header>
+        ColA
+      </column-header>
+      <column-header>
+        ColB
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        a
+      </column-text>
+      <column-set>
+        <div>
+          c1
+        </div>
+      </column-set>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
 `;
 
 exports[`Table enters row into list 1`] = `
-<table-table
+<div-page
   data-testid="tableA"
 >
-  <table-header>
-    <column-header>
-      ColA
-    </column-header>
-    <column-header>
-      ColB
-    </column-header>
-  </table-header>
-  <table-item>
-    <column-text>
-      a
-    </column-text>
-    <column-set />
-    <table-buttons>
-      <button
-        data-testid="buttonEdit1"
-      >
-        Edit
-      </button>
-      <button
-        data-testid="buttonDel1"
-      >
-        Del
-      </button>
-    </table-buttons>
-  </table-item>
-</table-table>
+  <table-table>
+    <table-header>
+      <column-header>
+        ColA
+      </column-header>
+      <column-header>
+        ColB
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        a
+      </column-text>
+      <column-set />
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
+`;
+
+exports[`Table inlineHeaders 1`] = `
+<div-page
+  data-testid="tableA"
+>
+  <table-table>
+    <table-item>
+      <table-row>
+        <column-header>
+          ColA
+        </column-header>
+        <column-text>
+          a1
+        </column-text>
+      </table-row>
+      <table-row>
+        <column-header>
+          ColB
+        </column-header>
+        <column-set>
+          <div>
+            c1
+          </div>
+        </column-set>
+      </table-row>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <p>
+    1
+     - 
+    2
+  </p>
+  <button
+    data-testid="buttonPrev"
+  >
+    Prev
+  </button>
+  <button
+    data-testid="buttonNext"
+  >
+    Next
+  </button>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
+`;
+
+exports[`Table pages 1`] = `
+<div-page
+  data-testid="tableA"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        ColA
+      </column-header>
+      <column-header>
+        ColB
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        a1
+      </column-text>
+      <column-set>
+        <div>
+          c1
+        </div>
+      </column-set>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <p>
+    1
+     - 
+    2
+  </p>
+  <button
+    data-testid="buttonPrev"
+  >
+    Prev
+  </button>
+  <button
+    data-testid="buttonNext"
+  >
+    Next
+  </button>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
+`;
+
+exports[`Table pages next prev 1`] = `
+<div-page
+  data-testid="tableA"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        ColA
+      </column-header>
+      <column-header>
+        ColB
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        a1
+      </column-text>
+      <column-set>
+        <div>
+          c1
+        </div>
+      </column-set>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <p>
+    1
+     - 
+    2
+  </p>
+  <button
+    data-testid="buttonPrev"
+  >
+    Prev
+  </button>
+  <button
+    data-testid="buttonNext"
+  >
+    Next
+  </button>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
+`;
+
+exports[`Table pages next prev 2`] = `
+<div-page
+  data-testid="tableA"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        ColA
+      </column-header>
+      <column-header>
+        ColB
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        a2
+      </column-text>
+      <column-set />
+      <table-buttons>
+        <button
+          data-testid="buttonEdit2"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel2"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <p>
+    2
+     - 
+    2
+  </p>
+  <button
+    data-testid="buttonPrev"
+  >
+    Prev
+  </button>
+  <button
+    data-testid="buttonNext"
+  >
+    Next
+  </button>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
+`;
+
+exports[`Table pages next prev 3`] = `
+<div-page
+  data-testid="tableA"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        ColA
+      </column-header>
+      <column-header>
+        ColB
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        a2
+      </column-text>
+      <column-set />
+      <table-buttons>
+        <button
+          data-testid="buttonEdit2"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel2"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <p>
+    2
+     - 
+    2
+  </p>
+  <button
+    data-testid="buttonPrev"
+  >
+    Prev
+  </button>
+  <button
+    data-testid="buttonNext"
+  >
+    Next
+  </button>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
+`;
+
+exports[`Table pages next prev 4`] = `
+<div-page
+  data-testid="tableA"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        ColA
+      </column-header>
+      <column-header>
+        ColB
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        a1
+      </column-text>
+      <column-set>
+        <div>
+          c1
+        </div>
+      </column-set>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <p>
+    1
+     - 
+    2
+  </p>
+  <button
+    data-testid="buttonPrev"
+  >
+    Prev
+  </button>
+  <button
+    data-testid="buttonNext"
+  >
+    Next
+  </button>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
 `;

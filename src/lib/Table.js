@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 import { uuid, replaceItemById, dropItemById } from '@dwidge/lib'
 import './Table.css'
 
-export const Table = ({ name, schema, defaults, rows }) => {
+export const Table = ({ name, schema, defaults, rows, pageLength = 100, inlineHeaders = false, addDel = true }) => {
 	const schemaA = Object.entries(schema)
 	const [rawrows, setrows] = rows
-	const [idEdit, setidEdit] = useState()
+	const [idEdit, setidEdit] = useState(0)
 	const [confirm, setconfirm] = useState(false)
+	const [page, setpage] = useState(0)
 
 	const cleanup = row => schemaA.reduce((row, [key, schem]) => ({
 		...row,
@@ -20,6 +21,17 @@ export const Table = ({ name, schema, defaults, rows }) => {
 		setrows(dropItemById(cleanrows, id))
 	const addrow = row => setrows(cleanrows.concat([row]))
 	const newrow = () => ({ ...defaults, id: uuid() })
+
+	const pages = Math.max(1, Math.ceil(cleanrows.length / pageLength))
+	if (page >= pages) { setpage(pages - 1) }
+	if (page < 0) { setpage(0) }
+
+	const onPrev = () => {
+		if (page > 0) { setpage(page - 1) }
+	}
+	const onNext = () => {
+		if (page < pages - 1) { setpage(page + 1) }
+	}
 
 	const onEdit = setidEdit
 	const onDel = delrow
@@ -35,20 +47,29 @@ export const Table = ({ name, schema, defaults, rows }) => {
 	}
 
 	return (
-		<div-page>
-			<table-table data-testid={'table' + name}>
-				<table-header>
-					{schemaA.map(([key, schem]) =>
-						(<column-header key={key}>{schem.name}</column-header>))}
-				</table-header>
-				{cleanrows.map(
+		<div-page data-testid={'table' + name}>
+			<table-table>
+				{(!inlineHeaders) && (<>
+					<table-header>
+						{schemaA.map(([key, schem]) =>
+							(<column-header key={key}>{schem.name}</column-header>))}
+					</table-header>
+				</>)}
+				{cleanrows.slice(page * pageLength, (page + 1) * pageLength).map(
 					row => (key => key === idEdit
-						? (<RowEdit {...{ key, schema, row, onSave, onCancel }} />)
-						: (<Row {...{ key, schema, row, onEdit, onDel }} />)
+						? (<RowEdit {...{ key, schema, row, inlineHeaders, onSave, onCancel }} />)
+						: (<Row {...{ key, schema, row, inlineHeaders, addDel, onEdit, onDel }} />)
 					)(row.id))}
 			</table-table>
-			<button onClick={onAdd} data-testid="buttonAdd">Add</button>
-			<button onClick={onClear} data-testid="buttonClear">{confirm ? 'Confirm' : 'Clear'}</button>
+			{pages > 1 && (<>
+				<p>{page * pageLength + 1} - {Math.min(cleanrows.length, (page + 1) * pageLength + 1)}</p>
+				<button onClick={onPrev} data-testid="buttonPrev">Prev</button>
+				<button onClick={onNext} data-testid="buttonNext">Next</button>
+			</>)}
+			{addDel && (<>
+				<button onClick={onAdd} data-testid="buttonAdd">Add</button>
+				<button onClick={onClear} data-testid="buttonClear">{confirm ? 'Confirm' : 'Clear'}</button>
+			</>)}
 		</div-page>
 	)
 }
@@ -58,16 +79,24 @@ Table.propTypes = {
 	schema: PropTypes.object.isRequired,
 	defaults: PropTypes.object.isRequired,
 	rows: PropTypes.array.isRequired,
+	pageLength: PropTypes.number,
+	inlineHeaders: PropTypes.bool,
+	addDel: PropTypes.bool,
 }
 
-const Row = ({ schema, row, onEdit, onDel }) => {
+const Row = ({ schema, row, inlineHeaders, addDel, onEdit, onDel }) => {
 	const { id } = row
+
+	const field = (name, value) => inlineHeaders ? (<table-row key={name}><column-header>{name}</column-header>{value}</table-row>) : value
+
 	return (
 		<table-item>
-			{Object.entries(schema).map(([key, schem]) => schem.row(row[key]))}
+			{Object.entries(schema).map(([key, schem]) => field(schem.name, schem.row(row[key])))}
 			<table-buttons>
 				<button onClick={() => onEdit(id)} data-testid={'buttonEdit' + id}>Edit</button>
-				<button onClick={() => onDel(id)} data-testid={'buttonDel' + id}>Del</button>
+				{addDel && (
+					<button onClick={() => onDel(id)} data-testid={'buttonDel' + id}>Del</button>
+				)}
 			</table-buttons>
 		</table-item>
 	)
@@ -76,16 +105,20 @@ const Row = ({ schema, row, onEdit, onDel }) => {
 Row.propTypes = {
 	schema: PropTypes.object.isRequired,
 	row: PropTypes.object.isRequired,
+	inlineHeaders: PropTypes.bool,
+	addDel: PropTypes.bool,
 	onEdit: PropTypes.func.isRequired,
 	onDel: PropTypes.func.isRequired,
 }
 
-const RowEdit = ({ schema, row, onSave, onCancel }) => {
+const RowEdit = ({ schema, row, inlineHeaders, onSave, onCancel }) => {
 	const [rowEdit, setrowEdit] = useState(row)
+
+	const field = (name, value) => inlineHeaders ? (<table-row key={name}><column-header>{name}</column-header>{value}</table-row>) : value
 
 	return (
 		<table-item>
-			{Object.entries(schema).map(([key, schem]) => schem.edit(rowEdit[key], val => setrowEdit({ ...rowEdit, [key]: val })))}
+			{Object.entries(schema).map(([key, schem]) => field(schem.name, schem.edit(rowEdit[key], val => setrowEdit({ ...rowEdit, [key]: val }))))}
 			<table-buttons>
 				<button onClick={() => onSave(rowEdit)} data-testid="buttonSave">Save</button>
 				<button onClick={onCancel} data-testid="buttonCancel">Cancel</button>
@@ -97,6 +130,7 @@ const RowEdit = ({ schema, row, onSave, onCancel }) => {
 RowEdit.propTypes = {
 	schema: PropTypes.object.isRequired,
 	row: PropTypes.object.isRequired,
+	inlineHeaders: PropTypes.bool,
 	onSave: PropTypes.func.isRequired,
 	onCancel: PropTypes.func.isRequired,
 }

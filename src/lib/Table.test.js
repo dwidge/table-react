@@ -81,4 +81,47 @@ describe('Table', () => {
 		expect(text('buttonClear')).toEqual('Clear')
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
 	})
+
+	it('addDel', async () => {
+		const Frag = () => (<Table name='A' schema={{
+			aa: ColumnText('ColA'),
+			ab: ColumnSet('ColB', [b1], val => val.bc),
+		}} defaults={a0} rows={useState([a1, a2])} addDel={false} />)
+		render(<Frag/>)
+		expect(screen.getByTestId('tableA')).toMatchSnapshot()
+	})
+
+	it('pages', async () => {
+		const Frag = () => (<Table name='A' schema={{
+			aa: ColumnText('ColA'),
+			ab: ColumnSet('ColB', [b1], val => val.bc),
+		}} defaults={a0} rows={useState([a1, a2])} pageLength={1} />)
+		render(<Frag/>)
+		expect(screen.getByTestId('tableA')).toMatchSnapshot()
+	})
+
+	it('pages next prev', async () => {
+		const Frag = () => (<Table name='A' schema={{
+			aa: ColumnText('ColA'),
+			ab: ColumnSet('ColB', [b1], val => val.bc),
+		}} defaults={a0} rows={useState([a1, a2])} pageLength={1} />)
+		render(<Frag/>)
+		await click('buttonPrev')
+		expect(screen.getByTestId('tableA')).toMatchSnapshot()
+		await click('buttonNext')
+		expect(screen.getByTestId('tableA')).toMatchSnapshot()
+		await click('buttonNext')
+		expect(screen.getByTestId('tableA')).toMatchSnapshot()
+		await click('buttonPrev')
+		expect(screen.getByTestId('tableA')).toMatchSnapshot()
+	})
+
+	it('inlineHeaders', async () => {
+		const Frag = () => (<Table name='A' schema={{
+			aa: ColumnText('ColA'),
+			ab: ColumnSet('ColB', [b1], val => val.bc),
+		}} defaults={a0} rows={useState([a1, a2])} pageLength={1} inlineHeaders={true} />)
+		render(<Frag/>)
+		expect(screen.getByTestId('tableA')).toMatchSnapshot()
+	})
 })

@@ -11,20 +11,20 @@ var _libReact = require("@dwidge/lib-react");
 
 var _lib = require("@dwidge/lib");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ColumnText = function ColumnText(name) {
   return {
     name: name,
     row: function row(value) {
-      return /*#__PURE__*/_react["default"].createElement("column-text", {
+      return /*#__PURE__*/_react.default.createElement("column-text", {
         key: name
       }, value);
     },
     edit: function edit(value, setvalue) {
-      return /*#__PURE__*/_react["default"].createElement("column-text", {
+      return /*#__PURE__*/_react.default.createElement("column-text", {
         key: name
-      }, /*#__PURE__*/_react["default"].createElement("input", {
+      }, /*#__PURE__*/_react.default.createElement("input", {
         "data-testid": 'input' + name,
         value: value,
         onChange: (0, _libReact.onChange)(setvalue)
@@ -42,24 +42,24 @@ var ColumnSet = function ColumnSet(name, all, toString) {
   return {
     name: name,
     row: function row(value) {
-      return /*#__PURE__*/_react["default"].createElement("column-set", {
+      return /*#__PURE__*/_react.default.createElement("column-set", {
         key: name
       }, value.map(function (id) {
         return (0, _lib.getItemById)(all, id);
       }).map(function (entry) {
-        return /*#__PURE__*/_react["default"].createElement("div", {
+        return /*#__PURE__*/_react.default.createElement("div", {
           key: entry.id
         }, toString(entry));
       }));
     },
     edit: function edit(value, setvalue) {
-      return /*#__PURE__*/_react["default"].createElement("column-set", {
+      return /*#__PURE__*/_react.default.createElement("column-set", {
         key: name
       }, all.map(function (entry) {
         return function (id) {
-          return /*#__PURE__*/_react["default"].createElement("div", {
+          return /*#__PURE__*/_react.default.createElement("div", {
             key: id
-          }, /*#__PURE__*/_react["default"].createElement("input", {
+          }, /*#__PURE__*/_react.default.createElement("input", {
             "data-testid": 'input' + name + id,
             type: "checkbox",
             checked: value.includes(id),

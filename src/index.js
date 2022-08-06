@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { render } from 'react-dom'
-import { Table, ColumnText, ColumnSet } from '@dwidge/table-react'
+import { Table, ColumnText, ColumnSet } from './lib'
 
 const b1 = { id: 1, bc: 'c1' }
 const a1 = { id: 1, aa: 'a1', ab: [1] }

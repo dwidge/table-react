@@ -9,4 +9,10 @@
 			},
 		],
 	],
+	"ignore": [
+		"**/*.test.js",
+		"**/__tests__",
+		"**/__mocks__",
+		"**/__snapshots__"
+	]
 }
