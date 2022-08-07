@@ -276,7 +276,7 @@ exports[`Table enables a slot 1`] = `
     </table-header>
     <table-item>
       <column-text>
-        a
+        a1
       </column-text>
       <column-set>
         <div>
@@ -322,6 +322,9 @@ exports[`Table enters row into list 1`] = `
       <column-header>
         ColB
       </column-header>
+      <column-header>
+        ColC
+      </column-header>
     </table-header>
     <table-item>
       <column-text>
@@ -330,6 +333,129 @@ exports[`Table enters row into list 1`] = `
       <column-set>
         -
       </column-set>
+      <column-text>
+        2000/01/01
+      </column-text>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
+`;
+
+exports[`Table enters row into list 2`] = `
+<div-page
+  data-testid="tableA"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        ColA
+      </column-header>
+      <column-header>
+        ColB
+      </column-header>
+      <column-header>
+        ColC
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        <input
+          data-testid="inputColA"
+          value="a1"
+        />
+      </column-text>
+      <column-set>
+        <div>
+          <input
+            data-testid="inputColB1"
+            type="checkbox"
+          />
+           
+          c1
+        </div>
+      </column-set>
+      <column-text>
+        <input
+          data-testid="inputColC"
+          style="background: red;"
+          value="2022-01-04"
+        />
+      </column-text>
+      <table-buttons>
+        <button
+          data-testid="buttonSave"
+        >
+          Save
+        </button>
+        <button
+          data-testid="buttonCancel"
+        >
+          Cancel
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+</div-page>
+`;
+
+exports[`Table enters row into list 3`] = `
+<div-page
+  data-testid="tableA"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        ColA
+      </column-header>
+      <column-header>
+        ColB
+      </column-header>
+      <column-header>
+        ColC
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        a1
+      </column-text>
+      <column-set>
+        -
+      </column-set>
+      <column-text>
+        2022/01/04
+      </column-text>
       <table-buttons>
         <button
           data-testid="buttonEdit1"

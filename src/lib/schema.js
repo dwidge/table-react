@@ -2,6 +2,9 @@ import React from 'react'
 import { onChange, onChangeChecks } from '@dwidge/lib-react'
 import { getItemById } from '@dwidge/lib'
 
+import { dateYYMMDDfromSeconds, dateSecondsFromYYMMDD } from './date.js'
+import isMatch from 'date-fns/isMatch'
+
 export const ColumnText = (name) => ({
 	name,
 	row(value) {
@@ -11,6 +14,32 @@ export const ColumnText = (name) => ({
 		return (
 			<column-text key={name}>
 				<input data-testid={'input' + name} value={value} onChange={onChange(setvalue)} />
+			</column-text>
+		)
+	},
+	cleanup(value) {
+		return value
+	},
+})
+
+export const ColumnDate = (name) => ({
+	name,
+	_load(value) {
+		return dateYYMMDDfromSeconds(value)
+	},
+	_save(value) {
+		return dateSecondsFromYYMMDD(value)
+	},
+	valid(value) {
+		return isMatch(value, 'yyyy/MM/dd')
+	},
+	row(value) {
+		return (<column-text key={name}>{(value)}</column-text>)
+	},
+	edit(value, setvalue) {
+		return (
+			<column-text key={name}>
+				<input data-testid={'input' + name} style={this.valid(value) ? {} : { background: 'red' }} value={(value)} onChange={onChange(v => setvalue((v)))} />
 			</column-text>
 		)
 	},

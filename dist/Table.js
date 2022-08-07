@@ -199,14 +199,45 @@ Table.propTypes = {
   addDel: _propTypes.default.bool
 };
 
-var Row = function Row(_ref6) {
-  var schema = _ref6.schema,
-      row = _ref6.row,
-      inlineHeaders = _ref6.inlineHeaders,
-      addDel = _ref6.addDel,
-      onEdit = _ref6.onEdit,
-      onDel = _ref6.onDel;
-  var id = row.id;
+var load = function load(schema, row) {
+  return Object.entries(schema).reduce(function (row, _ref6) {
+    var _ref7 = _slicedToArray(_ref6, 2),
+        key = _ref7[0],
+        schem = _ref7[1];
+
+    return _objectSpread(_objectSpread({}, row), {}, _defineProperty({}, key, schem.load && schem.load(row[key]) || row[key]));
+  }, row);
+};
+
+var save = function save(schema, row) {
+  return Object.entries(schema).reduce(function (row, _ref8) {
+    var _ref9 = _slicedToArray(_ref8, 2),
+        key = _ref9[0],
+        schem = _ref9[1];
+
+    return _objectSpread(_objectSpread({}, row), {}, _defineProperty({}, key, schem.save && schem.save(row[key]) || row[key]));
+  }, row);
+};
+
+var isValid = function isValid(schema, row) {
+  return Object.entries(schema).every(function (_ref10) {
+    var _ref11 = _slicedToArray(_ref10, 2),
+        key = _ref11[0],
+        schem = _ref11[1];
+
+    return !schem.valid || schem.valid(row[key]);
+  });
+};
+
+var Row = function Row(_ref12) {
+  var schema = _ref12.schema,
+      row = _ref12.row,
+      inlineHeaders = _ref12.inlineHeaders,
+      addDel = _ref12.addDel,
+      onEdit = _ref12.onEdit,
+      onDel = _ref12.onDel;
+  var rowEdit = load(schema, row);
+  var id = rowEdit.id;
 
   var field = function field(name, value) {
     return inlineHeaders ? /*#__PURE__*/_react.default.createElement("table-row", {
@@ -217,12 +248,12 @@ var Row = function Row(_ref6) {
     }, /*#__PURE__*/_react.default.createElement("column-header", null, name), /*#__PURE__*/_react.default.createElement("div", null, value)) : value;
   };
 
-  return /*#__PURE__*/_react.default.createElement("table-item", null, Object.entries(schema).map(function (_ref7) {
-    var _ref8 = _slicedToArray(_ref7, 2),
-        key = _ref8[0],
-        schem = _ref8[1];
+  return /*#__PURE__*/_react.default.createElement("table-item", null, Object.entries(schema).map(function (_ref13) {
+    var _ref14 = _slicedToArray(_ref13, 2),
+        key = _ref14[0],
+        schem = _ref14[1];
 
-    return field(schem.name, schem.row(row[key]));
+    return field(schem.name, schem.row(rowEdit[key]));
   }), /*#__PURE__*/_react.default.createElement("table-buttons", null, /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
       return onEdit(id);
@@ -245,14 +276,14 @@ Row.propTypes = {
   onDel: _propTypes.default.func.isRequired
 };
 
-var RowEdit = function RowEdit(_ref9) {
-  var schema = _ref9.schema,
-      row = _ref9.row,
-      inlineHeaders = _ref9.inlineHeaders,
-      onSave = _ref9.onSave,
-      onCancel = _ref9.onCancel;
+var RowEdit = function RowEdit(_ref15) {
+  var schema = _ref15.schema,
+      row = _ref15.row,
+      inlineHeaders = _ref15.inlineHeaders,
+      onSave = _ref15.onSave,
+      onCancel = _ref15.onCancel;
 
-  var _useState7 = (0, _react.useState)(row),
+  var _useState7 = (0, _react.useState)(load(schema, row)),
       _useState8 = _slicedToArray(_useState7, 2),
       rowEdit = _useState8[0],
       setrowEdit = _useState8[1];
@@ -266,17 +297,17 @@ var RowEdit = function RowEdit(_ref9) {
     }, /*#__PURE__*/_react.default.createElement("column-header", null, name), /*#__PURE__*/_react.default.createElement("div", null, value)) : value;
   };
 
-  return /*#__PURE__*/_react.default.createElement("table-item", null, Object.entries(schema).map(function (_ref10) {
-    var _ref11 = _slicedToArray(_ref10, 2),
-        key = _ref11[0],
-        schem = _ref11[1];
+  return /*#__PURE__*/_react.default.createElement("table-item", null, Object.entries(schema).map(function (_ref16) {
+    var _ref17 = _slicedToArray(_ref16, 2),
+        key = _ref17[0],
+        schem = _ref17[1];
 
     return field(schem.name, schem.edit(rowEdit[key], function (val) {
       return setrowEdit(_objectSpread(_objectSpread({}, rowEdit), {}, _defineProperty({}, key, val)));
     }));
   }), /*#__PURE__*/_react.default.createElement("table-buttons", null, /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
-      return onSave(rowEdit);
+      return isValid(schema, rowEdit) && onSave(save(schema, rowEdit));
     },
     "data-testid": "buttonSave"
   }, "Save"), /*#__PURE__*/_react.default.createElement("button", {

@@ -84,14 +84,21 @@ Table.propTypes = {
 	addDel: PropTypes.bool,
 }
 
+const load = (schema, row) => Object.entries(schema).reduce((row, [key, schem]) => ({ ...row, [key]: (schem.load && schem.load(row[key])) || row[key] }), row)
+
+const save = (schema, row) => Object.entries(schema).reduce((row, [key, schem]) => ({ ...row, [key]: (schem.save && schem.save(row[key])) || row[key] }), row)
+
+const isValid = (schema, row) => Object.entries(schema).every(([key, schem]) => !schem.valid || schem.valid(row[key]))
+
 const Row = ({ schema, row, inlineHeaders, addDel, onEdit, onDel }) => {
-	const { id } = row
+	const rowEdit = (load(schema, row))
+	const { id } = rowEdit
 
 	const field = (name, value) => inlineHeaders ? (<table-row style={{ display: 'block' }} key={name}><column-header>{name}</column-header><div>{value}</div></table-row>) : value
 
 	return (
 		<table-item>
-			{Object.entries(schema).map(([key, schem]) => field(schem.name, schem.row(row[key])))}
+			{Object.entries(schema).map(([key, schem]) => field(schem.name, schem.row(rowEdit[key])))}
 			<table-buttons>
 				<button onClick={() => onEdit(id)} data-testid={'buttonEdit' + id}>Edit</button>
 				{addDel && (
@@ -112,7 +119,7 @@ Row.propTypes = {
 }
 
 const RowEdit = ({ schema, row, inlineHeaders, onSave, onCancel }) => {
-	const [rowEdit, setrowEdit] = useState(row)
+	const [rowEdit, setrowEdit] = useState(load(schema, row))
 
 	const field = (name, value) => inlineHeaders ? (<table-row style={{ display: 'block' }} key={name}><column-header>{name}</column-header><div>{value}</div></table-row>) : value
 
@@ -120,7 +127,7 @@ const RowEdit = ({ schema, row, inlineHeaders, onSave, onCancel }) => {
 		<table-item>
 			{Object.entries(schema).map(([key, schem]) => field(schem.name, schem.edit(rowEdit[key], val => setrowEdit({ ...rowEdit, [key]: val }))))}
 			<table-buttons>
-				<button onClick={() => onSave(rowEdit)} data-testid="buttonSave">Save</button>
+				<button onClick={() => isValid(schema, rowEdit) && onSave(save(schema, rowEdit))} data-testid="buttonSave">Save</button>
 				<button onClick={onCancel} data-testid="buttonCancel">Cancel</button>
 			</table-buttons>
 		</table-item>

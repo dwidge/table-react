@@ -13,7 +13,7 @@
 		"start": "cross-env DISABLE_ESLINT_PLUGIN=true react-scripts start",
 		"build": "rimraf dist && cross-env NODE_ENV=production babel src/lib --out-dir dist --copy-files --no-copy-ignored --extensions '.js,.json,.ts,.tsx,.snap'",
 		"build:docs": "cross-env BUILD_PATH='./docs' GENERATE_SOURCEMAP=false react-scripts build",
-		"test": "react-scripts test --env=jsdom --coverage",
+		"test": "react-scripts test --env=jsdom",
 		"eject": "react-scripts eject",
 		"lint": "esw . --ext .js,.json,.*rc --changed",
 		"commit": "npm run lint -- --fix && npm run test -- --watchAll=false && npm run build && npm run build:docs && git add . && git commit -m",
@@ -22,6 +22,7 @@
 	"dependencies": {
 		"@dwidge/lib": "github:dwidge/lib",
 		"@dwidge/lib-react": "github:dwidge/lib-react",
+		"date-fns": "^2.28.0",
 		"prop-types": "^15.8.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",

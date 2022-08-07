@@ -2,14 +2,19 @@ import React, { useState } from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { Table, ColumnText, ColumnSet } from '.'
+import { Table, ColumnText, ColumnSet, ColumnDate } from '.'
 
 import * as J from '@dwidge/lib-react'
 import * as Lib from '@dwidge/lib'
 const text = J.tools(userEvent, screen, jest).text
-const input = J.input(userEvent, screen)
+const type = J.type(userEvent, screen)
+const clear = J.clear(userEvent, screen)
 const click = J.click(userEvent, screen)
 const serialSpy = J.serialSpy(jest)
+const input = async (id, text) => {
+	await clear(id)
+	await type(id, text)
+}
 
 jest.mock('@dwidge/lib', () => {
 	return {
@@ -26,19 +31,25 @@ afterEach(() => {
 
 describe('Table', () => {
 	const b1 = { id: 1, bc: 'c1' }
-	const a0 = { aa: 'a', ab: [] }
-	const a1 = { id: 1, aa: 'a1', ab: [1] }
-	const a2 = { id: 2, aa: 'a2', ab: [] }
+	const a0 = { aa: 'a', ab: [], ac: '2000/01/01' }
+	const a1 = { id: 1, aa: 'a1', ab: [1], ac: '2001/01/01' }
+	const a2 = { id: 2, aa: 'a2', ab: [], ac: '2002/01/01' }
 
 	it('enters row into list', async () => {
 		const Frag = () => (<Table name='A' schema={{
 			aa: ColumnText('ColA'),
 			ab: ColumnSet('ColB', [b1], val => val.bc),
+			ac: ColumnDate('ColC'),
 		}} defaults={a0} rows={useState([])} />)
 		render(<Frag/>)
 		await click('buttonAdd')
+		expect(screen.getByTestId('tableA')).toMatchSnapshot()
 		await click('buttonEdit1')
 		await input('inputColA', 'a1')
+		await input('inputColC', '2022-01-04')
+		await click('buttonSave')
+		expect(screen.getByTestId('tableA')).toMatchSnapshot()
+		await input('inputColC', '2022/01/04')
 		await click('buttonSave')
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
 	})
