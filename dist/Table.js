@@ -42,7 +42,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var Table = function Table(_ref) {
   var name = _ref.name,
       schema = _ref.schema,
-      defaults = _ref.defaults,
+      newRow = _ref.newRow,
       rows = _ref.rows,
       _ref$pageLength = _ref.pageLength,
       pageLength = _ref$pageLength === void 0 ? 100 : _ref$pageLength,
@@ -95,12 +95,6 @@ var Table = function Table(_ref) {
     return setrows(cleanrows.concat([row]));
   };
 
-  var newrow = function newrow() {
-    return _objectSpread(_objectSpread({}, defaults), {}, {
-      id: (0, _lib.uuid)()
-    });
-  };
-
   var pages = Math.max(1, Math.ceil(cleanrows.length / pageLength));
 
   if (page >= pages) {
@@ -136,7 +130,9 @@ var Table = function Table(_ref) {
   };
 
   var onAdd = function onAdd() {
-    return addrow(newrow());
+    var row = newRow();
+    addrow(row);
+    setidEdit(row.id);
   };
 
   var onClear = function onClear() {
@@ -192,7 +188,7 @@ exports.Table = Table;
 Table.propTypes = {
   name: _propTypes.default.string.isRequired,
   schema: _propTypes.default.object.isRequired,
-  defaults: _propTypes.default.object.isRequired,
+  newRow: _propTypes.default.func.isRequired,
   rows: _propTypes.default.array.isRequired,
   pageLength: _propTypes.default.number,
   inlineHeaders: _propTypes.default.bool,

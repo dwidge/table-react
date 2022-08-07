@@ -385,27 +385,43 @@ exports[`Table enters row into list 1`] = `
     </table-item>
     <table-item>
       <column-text>
-        a
+        <input
+          data-testid="inputColA"
+          value="a"
+        />
       </column-text>
       <column-set>
-        -
+        <div>
+          <input
+            data-testid="inputColB1"
+            type="checkbox"
+          />
+           
+          c1
+        </div>
       </column-set>
       <column-text>
-        2000/01/01
+        <input
+          data-testid="inputColC"
+          value="2000/01/01"
+        />
       </column-text>
       <column-text>
-        -
+        <input
+          data-testid="inputColD"
+          value=""
+        />
       </column-text>
       <table-buttons>
         <button
-          data-testid="buttonEdit3"
+          data-testid="buttonSave"
         >
-          Edit
+          Save
         </button>
         <button
-          data-testid="buttonDel3"
+          data-testid="buttonCancel"
         >
-          Del
+          Cancel
         </button>
       </table-buttons>
     </table-item>

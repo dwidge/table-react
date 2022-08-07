@@ -2,7 +2,6 @@ import React from 'react'
 import { onChange, onChangeChecks } from '@dwidge/lib-react'
 import { getItemById } from '@dwidge/lib'
 
-import { dateYYMMDDfromSeconds, dateSecondsFromYYMMDD } from './date.js'
 import isMatch from 'date-fns/isMatch'
 
 export const ColumnText = (name) => ({
@@ -24,12 +23,6 @@ export const ColumnText = (name) => ({
 
 export const ColumnDate = (name) => ({
 	name,
-	_load(value) {
-		return dateYYMMDDfromSeconds(value)
-	},
-	_save(value) {
-		return dateSecondsFromYYMMDD(value)
-	},
 	valid(value) {
 		return isMatch(value, 'yyyy/MM/dd')
 	},

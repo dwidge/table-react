@@ -32,7 +32,7 @@ afterEach(() => {
 
 describe('Table', () => {
 	const b1 = { id: 1, bc: 'c1' }
-	const a0 = { aa: 'a', ab: [], ac: '2000/01/01', ad: undefined }
+	const a0 = () => ({ id: Lib.uuid(), aa: 'a', ab: [], ac: '2000/01/01', ad: undefined })
 	const a1 = { id: 1, aa: 'a1', ab: [1], ac: '2001/01/01' }
 	const a2 = { id: 2, aa: 'a2', ab: [], ac: '2002/01/01', ad: 1 }
 
@@ -42,7 +42,6 @@ describe('Table', () => {
 		render(<App/>)
 		await click('buttonAdd')
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
-		await click('buttonEdit3')
 		await input('inputColA', 'a1')
 		await input('inputColC', '2022-01-04')
 		await click('buttonSave')
@@ -57,10 +56,9 @@ describe('Table', () => {
 		const Frag = () => (<Table name='A' schema={{
 			aa: ColumnText('ColA'),
 			ab: ColumnSet('ColB', [b1], val => val.bc),
-		}} defaults={a0} rows={useState([])} />)
+		}} newRow={a0} rows={useState([])} />)
 		render(<Frag/>)
 		await click('buttonAdd')
-		await click('buttonEdit1')
 		await input('inputColA', 'a1')
 		await click('inputColB1')
 		await click('buttonSave')
@@ -71,7 +69,7 @@ describe('Table', () => {
 		const Frag = () => (<Table name='A' schema={{
 			aa: ColumnText('ColA'),
 			ab: ColumnSet('ColB', [], val => val.bc),
-		}} defaults={a0} rows={useState([a1])} />)
+		}} newRow={a0} rows={useState([a1])} />)
 		render(<Frag/>)
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
 	})
@@ -80,7 +78,7 @@ describe('Table', () => {
 		const Frag = () => (<Table name='A' schema={{
 			aa: ColumnText('ColA'),
 			ab: ColumnSet('ColB', [b1], val => val.bc),
-		}} defaults={a0} rows={useState([a1, a2])} />)
+		}} newRow={a0} rows={useState([a1, a2])} />)
 		render(<Frag/>)
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
 		expect(text('buttonClear')).toEqual('Clear')
@@ -96,7 +94,7 @@ describe('Table', () => {
 		const Frag = () => (<Table name='A' schema={{
 			aa: ColumnText('ColA'),
 			ab: ColumnSet('ColB', [b1], val => val.bc),
-		}} defaults={a0} rows={useState([a1, a2])} addDel={false} />)
+		}} newRow={a0} rows={useState([a1, a2])} addDel={false} />)
 		render(<Frag/>)
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
 	})
@@ -105,7 +103,7 @@ describe('Table', () => {
 		const Frag = () => (<Table name='A' schema={{
 			aa: ColumnText('ColA'),
 			ab: ColumnSet('ColB', [b1], val => val.bc),
-		}} defaults={a0} rows={useState([a1, a2])} pageLength={1} />)
+		}} newRow={a0} rows={useState([a1, a2])} pageLength={1} />)
 		render(<Frag/>)
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
 	})
@@ -114,7 +112,7 @@ describe('Table', () => {
 		const Frag = () => (<Table name='A' schema={{
 			aa: ColumnText('ColA'),
 			ab: ColumnSet('ColB', [b1], val => val.bc),
-		}} defaults={a0} rows={useState([a1, a2])} pageLength={1} />)
+		}} newRow={a0} rows={useState([a1, a2])} pageLength={1} />)
 		render(<Frag/>)
 		await click('buttonPrev')
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
@@ -130,7 +128,7 @@ describe('Table', () => {
 		const Frag = () => (<Table name='A' schema={{
 			aa: ColumnText('ColA'),
 			ab: ColumnSet('ColB', [b1], val => val.bc),
-		}} defaults={a0} rows={useState([a1, a2])} pageLength={1} inlineHeaders={true} />)
+		}} newRow={a0} rows={useState([a1, a2])} pageLength={1} inlineHeaders={true} />)
 		render(<Frag/>)
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
 	})

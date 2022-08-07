@@ -11,8 +11,6 @@ var _libReact = require("@dwidge/lib-react");
 
 var _lib = require("@dwidge/lib");
 
-var _date = require("./date.js");
-
 var _isMatch = _interopRequireDefault(require("date-fns/isMatch"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -45,12 +43,6 @@ exports.ColumnText = ColumnText;
 var ColumnDate = function ColumnDate(name) {
   return {
     name: name,
-    _load: function _load(value) {
-      return (0, _date.dateYYMMDDfromSeconds)(value);
-    },
-    _save: function _save(value) {
-      return (0, _date.dateSecondsFromYYMMDD)(value);
-    },
     valid: function valid(value) {
       return (0, _isMatch.default)(value, 'yyyy/MM/dd');
     },

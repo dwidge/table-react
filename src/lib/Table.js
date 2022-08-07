@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { uuid, replaceItemById, dropItemById } from '@dwidge/lib'
+import { replaceItemById, dropItemById } from '@dwidge/lib'
 import './Table.css'
 
-export const Table = ({ name, schema, defaults, rows, pageLength = 100, inlineHeaders = false, addDel = true }) => {
+export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHeaders = false, addDel = true }) => {
 	const schemaA = Object.entries(schema)
 	const [rawrows, setrows] = rows
 	const [idEdit, setidEdit] = useState(0)
@@ -19,8 +19,8 @@ export const Table = ({ name, schema, defaults, rows, pageLength = 100, inlineHe
 	const setrow = row => setrows(replaceItemById(cleanrows, row))
 	const delrow = id =>
 		setrows(dropItemById(cleanrows, id))
-	const addrow = row => setrows(cleanrows.concat([row]))
-	const newrow = () => ({ ...defaults, id: uuid() })
+	const addrow = row =>
+		setrows(cleanrows.concat([row]))
 
 	const pages = Math.max(1, Math.ceil(cleanrows.length / pageLength))
 	if (page >= pages) { setpage(pages - 1) }
@@ -40,7 +40,11 @@ export const Table = ({ name, schema, defaults, rows, pageLength = 100, inlineHe
 		setidEdit()
 	}
 	const onCancel = () => setidEdit()
-	const onAdd = () => addrow(newrow())
+	const onAdd = () => {
+		const row = newRow()
+		addrow(row)
+		setidEdit(row.id)
+	}
 	const onClear = () => {
 		confirm && setrows([])
 		setconfirm(!confirm)
@@ -77,7 +81,7 @@ export const Table = ({ name, schema, defaults, rows, pageLength = 100, inlineHe
 Table.propTypes = {
 	name: PropTypes.string.isRequired,
 	schema: PropTypes.object.isRequired,
-	defaults: PropTypes.object.isRequired,
+	newRow: PropTypes.func.isRequired,
 	rows: PropTypes.array.isRequired,
 	pageLength: PropTypes.number,
 	inlineHeaders: PropTypes.bool,

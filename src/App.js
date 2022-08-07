@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Table, ColumnText, ColumnSet, ColumnDate, ColumnRef } from './lib'
+import { uuid } from '@dwidge/lib'
 
 const b1 = { id: 1, bc: 'c1' }
-const a0 = { aa: 'a', ab: [], ac: '2000/01/01', ad: undefined }
+const a0 = () => ({ id: uuid(), aa: 'a', ab: [], ac: '2000/01/01', ad: undefined })
 const a1 = { id: 1, aa: 'a1', ab: [1], ac: '2001/01/01' }
 const a2 = { id: 2, aa: 'a2', ab: [], ac: '2002/01/01', ad: 1 }
 
@@ -24,7 +25,7 @@ const App = () => {
 				ab: ColumnSet('ColB', [b1], val => val.bc),
 				ac: ColumnDate('ColC'),
 				ad: ColumnRef('ColD', [b1], val => val.bc),
-			}} defaults={a0} rows={useState([a1, a2])} pageLength={pageLength ? 1 : 10} inlineHeaders={inlineHeaders} />
+			}} newRow={a0} rows={useState([a1, a2])} pageLength={pageLength ? 1 : 10} inlineHeaders={inlineHeaders} />
 		</div>
 	)
 }
