@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { Table, ColumnText, ColumnSet, ColumnDate } from '.'
+import { Table, ColumnText, ColumnSet } from '.'
+import App from './../App'
 
 import * as J from '@dwidge/lib-react'
 import * as Lib from '@dwidge/lib'
@@ -31,25 +32,23 @@ afterEach(() => {
 
 describe('Table', () => {
 	const b1 = { id: 1, bc: 'c1' }
-	const a0 = { aa: 'a', ab: [], ac: '2000/01/01' }
+	const a0 = { aa: 'a', ab: [], ac: '2000/01/01', ad: undefined }
 	const a1 = { id: 1, aa: 'a1', ab: [1], ac: '2001/01/01' }
-	const a2 = { id: 2, aa: 'a2', ab: [], ac: '2002/01/01' }
+	const a2 = { id: 2, aa: 'a2', ab: [], ac: '2002/01/01', ad: 1 }
 
 	it('enters row into list', async () => {
-		const Frag = () => (<Table name='A' schema={{
-			aa: ColumnText('ColA'),
-			ab: ColumnSet('ColB', [b1], val => val.bc),
-			ac: ColumnDate('ColC'),
-		}} defaults={a0} rows={useState([])} />)
-		render(<Frag/>)
+		Lib.uuid()
+		Lib.uuid()
+		render(<App/>)
 		await click('buttonAdd')
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
-		await click('buttonEdit1')
+		await click('buttonEdit3')
 		await input('inputColA', 'a1')
 		await input('inputColC', '2022-01-04')
 		await click('buttonSave')
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
 		await input('inputColC', '2022/01/04')
+		await input('inputColD', '1')
 		await click('buttonSave')
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
 	})

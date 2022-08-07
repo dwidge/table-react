@@ -66,3 +66,24 @@ export const ColumnSet = (name, all, toString) => ({
 		return value.filter(id => getItemById(all, id))
 	},
 })
+
+export const ColumnRef = (name, all, toString) => ({
+	name,
+	valid(value) {
+		return !value || !!getItemById(all, +value)
+	},
+	row(value) {
+		const item = getItemById(all, +value)
+		return (<column-text key={name}>
+			{item ? toString(item) : '-'}
+		</column-text>)
+	},
+	edit(value, setvalue) {
+		return (<column-text key={name}>
+			<input data-testid={'input' + name} style={this.valid(value) ? {} : { background: 'red' }} value={value || ''} onChange={onChange(setvalue)} />
+		</column-text>)
+	},
+	cleanup(value) {
+		return value
+	},
+})

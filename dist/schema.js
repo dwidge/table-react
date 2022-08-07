@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ColumnText = exports.ColumnSet = exports.ColumnDate = void 0;
+exports.ColumnText = exports.ColumnSet = exports.ColumnRef = exports.ColumnDate = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -46,7 +46,6 @@ var ColumnDate = function ColumnDate(name) {
   return {
     name: name,
     _load: function _load(value) {
-      console.log(value, (0, _date.dateYYMMDDfromSeconds)(value));
       return (0, _date.dateYYMMDDfromSeconds)(value);
     },
     _save: function _save(value) {
@@ -121,3 +120,35 @@ var ColumnSet = function ColumnSet(name, all, toString) {
 };
 
 exports.ColumnSet = ColumnSet;
+
+var ColumnRef = function ColumnRef(name, all, toString) {
+  return {
+    name: name,
+    valid: function valid(value) {
+      return !value || !!(0, _lib.getItemById)(all, +value);
+    },
+    row: function row(value) {
+      var item = (0, _lib.getItemById)(all, +value);
+      return /*#__PURE__*/_react.default.createElement("column-text", {
+        key: name
+      }, item ? toString(item) : '-');
+    },
+    edit: function edit(value, setvalue) {
+      return /*#__PURE__*/_react.default.createElement("column-text", {
+        key: name
+      }, /*#__PURE__*/_react.default.createElement("input", {
+        "data-testid": 'input' + name,
+        style: this.valid(value) ? {} : {
+          background: 'red'
+        },
+        value: value || '',
+        onChange: (0, _libReact.onChange)(setvalue)
+      }));
+    },
+    cleanup: function cleanup(value) {
+      return value;
+    }
+  };
+};
+
+exports.ColumnRef = ColumnRef;

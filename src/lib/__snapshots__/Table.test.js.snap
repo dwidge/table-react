@@ -325,7 +325,64 @@ exports[`Table enters row into list 1`] = `
       <column-header>
         ColC
       </column-header>
+      <column-header>
+        ColD
+      </column-header>
     </table-header>
+    <table-item>
+      <column-text>
+        a1
+      </column-text>
+      <column-set>
+        <div>
+          c1
+        </div>
+      </column-set>
+      <column-text>
+        2001/01/01
+      </column-text>
+      <column-text>
+        -
+      </column-text>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+    <table-item>
+      <column-text>
+        a2
+      </column-text>
+      <column-set>
+        -
+      </column-set>
+      <column-text>
+        2002/01/01
+      </column-text>
+      <column-text>
+        c1
+      </column-text>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit2"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel2"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
     <table-item>
       <column-text>
         a
@@ -336,14 +393,17 @@ exports[`Table enters row into list 1`] = `
       <column-text>
         2000/01/01
       </column-text>
+      <column-text>
+        -
+      </column-text>
       <table-buttons>
         <button
-          data-testid="buttonEdit1"
+          data-testid="buttonEdit3"
         >
           Edit
         </button>
         <button
-          data-testid="buttonDel1"
+          data-testid="buttonDel3"
         >
           Del
         </button>
@@ -378,7 +438,64 @@ exports[`Table enters row into list 2`] = `
       <column-header>
         ColC
       </column-header>
+      <column-header>
+        ColD
+      </column-header>
     </table-header>
+    <table-item>
+      <column-text>
+        a1
+      </column-text>
+      <column-set>
+        <div>
+          c1
+        </div>
+      </column-set>
+      <column-text>
+        2001/01/01
+      </column-text>
+      <column-text>
+        -
+      </column-text>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+    <table-item>
+      <column-text>
+        a2
+      </column-text>
+      <column-set>
+        -
+      </column-set>
+      <column-text>
+        2002/01/01
+      </column-text>
+      <column-text>
+        c1
+      </column-text>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit2"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel2"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
     <table-item>
       <column-text>
         <input
@@ -401,6 +518,12 @@ exports[`Table enters row into list 2`] = `
           data-testid="inputColC"
           style="background: red;"
           value="2022-01-04"
+        />
+      </column-text>
+      <column-text>
+        <input
+          data-testid="inputColD"
+          value=""
         />
       </column-text>
       <table-buttons>
@@ -445,7 +568,64 @@ exports[`Table enters row into list 3`] = `
       <column-header>
         ColC
       </column-header>
+      <column-header>
+        ColD
+      </column-header>
     </table-header>
+    <table-item>
+      <column-text>
+        a1
+      </column-text>
+      <column-set>
+        <div>
+          c1
+        </div>
+      </column-set>
+      <column-text>
+        2001/01/01
+      </column-text>
+      <column-text>
+        -
+      </column-text>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+    <table-item>
+      <column-text>
+        a2
+      </column-text>
+      <column-set>
+        -
+      </column-set>
+      <column-text>
+        2002/01/01
+      </column-text>
+      <column-text>
+        c1
+      </column-text>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit2"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel2"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
     <table-item>
       <column-text>
         a1
@@ -456,14 +636,17 @@ exports[`Table enters row into list 3`] = `
       <column-text>
         2022/01/04
       </column-text>
+      <column-text>
+        c1
+      </column-text>
       <table-buttons>
         <button
-          data-testid="buttonEdit1"
+          data-testid="buttonEdit3"
         >
           Edit
         </button>
         <button
-          data-testid="buttonDel1"
+          data-testid="buttonDel3"
         >
           Del
         </button>
