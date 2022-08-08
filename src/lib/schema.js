@@ -63,7 +63,7 @@ export const ColumnSet = (name, all, toString) => ({
 export const ColumnRef = (name, all, toString) => ({
 	name,
 	valid(value) {
-		return !value || !!getItemById(all, +value)
+		return !value || !!getItemById(all, value) || !!getItemById(all, +value)
 	},
 	row(value) {
 		const item = getItemById(all, +value)

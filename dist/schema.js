@@ -117,7 +117,7 @@ var ColumnRef = function ColumnRef(name, all, toString) {
   return {
     name: name,
     valid: function valid(value) {
-      return !value || !!(0, _lib.getItemById)(all, +value);
+      return !value || !!(0, _lib.getItemById)(all, value) || !!(0, _lib.getItemById)(all, +value);
     },
     row: function row(value) {
       var item = (0, _lib.getItemById)(all, +value);
