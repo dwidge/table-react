@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ColumnText = exports.ColumnSet = exports.ColumnRef = exports.ColumnDate = void 0;
+exports.ColumnText = exports.ColumnSet = exports.ColumnRef = exports.ColumnDate = exports.ColumnButton = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -117,10 +117,10 @@ var ColumnRef = function ColumnRef(name, all, toString) {
   return {
     name: name,
     valid: function valid(value) {
-      return !value || !!(0, _lib.getItemById)(all, value) || !!(0, _lib.getItemById)(all, +value);
+      return !value || !!((0, _lib.getItemById)(all, value) || (0, _lib.getItemById)(all, +value));
     },
     row: function row(value) {
-      var item = (0, _lib.getItemById)(all, +value);
+      var item = (0, _lib.getItemById)(all, value) || (0, _lib.getItemById)(all, +value);
       return /*#__PURE__*/_react.default.createElement("column-text", {
         key: name
       }, item ? toString(item) : '-');
@@ -144,3 +144,29 @@ var ColumnRef = function ColumnRef(name, all, toString) {
 };
 
 exports.ColumnRef = ColumnRef;
+
+var ColumnButton = function ColumnButton(name, _onClick, toString) {
+  return {
+    name: name,
+    row: function row(value, _row) {
+      return /*#__PURE__*/_react.default.createElement("table-buttons", {
+        key: name
+      }, /*#__PURE__*/_react.default.createElement("button", {
+        "data-testid": 'button' + name + _row.id,
+        onClick: function onClick() {
+          return _onClick(value, _row);
+        }
+      }, toString(value, _row)));
+    },
+    edit: function edit(value, setvalue) {
+      return /*#__PURE__*/_react.default.createElement("column-text", {
+        key: name
+      });
+    },
+    cleanup: function cleanup(value) {
+      return value;
+    }
+  };
+};
+
+exports.ColumnButton = ColumnButton;

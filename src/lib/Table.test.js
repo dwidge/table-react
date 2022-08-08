@@ -42,7 +42,7 @@ describe('Table', () => {
 		render(<App/>)
 		await click('buttonAdd')
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
-		await input('inputColA', 'a1')
+		await input('inputColA', 'a3')
 		await input('inputColC', '2022-01-04')
 		await click('buttonSave')
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
@@ -50,6 +50,9 @@ describe('Table', () => {
 		await input('inputColD', '1')
 		await click('buttonSave')
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
+		expect(screen.getByTestId('msg')).toMatchSnapshot()
+		await click('buttonColE3')
+		expect(screen.getByTestId('msg')).toMatchSnapshot()
 	})
 
 	it('enables a slot', async () => {

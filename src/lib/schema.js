@@ -63,10 +63,10 @@ export const ColumnSet = (name, all, toString) => ({
 export const ColumnRef = (name, all, toString) => ({
 	name,
 	valid(value) {
-		return !value || !!getItemById(all, value) || !!getItemById(all, +value)
+		return !value || !!(getItemById(all, value) || getItemById(all, +value))
 	},
 	row(value) {
-		const item = getItemById(all, +value)
+		const item = getItemById(all, value) || getItemById(all, +value)
 		return (<column-text key={name}>
 			{item ? toString(item) : '-'}
 		</column-text>)
@@ -74,6 +74,22 @@ export const ColumnRef = (name, all, toString) => ({
 	edit(value, setvalue) {
 		return (<column-text key={name}>
 			<input data-testid={'input' + name} style={this.valid(value) ? {} : { background: 'red' }} value={value || ''} onChange={onChange(setvalue)} />
+		</column-text>)
+	},
+	cleanup(value) {
+		return value
+	},
+})
+
+export const ColumnButton = (name, onClick, toString) => ({
+	name,
+	row(value, row) {
+		return (<table-buttons key={name}>
+			<button data-testid={'button' + name + row.id} onClick={() => onClick(value, row)}>{toString(value, row)}</button>
+		</table-buttons>)
+	},
+	edit(value, setvalue) {
+		return (<column-text key={name}>
 		</column-text>)
 	},
 	cleanup(value) {

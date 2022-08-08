@@ -48,6 +48,8 @@ var Table = function Table(_ref) {
       pageLength = _ref$pageLength === void 0 ? 100 : _ref$pageLength,
       _ref$inlineHeaders = _ref.inlineHeaders,
       inlineHeaders = _ref$inlineHeaders === void 0 ? false : _ref$inlineHeaders,
+      _ref$inlineHeadersEdi = _ref.inlineHeadersEdit,
+      inlineHeadersEdit = _ref$inlineHeadersEdi === void 0 ? false : _ref$inlineHeadersEdi,
       _ref$addDel = _ref.addDel,
       addDel = _ref$addDel === void 0 ? true : _ref$addDel;
   var schemaA = Object.entries(schema);
@@ -156,7 +158,7 @@ var Table = function Table(_ref) {
         key: key,
         schema: schema,
         row: row,
-        inlineHeaders: inlineHeaders,
+        inlineHeadersEdit: inlineHeadersEdit,
         onSave: onSave,
         onCancel: onCancel
       }) : /*#__PURE__*/_react.default.createElement(Row, {
@@ -192,6 +194,7 @@ Table.propTypes = {
   rows: _propTypes.default.array.isRequired,
   pageLength: _propTypes.default.number,
   inlineHeaders: _propTypes.default.bool,
+  inlineHeadersEdit: _propTypes.default.bool,
   addDel: _propTypes.default.bool
 };
 
@@ -249,7 +252,7 @@ var Row = function Row(_ref12) {
         key = _ref14[0],
         schem = _ref14[1];
 
-    return field(schem.name, schem.row(rowEdit[key]));
+    return field(schem.name, schem.row(rowEdit[key], rowEdit));
   }), /*#__PURE__*/_react.default.createElement("table-buttons", null, /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
       return onEdit(id);
@@ -275,7 +278,7 @@ Row.propTypes = {
 var RowEdit = function RowEdit(_ref15) {
   var schema = _ref15.schema,
       row = _ref15.row,
-      inlineHeaders = _ref15.inlineHeaders,
+      inlineHeadersEdit = _ref15.inlineHeadersEdit,
       onSave = _ref15.onSave,
       onCancel = _ref15.onCancel;
 
@@ -285,7 +288,7 @@ var RowEdit = function RowEdit(_ref15) {
       setrowEdit = _useState8[1];
 
   var field = function field(name, value) {
-    return inlineHeaders ? /*#__PURE__*/_react.default.createElement("table-row", {
+    return inlineHeadersEdit ? /*#__PURE__*/_react.default.createElement("table-row", {
       style: {
         display: 'block'
       },
@@ -315,7 +318,7 @@ var RowEdit = function RowEdit(_ref15) {
 RowEdit.propTypes = {
   schema: _propTypes.default.object.isRequired,
   row: _propTypes.default.object.isRequired,
-  inlineHeaders: _propTypes.default.bool,
+  inlineHeadersEdit: _propTypes.default.bool,
   onSave: _propTypes.default.func.isRequired,
   onCancel: _propTypes.default.func.isRequired
 };

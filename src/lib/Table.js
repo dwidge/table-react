@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { replaceItemById, dropItemById } from '@dwidge/lib'
 import './Table.css'
 
-export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHeaders = false, addDel = true }) => {
+export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHeaders = false, inlineHeadersEdit = false, addDel = true }) => {
 	const schemaA = Object.entries(schema)
 	const [rawrows, setrows] = rows
 	const [idEdit, setidEdit] = useState(0)
@@ -61,7 +61,7 @@ export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHead
 				</>)}
 				{cleanrows.slice(page * pageLength, (page + 1) * pageLength).map(
 					row => (key => key === idEdit
-						? (<RowEdit {...{ key, schema, row, inlineHeaders, onSave, onCancel }} />)
+						? (<RowEdit {...{ key, schema, row, inlineHeadersEdit, onSave, onCancel }} />)
 						: (<Row {...{ key, schema, row, inlineHeaders, addDel, onEdit, onDel }} />)
 					)(row.id))}
 			</table-table>
@@ -85,6 +85,7 @@ Table.propTypes = {
 	rows: PropTypes.array.isRequired,
 	pageLength: PropTypes.number,
 	inlineHeaders: PropTypes.bool,
+	inlineHeadersEdit: PropTypes.bool,
 	addDel: PropTypes.bool,
 }
 
@@ -102,7 +103,7 @@ const Row = ({ schema, row, inlineHeaders, addDel, onEdit, onDel }) => {
 
 	return (
 		<table-item>
-			{Object.entries(schema).map(([key, schem]) => field(schem.name, schem.row(rowEdit[key])))}
+			{Object.entries(schema).map(([key, schem]) => field(schem.name, schem.row(rowEdit[key], rowEdit)))}
 			<table-buttons>
 				<button onClick={() => onEdit(id)} data-testid={'buttonEdit' + id}>Edit</button>
 				{addDel && (
@@ -122,10 +123,10 @@ Row.propTypes = {
 	onDel: PropTypes.func.isRequired,
 }
 
-const RowEdit = ({ schema, row, inlineHeaders, onSave, onCancel }) => {
+const RowEdit = ({ schema, row, inlineHeadersEdit, onSave, onCancel }) => {
 	const [rowEdit, setrowEdit] = useState(load(schema, row))
 
-	const field = (name, value) => inlineHeaders ? (<table-row style={{ display: 'block' }} key={name}><column-header>{name}</column-header><div>{value}</div></table-row>) : value
+	const field = (name, value) => inlineHeadersEdit ? (<table-row style={{ display: 'block' }} key={name}><column-header>{name}</column-header><div>{value}</div></table-row>) : value
 
 	return (
 		<table-item>
@@ -141,7 +142,7 @@ const RowEdit = ({ schema, row, inlineHeaders, onSave, onCancel }) => {
 RowEdit.propTypes = {
 	schema: PropTypes.object.isRequired,
 	row: PropTypes.object.isRequired,
-	inlineHeaders: PropTypes.bool,
+	inlineHeadersEdit: PropTypes.bool,
 	onSave: PropTypes.func.isRequired,
 	onCancel: PropTypes.func.isRequired,
 }
