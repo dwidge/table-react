@@ -756,6 +756,193 @@ exports[`Table enters row into list 5`] = `
 </p>
 `;
 
+exports[`Table import export 1`] = `
+<div-page
+  data-testid="tableA"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        ColA
+      </column-header>
+      <column-header>
+        ColB
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        a1
+      </column-text>
+      <column-set>
+        <div>
+          c1
+        </div>
+      </column-set>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+    <table-item>
+      <column-text>
+        a2
+      </column-text>
+      <column-set>
+        -
+      </column-set>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit2"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel2"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+  <div>
+    <button
+      data-testid="buttonImport.csv"
+    >
+      Import 
+      .csv
+    </button>
+  </div>
+  <div>
+    <button
+      data-testid="buttonExport.csv"
+    >
+      Export 
+      .csv
+    </button>
+  </div>
+</div-page>
+`;
+
+exports[`Table import export 2`] = `
+<div-page
+  data-testid="tableA"
+>
+  <table-table>
+    <table-header>
+      <column-header>
+        ColA
+      </column-header>
+      <column-header>
+        ColB
+      </column-header>
+    </table-header>
+    <table-item>
+      <column-text>
+        a1
+      </column-text>
+      <column-set>
+        <div>
+          c1
+        </div>
+      </column-set>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit1"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel1"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+    <table-item>
+      <column-text>
+        a2
+      </column-text>
+      <column-set>
+        -
+      </column-set>
+      <table-buttons>
+        <button
+          data-testid="buttonEdit2"
+        >
+          Edit
+        </button>
+        <button
+          data-testid="buttonDel2"
+        >
+          Del
+        </button>
+      </table-buttons>
+    </table-item>
+  </table-table>
+  <button
+    data-testid="buttonAdd"
+  >
+    Add
+  </button>
+  <button
+    data-testid="buttonClear"
+  >
+    Clear
+  </button>
+  <div>
+    <button
+      data-testid="buttonImport.csv"
+    >
+      Import 
+      .csv
+    </button>
+  </div>
+  <div>
+    <button
+      data-testid="buttonExport.csv"
+    >
+      Export 
+      .csv
+    </button>
+    <div
+      style="border: 1px solid orange; margin: .5em;"
+    >
+      <h4>
+        A.csv
+      </h4>
+      <pre>
+        id,aa,ab,ac
+1,a1,1,2001/01/01
+2,a2,,2002/01/01,1
+      </pre>
+      <button
+        data-testid="buttonExportAccept.csv"
+      >
+        Accept
+      </button>
+    </div>
+  </div>
+</div-page>
+`;
+
 exports[`Table inlineHeaders 1`] = `
 <div-page
   data-testid="tableA"

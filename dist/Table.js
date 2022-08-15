@@ -15,11 +15,23 @@ var _lib = require("@dwidge/lib");
 
 require("./Table.css");
 
+var _ImportFile = _interopRequireDefault(require("./ImportFile"));
+
+var _ExportFile = _interopRequireDefault(require("./ExportFile"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -51,7 +63,12 @@ var Table = function Table(_ref) {
       _ref$inlineHeadersEdi = _ref.inlineHeadersEdit,
       inlineHeadersEdit = _ref$inlineHeadersEdi === void 0 ? false : _ref$inlineHeadersEdi,
       _ref$addDel = _ref.addDel,
-      addDel = _ref$addDel === void 0 ? true : _ref$addDel;
+      addDel = _ref$addDel === void 0 ? true : _ref$addDel,
+      _ref$enable = _ref.enable,
+      enable = _ref$enable === void 0 ? {
+    importCSV: false,
+    exportCSV: false
+  } : _ref$enable;
   var schemaA = Object.entries(schema);
 
   var _rows = _slicedToArray(rows, 2),
@@ -183,7 +200,16 @@ var Table = function Table(_ref) {
   }, "Add"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: onClear,
     "data-testid": "buttonClear"
-  }, confirm ? 'Confirm' : 'Clear')));
+  }, confirm ? 'Confirm' : 'Clear')), enable.importCSV ? /*#__PURE__*/_react.default.createElement(_ImportFile.default, {
+    ext: ".csv",
+    onAccept: function onAccept(text) {
+      return setrows(cleanrows.concat.apply(cleanrows, _toConsumableArray((0, _lib.calcObjectsFromCsv)(text))));
+    }
+  }) : '', enable.exportCSV ? /*#__PURE__*/_react.default.createElement(_ExportFile.default, {
+    ext: ".csv",
+    name: name + '.csv',
+    content: (0, _lib.calcCsvFromObjects)(cleanrows)
+  }) : '');
 };
 
 exports.Table = Table;
@@ -195,7 +221,8 @@ Table.propTypes = {
   pageLength: _propTypes.default.number,
   inlineHeaders: _propTypes.default.bool,
   inlineHeadersEdit: _propTypes.default.bool,
-  addDel: _propTypes.default.bool
+  addDel: _propTypes.default.bool,
+  enable: _propTypes.default.object
 };
 
 var load = function load(schema, row) {

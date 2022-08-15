@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { replaceItemById, dropItemById } from '@dwidge/lib'
+import { replaceItemById, dropItemById, calcCsvFromObjects, calcObjectsFromCsv } from '@dwidge/lib'
 import './Table.css'
+import ImportFile from './ImportFile'
+import ExportFile from './ExportFile'
 
-export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHeaders = false, inlineHeadersEdit = false, addDel = true }) => {
+export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHeaders = false, inlineHeadersEdit = false, addDel = true, enable = { importCSV: false, exportCSV: false } }) => {
 	const schemaA = Object.entries(schema)
 	const [rawrows, setrows] = rows
 	const [idEdit, setidEdit] = useState(0)
@@ -74,6 +76,8 @@ export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHead
 				<button onClick={onAdd} data-testid="buttonAdd">Add</button>
 				<button onClick={onClear} data-testid="buttonClear">{confirm ? 'Confirm' : 'Clear'}</button>
 			</>)}
+			{enable.importCSV ? (<ImportFile ext='.csv' onAccept={text => setrows(cleanrows.concat(...calcObjectsFromCsv(text)))}/>) : ''}
+			{enable.exportCSV ? (<ExportFile ext='.csv' name={name + '.csv'} content={calcCsvFromObjects(cleanrows)}/>) : ''}
 		</div-page>
 	)
 }
@@ -87,6 +91,7 @@ Table.propTypes = {
 	inlineHeaders: PropTypes.bool,
 	inlineHeadersEdit: PropTypes.bool,
 	addDel: PropTypes.bool,
+	enable: PropTypes.object,
 }
 
 const load = (schema, row) => Object.entries(schema).reduce((row, [key, schem]) => ({ ...row, [key]: (schem.load && schem.load(row[key])) || row[key] }), row)

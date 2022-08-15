@@ -135,4 +135,15 @@ describe('Table', () => {
 		render(<Frag/>)
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
 	})
+
+	it('import export', async () => {
+		const Frag = () => (<Table name='A' schema={{
+			aa: ColumnText('ColA'),
+			ab: ColumnSet('ColB', [b1], val => val.bc),
+		}} newRow={a0} rows={useState([a1, a2])} enable={{ importCSV: true, exportCSV: true }} />)
+		render(<Frag/>)
+		expect(screen.getByTestId('tableA')).toMatchSnapshot()
+		await click('buttonExport.csv')
+		expect(screen.getByTestId('tableA')).toMatchSnapshot()
+	})
 })

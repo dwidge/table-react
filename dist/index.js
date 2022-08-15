@@ -17,6 +17,19 @@ Object.keys(_schema).forEach(function (key) {
   });
 });
 
+var _file = require("./file");
+
+Object.keys(_file).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _file[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _file[key];
+    }
+  });
+});
+
 var _Table = require("./Table");
 
 Object.keys(_Table).forEach(function (key) {
