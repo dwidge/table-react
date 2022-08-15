@@ -11,9 +11,9 @@ export function ExportFile({ name, ext, content }) {
 			{file
 				? (
 					<div style={{ border: 'solid 1px orange', margin: '.5em' }}>
-						<h4>{file.name}</h4>
-						<pre>{file.content}</pre>
 						<button data-testid={'buttonExportAccept' + ext} onClick={() => { saveText(file.content, file.name); setfile() }}>Accept</button>
+						<h4>{file.name}</h4>
+						<pre style={{ overflow: 'scroll', whiteSpace: 'pre-wrap' }}>{file.content}</pre>
 					</div>)
 				: ''}
 		</div>

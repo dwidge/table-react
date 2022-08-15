@@ -66,17 +66,17 @@ function ImportFile(_ref) {
       border: 'solid 1px orange',
       margin: '.5em'
     }
-  }, /*#__PURE__*/_react.default.createElement("h4", null, file.name), /*#__PURE__*/_react.default.createElement("pre", {
-    style: {
-      overflow: 'scroll',
-      whiteSpace: 'pre-wrap'
-    }
-  }, file.content), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick() {
       onAccept(file.content);
       setfile();
     }
-  }, "Accept")) : '');
+  }, "Accept"), /*#__PURE__*/_react.default.createElement("h4", null, file.name), /*#__PURE__*/_react.default.createElement("pre", {
+    style: {
+      overflow: 'scroll',
+      whiteSpace: 'pre-wrap'
+    }
+  }, file.content)) : '');
 }
 
 ImportFile.propTypes = {

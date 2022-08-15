@@ -925,19 +925,21 @@ exports[`Table import export 2`] = `
     <div
       style="border: 1px solid orange; margin: .5em;"
     >
-      <h4>
-        A.csv
-      </h4>
-      <pre>
-        id,aa,ab,ac
-1,a1,1,2001/01/01
-2,a2,,2002/01/01,1
-      </pre>
       <button
         data-testid="buttonExportAccept.csv"
       >
         Accept
       </button>
+      <h4>
+        A.csv
+      </h4>
+      <pre
+        style="overflow: scroll; white-space: pre-wrap;"
+      >
+        id,aa,ab,ac
+1,a1,1,2001/01/01
+2,a2,,2002/01/01,1
+      </pre>
     </div>
   </div>
 </div-page>

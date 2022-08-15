@@ -22,9 +22,9 @@ export function ImportFile({ ext, onAccept }) {
 				: file
 					? (
 						<div style={{ border: 'solid 1px orange', margin: '.5em' }}>
+							<button onClick={() => { onAccept(file.content); setfile() }}>Accept</button>
 							<h4>{file.name}</h4>
 							<pre style={{ overflow: 'scroll', whiteSpace: 'pre-wrap' }}>{file.content}</pre>
-							<button onClick={() => { onAccept(file.content); setfile() }}>Accept</button>
 						</div>)
 					: ''}
 		</div>
