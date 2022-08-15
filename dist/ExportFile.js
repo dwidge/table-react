@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.ExportFile = ExportFile;
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -68,5 +68,3 @@ ExportFile.propTypes = {
   ext: _propTypes.default.string.isRequired,
   content: _propTypes.default.string.isRequired
 };
-var _default = ExportFile;
-exports.default = _default;

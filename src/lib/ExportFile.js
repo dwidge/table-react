@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { saveText } from './file'
 
-function ExportFile({ name, ext, content }) {
+export function ExportFile({ name, ext, content }) {
 	const [file, setfile] = useState()
 
 	return (
@@ -25,5 +25,3 @@ ExportFile.propTypes = {
 	ext: PropTypes.string.isRequired,
 	content: PropTypes.string.isRequired,
 }
-
-export default ExportFile

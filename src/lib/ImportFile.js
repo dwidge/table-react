@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useFilePicker } from 'use-file-picker'
 
-function ImportFile({ ext, onAccept }) {
+export function ImportFile({ ext, onAccept }) {
 	const [openFileSelector, { filesContent, loading }] = useFilePicker({
 		accept: ext,
 		multiple: false,
@@ -35,5 +35,3 @@ ImportFile.propTypes = {
 	ext: PropTypes.string,
 	onAccept: PropTypes.func.isRequired,
 }
-
-export default ImportFile

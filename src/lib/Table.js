@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { replaceItemById, dropItemById, calcCsvFromObjects, calcObjectsFromCsv } from '@dwidge/lib'
 import './Table.css'
-import ImportFile from './ImportFile'
-import ExportFile from './ExportFile'
+import { ImportFile } from './ImportFile'
+import { ExportFile } from './ExportFile'
 
 export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHeaders = false, inlineHeadersEdit = false, addDel = true, enable = { importCSV: false, exportCSV: false } }) => {
 	const schemaA = Object.entries(schema)

@@ -15,9 +15,9 @@ var _lib = require("@dwidge/lib");
 
 require("./Table.css");
 
-var _ImportFile = _interopRequireDefault(require("./ImportFile"));
+var _ImportFile = require("./ImportFile");
 
-var _ExportFile = _interopRequireDefault(require("./ExportFile"));
+var _ExportFile = require("./ExportFile");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -200,12 +200,12 @@ var Table = function Table(_ref) {
   }, "Add"), /*#__PURE__*/_react.default.createElement("button", {
     onClick: onClear,
     "data-testid": "buttonClear"
-  }, confirm ? 'Confirm' : 'Clear')), enable.importCSV ? /*#__PURE__*/_react.default.createElement(_ImportFile.default, {
+  }, confirm ? 'Confirm' : 'Clear')), enable.importCSV ? /*#__PURE__*/_react.default.createElement(_ImportFile.ImportFile, {
     ext: ".csv",
     onAccept: function onAccept(text) {
       return setrows(cleanrows.concat.apply(cleanrows, _toConsumableArray((0, _lib.calcObjectsFromCsv)(text))));
     }
-  }) : '', enable.exportCSV ? /*#__PURE__*/_react.default.createElement(_ExportFile.default, {
+  }) : '', enable.exportCSV ? /*#__PURE__*/_react.default.createElement(_ExportFile.ExportFile, {
     ext: ".csv",
     name: name + '.csv',
     content: (0, _lib.calcCsvFromObjects)(cleanrows)
