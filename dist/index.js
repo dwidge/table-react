@@ -42,3 +42,29 @@ Object.keys(_Table).forEach(function (key) {
     }
   });
 });
+
+var _ImportFile = require("./ImportFile");
+
+Object.keys(_ImportFile).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _ImportFile[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _ImportFile[key];
+    }
+  });
+});
+
+var _ExportFile = require("./ExportFile");
+
+Object.keys(_ExportFile).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _ExportFile[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _ExportFile[key];
+    }
+  });
+});

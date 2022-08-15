@@ -1,3 +1,5 @@
 export * from './schema'
 export * from './file'
 export * from './Table'
+export * from './ImportFile'
+export * from './ExportFile'
