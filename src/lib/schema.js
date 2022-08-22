@@ -60,13 +60,16 @@ export const ColumnSet = (name, all, toString) => ({
 	},
 })
 
-export const ColumnRef = (name, all, toString) => ({
+export const getItemBy = (a, v, k = 'id') =>
+	a.find(o => o[k] === v)
+
+export const ColumnRef = (name, all, toString, col = 'id') => ({
 	name,
 	valid(value) {
-		return !value || !!(getItemById(all, value) || getItemById(all, +value))
+		return !value || !!(getItemBy(all, value, col) || getItemBy(all, +value, col))
 	},
 	row(value) {
-		const item = getItemById(all, value) || getItemById(all, +value)
+		const item = getItemBy(all, value, col) || getItemBy(all, +value, col)
 		return (<column-text key={name}>
 			{item ? toString(item) : '-'}
 		</column-text>)

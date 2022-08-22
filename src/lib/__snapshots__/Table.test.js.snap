@@ -331,6 +331,9 @@ exports[`Table enters row into list 1`] = `
       <column-header>
         ColE
       </column-header>
+      <column-header>
+        ColF
+      </column-header>
     </table-header>
     <table-item>
       <column-text>
@@ -354,6 +357,9 @@ exports[`Table enters row into list 1`] = `
           1/a1
         </button>
       </table-buttons>
+      <column-text>
+        -
+      </column-text>
       <table-buttons>
         <button
           data-testid="buttonEdit1"
@@ -387,6 +393,9 @@ exports[`Table enters row into list 1`] = `
           A2/a2
         </button>
       </table-buttons>
+      <column-text>
+        B2
+      </column-text>
       <table-buttons>
         <button
           data-testid="buttonEditA2"
@@ -430,6 +439,12 @@ exports[`Table enters row into list 1`] = `
         />
       </column-text>
       <column-text />
+      <column-text>
+        <input
+          data-testid="inputColF"
+          value=""
+        />
+      </column-text>
       <table-buttons>
         <button
           data-testid="buttonSave"
@@ -478,6 +493,9 @@ exports[`Table enters row into list 2`] = `
       <column-header>
         ColE
       </column-header>
+      <column-header>
+        ColF
+      </column-header>
     </table-header>
     <table-item>
       <column-text>
@@ -501,6 +519,9 @@ exports[`Table enters row into list 2`] = `
           1/a1
         </button>
       </table-buttons>
+      <column-text>
+        -
+      </column-text>
       <table-buttons>
         <button
           data-testid="buttonEdit1"
@@ -534,6 +555,9 @@ exports[`Table enters row into list 2`] = `
           A2/a2
         </button>
       </table-buttons>
+      <column-text>
+        B2
+      </column-text>
       <table-buttons>
         <button
           data-testid="buttonEditA2"
@@ -578,6 +602,12 @@ exports[`Table enters row into list 2`] = `
         />
       </column-text>
       <column-text />
+      <column-text>
+        <input
+          data-testid="inputColF"
+          value=""
+        />
+      </column-text>
       <table-buttons>
         <button
           data-testid="buttonSave"
@@ -626,6 +656,9 @@ exports[`Table enters row into list 3`] = `
       <column-header>
         ColE
       </column-header>
+      <column-header>
+        ColF
+      </column-header>
     </table-header>
     <table-item>
       <column-text>
@@ -649,6 +682,9 @@ exports[`Table enters row into list 3`] = `
           1/a1
         </button>
       </table-buttons>
+      <column-text>
+        -
+      </column-text>
       <table-buttons>
         <button
           data-testid="buttonEdit1"
@@ -682,6 +718,9 @@ exports[`Table enters row into list 3`] = `
           A2/a2
         </button>
       </table-buttons>
+      <column-text>
+        B2
+      </column-text>
       <table-buttons>
         <button
           data-testid="buttonEditA2"
@@ -715,6 +754,9 @@ exports[`Table enters row into list 3`] = `
           3/a3
         </button>
       </table-buttons>
+      <column-text>
+        -
+      </column-text>
       <table-buttons>
         <button
           data-testid="buttonEdit3"

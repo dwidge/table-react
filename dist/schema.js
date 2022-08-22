@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ColumnText = exports.ColumnSet = exports.ColumnRef = exports.ColumnDate = exports.ColumnButton = void 0;
+exports.getItemBy = exports.ColumnText = exports.ColumnSet = exports.ColumnRef = exports.ColumnDate = exports.ColumnButton = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -113,14 +113,24 @@ var ColumnSet = function ColumnSet(name, all, toString) {
 
 exports.ColumnSet = ColumnSet;
 
+var getItemBy = function getItemBy(a, v) {
+  var k = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'id';
+  return a.find(function (o) {
+    return o[k] === v;
+  });
+};
+
+exports.getItemBy = getItemBy;
+
 var ColumnRef = function ColumnRef(name, all, toString) {
+  var col = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'id';
   return {
     name: name,
     valid: function valid(value) {
-      return !value || !!((0, _lib.getItemById)(all, value) || (0, _lib.getItemById)(all, +value));
+      return !value || !!(getItemBy(all, value, col) || getItemBy(all, +value, col));
     },
     row: function row(value) {
-      var item = (0, _lib.getItemById)(all, value) || (0, _lib.getItemById)(all, +value);
+      var item = getItemBy(all, value, col) || getItemBy(all, +value, col);
       return /*#__PURE__*/_react.default.createElement("column-text", {
         key: name
       }, item ? toString(item) : '-');
