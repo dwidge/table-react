@@ -13,11 +13,13 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _lib = require("@dwidge/lib");
 
-require("./Table.css");
-
 var _ImportFile = require("./ImportFile");
 
 var _ExportFile = require("./ExportFile");
+
+var _Table = _interopRequireDefault(require("react-bootstrap/Table"));
+
+var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -161,15 +163,20 @@ var Table = function Table(_ref) {
 
   return /*#__PURE__*/_react.default.createElement("div-page", {
     "data-testid": 'table' + name
-  }, /*#__PURE__*/_react.default.createElement("table-table", null, !inlineHeaders && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("table-header", null, schemaA.map(function (_ref4) {
+  }, /*#__PURE__*/_react.default.createElement(_Table.default, {
+    striped: true,
+    bordered: true,
+    hover: true,
+    responsive: true
+  }, !inlineHeaders && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("thead", null, /*#__PURE__*/_react.default.createElement("tr", null, schemaA.map(function (_ref4) {
     var _ref5 = _slicedToArray(_ref4, 2),
         key = _ref5[0],
         schem = _ref5[1];
 
-    return /*#__PURE__*/_react.default.createElement("column-header", {
+    return /*#__PURE__*/_react.default.createElement("th", {
       key: key
     }, schem.name);
-  }))), cleanrows.slice(page * pageLength, (page + 1) * pageLength).map(function (row) {
+  })))), /*#__PURE__*/_react.default.createElement("tbody", null, cleanrows.slice(page * pageLength, (page + 1) * pageLength).map(function (row) {
     return function (key) {
       return key === idEdit ? /*#__PURE__*/_react.default.createElement(RowEdit, {
         key: key,
@@ -188,16 +195,16 @@ var Table = function Table(_ref) {
         onDel: onDel
       });
     }(row.id);
-  })), pages > 1 && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("p", null, page * pageLength + 1, " - ", Math.min(cleanrows.length, (page + 1) * pageLength), " of ", cleanrows.length), /*#__PURE__*/_react.default.createElement("button", {
+  }))), pages > 1 && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("p", null, page * pageLength + 1, " - ", Math.min(cleanrows.length, (page + 1) * pageLength), " of ", cleanrows.length), /*#__PURE__*/_react.default.createElement(_Button.default, {
     onClick: onPrev,
     "data-testid": "buttonPrev"
-  }, "Prev"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Prev"), /*#__PURE__*/_react.default.createElement(_Button.default, {
     onClick: onNext,
     "data-testid": "buttonNext"
-  }, "Next")), addDel && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
+  }, "Next")), addDel && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Button.default, {
     onClick: onAdd,
     "data-testid": "buttonAdd"
-  }, "Add"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Add"), /*#__PURE__*/_react.default.createElement(_Button.default, {
     onClick: onClear,
     "data-testid": "buttonClear"
   }, confirm ? 'Confirm' : 'Clear')), enable.importCSV ? /*#__PURE__*/_react.default.createElement(_ImportFile.ImportFile, {
@@ -266,26 +273,25 @@ var Row = function Row(_ref12) {
   var id = rowEdit.id;
 
   var field = function field(name, value) {
-    return inlineHeaders ? /*#__PURE__*/_react.default.createElement("table-row", {
-      style: {
-        display: 'block'
-      },
+    return inlineHeaders ? /*#__PURE__*/_react.default.createElement("div", {
       key: name
-    }, /*#__PURE__*/_react.default.createElement("column-header", null, name), /*#__PURE__*/_react.default.createElement("div", null, value)) : value;
+    }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("b", null, name)), /*#__PURE__*/_react.default.createElement("div", null, value)) : value;
   };
 
-  return /*#__PURE__*/_react.default.createElement("table-item", null, Object.entries(schema).map(function (_ref13) {
+  return /*#__PURE__*/_react.default.createElement("tr", null, Object.entries(schema).map(function (_ref13) {
     var _ref14 = _slicedToArray(_ref13, 2),
         key = _ref14[0],
         schem = _ref14[1];
 
-    return field(schem.name, schem.row(rowEdit[key], rowEdit));
-  }), /*#__PURE__*/_react.default.createElement("table-buttons", null, /*#__PURE__*/_react.default.createElement("button", {
+    return /*#__PURE__*/_react.default.createElement("td", {
+      key: key
+    }, field(schem.name, schem.row(rowEdit[key], rowEdit)));
+  }), /*#__PURE__*/_react.default.createElement("td", null, /*#__PURE__*/_react.default.createElement(_Button.default, {
     onClick: function onClick() {
       return onEdit(id);
     },
     "data-testid": 'buttonEdit' + id
-  }, "Edit"), addDel && /*#__PURE__*/_react.default.createElement("button", {
+  }, "Edit"), addDel && /*#__PURE__*/_react.default.createElement(_Button.default, {
     onClick: function onClick() {
       return onDel(id);
     },
@@ -315,28 +321,27 @@ var RowEdit = function RowEdit(_ref15) {
       setrowEdit = _useState8[1];
 
   var field = function field(name, value) {
-    return inlineHeadersEdit ? /*#__PURE__*/_react.default.createElement("table-row", {
-      style: {
-        display: 'block'
-      },
+    return inlineHeadersEdit ? /*#__PURE__*/_react.default.createElement("div", {
       key: name
-    }, /*#__PURE__*/_react.default.createElement("column-header", null, name), /*#__PURE__*/_react.default.createElement("div", null, value)) : value;
+    }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("b", null, name)), /*#__PURE__*/_react.default.createElement("div", null, value)) : value;
   };
 
-  return /*#__PURE__*/_react.default.createElement("table-item", null, Object.entries(schema).map(function (_ref16) {
+  return /*#__PURE__*/_react.default.createElement("tr", null, Object.entries(schema).map(function (_ref16) {
     var _ref17 = _slicedToArray(_ref16, 2),
         key = _ref17[0],
         schem = _ref17[1];
 
-    return field(schem.name, schem.edit(rowEdit[key], function (val) {
+    return /*#__PURE__*/_react.default.createElement("td", {
+      key: key
+    }, field(schem.name, schem.edit(rowEdit[key], function (val) {
       return setrowEdit(_objectSpread(_objectSpread({}, rowEdit), {}, _defineProperty({}, key, val)));
-    }));
-  }), /*#__PURE__*/_react.default.createElement("table-buttons", null, /*#__PURE__*/_react.default.createElement("button", {
+    })));
+  }), /*#__PURE__*/_react.default.createElement("td", null, /*#__PURE__*/_react.default.createElement(_Button.default, {
     onClick: function onClick() {
       return isValid(schema, rowEdit) && onSave(save(schema, rowEdit));
     },
     "data-testid": "buttonSave"
-  }, "Save"), /*#__PURE__*/_react.default.createElement("button", {
+  }, "Save"), /*#__PURE__*/_react.default.createElement(_Button.default, {
     onClick: onCancel,
     "data-testid": "buttonCancel"
   }, "Cancel")));

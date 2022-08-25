@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { replaceItemById, dropItemById, calcCsvFromObjects, calcObjectsFromCsv } from '@dwidge/lib'
-import './Table.css'
+// import './Table.css'
 import { ImportFile } from './ImportFile'
 import { ExportFile } from './ExportFile'
+import BTable from 'react-bootstrap/Table'
+import BButton from 'react-bootstrap/Button'
 
 export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHeaders = false, inlineHeadersEdit = false, addDel = true, enable = { importCSV: false, exportCSV: false } }) => {
 	const schemaA = Object.entries(schema)
@@ -54,27 +56,31 @@ export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHead
 
 	return (
 		<div-page data-testid={'table' + name}>
-			<table-table>
+			<BTable striped bordered hover responsive>
 				{(!inlineHeaders) && (<>
-					<table-header>
-						{schemaA.map(([key, schem]) =>
-							(<column-header key={key}>{schem.name}</column-header>))}
-					</table-header>
+					<thead>
+						<tr>
+							{schemaA.map(([key, schem]) =>
+								(<th key={key}>{schem.name}</th>))}
+						</tr>
+					</thead>
 				</>)}
-				{cleanrows.slice(page * pageLength, (page + 1) * pageLength).map(
-					row => (key => key === idEdit
-						? (<RowEdit {...{ key, schema, row, inlineHeadersEdit, onSave, onCancel }} />)
-						: (<Row {...{ key, schema, row, inlineHeaders, addDel, onEdit, onDel }} />)
-					)(row.id))}
-			</table-table>
+				<tbody>
+					{cleanrows.slice(page * pageLength, (page + 1) * pageLength).map(
+						row => (key => key === idEdit
+							? (<RowEdit {...{ key, schema, row, inlineHeadersEdit, onSave, onCancel }} />)
+							: (<Row {...{ key, schema, row, inlineHeaders, addDel, onEdit, onDel }} />)
+						)(row.id))}
+				</tbody>
+			</BTable>
 			{pages > 1 && (<>
 				<p>{page * pageLength + 1} - {Math.min(cleanrows.length, (page + 1) * pageLength)} of {cleanrows.length}</p>
-				<button onClick={onPrev} data-testid="buttonPrev">Prev</button>
-				<button onClick={onNext} data-testid="buttonNext">Next</button>
+				<BButton onClick={onPrev} data-testid="buttonPrev">Prev</BButton>
+				<BButton onClick={onNext} data-testid="buttonNext">Next</BButton>
 			</>)}
 			{addDel && (<>
-				<button onClick={onAdd} data-testid="buttonAdd">Add</button>
-				<button onClick={onClear} data-testid="buttonClear">{confirm ? 'Confirm' : 'Clear'}</button>
+				<BButton onClick={onAdd} data-testid="buttonAdd">Add</BButton>
+				<BButton onClick={onClear} data-testid="buttonClear">{confirm ? 'Confirm' : 'Clear'}</BButton>
 			</>)}
 			{enable.importCSV ? (<ImportFile ext='.csv' onAccept={text => setrows(cleanrows.concat(...calcObjectsFromCsv(text)))}/>) : ''}
 			{enable.exportCSV ? (<ExportFile ext='.csv' name={name + '.csv'} content={calcCsvFromObjects(cleanrows)}/>) : ''}
@@ -104,18 +110,18 @@ const Row = ({ schema, row, inlineHeaders, addDel, onEdit, onDel }) => {
 	const rowEdit = (load(schema, row))
 	const { id } = rowEdit
 
-	const field = (name, value) => inlineHeaders ? (<table-row style={{ display: 'block' }} key={name}><column-header>{name}</column-header><div>{value}</div></table-row>) : value
+	const field = (name, value) => inlineHeaders ? (<div key={name}><div><b>{name}</b></div><div>{value}</div></div>) : value
 
 	return (
-		<table-item>
-			{Object.entries(schema).map(([key, schem]) => field(schem.name, schem.row(rowEdit[key], rowEdit)))}
-			<table-buttons>
-				<button onClick={() => onEdit(id)} data-testid={'buttonEdit' + id}>Edit</button>
+		<tr>
+			{Object.entries(schema).map(([key, schem]) => (<td key={key}>{field(schem.name, schem.row(rowEdit[key], rowEdit))}</td>))}
+			<td>
+				<BButton onClick={() => onEdit(id)} data-testid={'buttonEdit' + id}>Edit</BButton>
 				{addDel && (
-					<button onClick={() => onDel(id)} data-testid={'buttonDel' + id}>Del</button>
+					<BButton onClick={() => onDel(id)} data-testid={'buttonDel' + id}>Del</BButton>
 				)}
-			</table-buttons>
-		</table-item>
+			</td>
+		</tr>
 	)
 }
 
@@ -131,16 +137,16 @@ Row.propTypes = {
 const RowEdit = ({ schema, row, inlineHeadersEdit, onSave, onCancel }) => {
 	const [rowEdit, setrowEdit] = useState(load(schema, row))
 
-	const field = (name, value) => inlineHeadersEdit ? (<table-row style={{ display: 'block' }} key={name}><column-header>{name}</column-header><div>{value}</div></table-row>) : value
+	const field = (name, value) => inlineHeadersEdit ? (<div key={name}><div><b>{name}</b></div><div>{value}</div></div>) : value
 
 	return (
-		<table-item>
-			{Object.entries(schema).map(([key, schem]) => field(schem.name, schem.edit(rowEdit[key], val => setrowEdit({ ...rowEdit, [key]: val }))))}
-			<table-buttons>
-				<button onClick={() => isValid(schema, rowEdit) && onSave(save(schema, rowEdit))} data-testid="buttonSave">Save</button>
-				<button onClick={onCancel} data-testid="buttonCancel">Cancel</button>
-			</table-buttons>
-		</table-item>
+		<tr>
+			{Object.entries(schema).map(([key, schem]) => (<td key={key}>{field(schem.name, schem.edit(rowEdit[key], val => setrowEdit({ ...rowEdit, [key]: val })))}</td>))}
+			<td>
+				<BButton onClick={() => isValid(schema, rowEdit) && onSave(save(schema, rowEdit))} data-testid="buttonSave">Save</BButton>
+				<BButton onClick={onCancel} data-testid="buttonCancel">Cancel</BButton>
+			</td>
+		</tr>
 	)
 }
 

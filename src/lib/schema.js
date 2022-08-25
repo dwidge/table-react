@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { onChange, onChangeChecks } from '@dwidge/lib-react'
 import { getItemById } from '@dwidge/lib'
+import BButton from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 
 import isMatch from 'date-fns/isMatch'
 
@@ -12,7 +14,7 @@ export const ColumnText = (name) => ({
 	edit(value, setvalue) {
 		return (
 			<column-text key={name}>
-				<input data-testid={'input' + name} value={value} onChange={onChange(setvalue)} />
+				<Form.Control style={{ width: '10em' }} data-testid={'input' + name} value={value} onChange={onChange(setvalue)} />
 			</column-text>
 		)
 	},
@@ -32,7 +34,7 @@ export const ColumnDate = (name) => ({
 	edit(value, setvalue) {
 		return (
 			<column-text key={name}>
-				<input data-testid={'input' + name} style={this.valid(value) ? {} : { background: 'red' }} value={(value)} onChange={onChange(v => setvalue((v)))} />
+				<Form.Control data-testid={'input' + name} style={this.valid(value) ? { width: '10em' } : { background: 'red', width: '10em' }} value={(value)} onChange={onChange(v => setvalue((v)))} />
 			</column-text>
 		)
 	},
@@ -63,24 +65,54 @@ export const ColumnSet = (name, all, toString) => ({
 export const getItemBy = (a, v, k = 'id') =>
 	a.find(o => o[k] === v)
 
-export const ColumnRef = (name, all, toString, col = 'id') => ({
+export const ColumnRef = (name, { all, colRef = 'id', colView = 'name' }) => ({
 	name,
 	valid(value) {
-		return !value || !!(getItemBy(all, value, col) || getItemBy(all, +value, col))
+		return !value || !!this.lookup(value)
 	},
 	row(value) {
-		const item = getItemBy(all, value, col) || getItemBy(all, +value, col)
 		return (<column-text key={name}>
-			{item ? toString(item) : '-'}
+			{this.lookup(value) || '-'}
 		</column-text>)
 	},
 	edit(value, setvalue) {
+		const [ref, setref] = useState(value)
+		const [view, setview] = useState(this.lookup(value) || '')
+
+		const onref = v => {
+			setref(v)
+			const newview = this.lookup(v)
+			if (newview) {
+				setview(newview)
+				setvalue(v)
+			}
+		}
+		const onview = v => {
+			setview(v)
+			const newref = this.rlookup(v)
+			if (newref) {
+				setref(newref)
+				setvalue(newref)
+			}
+		}
+
 		return (<column-text key={name}>
-			<input data-testid={'input' + name} style={this.valid(value) ? {} : { background: 'red' }} value={value || ''} onChange={onChange(setvalue)} />
+			<div>{colRef}</div>
+			<Form.Control data-testid={'input' + name} style={this.lookup(ref) ? { width: '10em' } : { width: '10em', background: 'red' }} value={ref || ''} onChange={onChange(onref)} />
+			<div>{colView}</div>
+			<Form.Control data-testid={'inputView' + name} style={this.rlookup(view) ? { width: '10em' } : { width: '10em', background: 'red' }} value={view || ''} onChange={onChange(onview)} />
 		</column-text>)
 	},
 	cleanup(value) {
 		return value
+	},
+	lookup(value) {
+		const item = getItemBy(all, value, colRef) || getItemBy(all, +value, colRef) || {}
+		return item[colView]
+	},
+	rlookup(value) {
+		const item = getItemBy(all, value, colView) || getItemBy(all, +value, colView) || {}
+		return item[colRef]
 	},
 })
 
@@ -88,7 +120,7 @@ export const ColumnButton = (name, onClick, toString) => ({
 	name,
 	row(value, row) {
 		return (<table-buttons key={name}>
-			<button data-testid={'button' + name + row.id} onClick={() => onClick(value, row)}>{toString(value, row)}</button>
+			<BButton data-testid={'button' + name + row.id} onClick={() => onClick(value, row)}>{toString(value, row)}</BButton>
 		</table-buttons>)
 	},
 	edit(value, setvalue) {

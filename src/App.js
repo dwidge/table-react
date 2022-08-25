@@ -30,9 +30,9 @@ const App = () => {
 				aa: ColumnText('ColA'),
 				ab: ColumnSet('ColB', [b1], val => val.bc),
 				ac: ColumnDate('ColC'),
-				ad: ColumnRef('ColD', [b1, b2], val => val.bc),
+				ad: ColumnRef('ColD', { all: [b1, b2], colRef: 'id', colView: 'bc' }),
 				ae: ColumnButton('ColE', (val, row) => setmsg('ColE - ' + row.id + '/' + row.aa), (val, row) => row.id + '/' + row.aa),
-				af: ColumnRef('ColF', [b1, b2], val => val.id, 'bc'),
+				af: ColumnRef('ColF', { all: [b1, b2], colRef: 'bc', colView: 'id' }),
 			}} newRow={a0} rows={useState([a1, a2])} pageLength={pageLength ? 1 : 10} inlineHeaders={inlineHeaders} inlineHeadersEdit={inlineHeadersEdit} />
 			<p data-testid='msg'>{msg}</p>
 		</div>

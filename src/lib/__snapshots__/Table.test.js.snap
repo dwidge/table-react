@@ -4,48 +4,70 @@ exports[`Table addDel 1`] = `
 <div-page
   data-testid="tableA"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        ColA
-      </column-header>
-      <column-header>
-        ColB
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text>
-        a1
-      </column-text>
-      <column-set>
-        <div>
-          c1
-        </div>
-      </column-set>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-      </table-buttons>
-    </table-item>
-    <table-item>
-      <column-text>
-        a2
-      </column-text>
-      <column-set>
-        -
-      </column-set>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit2"
-        >
-          Edit
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            ColA
+          </th>
+          <th>
+            ColB
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text>
+              a1
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              <div>
+                c1
+              </div>
+            </column-set>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <column-text>
+              a2
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              -
+            </column-set>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit2"
+              type="button"
+            >
+              Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div-page>
 `;
 
@@ -53,43 +75,65 @@ exports[`Table clears missing slot 1`] = `
 <div-page
   data-testid="tableA"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        ColA
-      </column-header>
-      <column-header>
-        ColB
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text>
-        a1
-      </column-text>
-      <column-set>
-        -
-      </column-set>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            ColA
+          </th>
+          <th>
+            ColB
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text>
+              a1
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              -
+            </column-set>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -100,65 +144,95 @@ exports[`Table confirms & clears list 1`] = `
 <div-page
   data-testid="tableA"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        ColA
-      </column-header>
-      <column-header>
-        ColB
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text>
-        a1
-      </column-text>
-      <column-set>
-        <div>
-          c1
-        </div>
-      </column-set>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-    <table-item>
-      <column-text>
-        a2
-      </column-text>
-      <column-set>
-        -
-      </column-set>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit2"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel2"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            ColA
+          </th>
+          <th>
+            ColB
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text>
+              a1
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              <div>
+                c1
+              </div>
+            </column-set>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <column-text>
+              a2
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              -
+            </column-set>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit2"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel2"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -169,65 +243,95 @@ exports[`Table confirms & clears list 2`] = `
 <div-page
   data-testid="tableA"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        ColA
-      </column-header>
-      <column-header>
-        ColB
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text>
-        a1
-      </column-text>
-      <column-set>
-        <div>
-          c1
-        </div>
-      </column-set>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-    <table-item>
-      <column-text>
-        a2
-      </column-text>
-      <column-set>
-        -
-      </column-set>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit2"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel2"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            ColA
+          </th>
+          <th>
+            ColB
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text>
+              a1
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              <div>
+                c1
+              </div>
+            </column-set>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <column-text>
+              a2
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              -
+            </column-set>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit2"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel2"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Confirm
   </button>
@@ -238,23 +342,36 @@ exports[`Table confirms & clears list 3`] = `
 <div-page
   data-testid="tableA"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        ColA
-      </column-header>
-      <column-header>
-        ColB
-      </column-header>
-    </table-header>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            ColA
+          </th>
+          <th>
+            ColB
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -265,45 +382,67 @@ exports[`Table enables a slot 1`] = `
 <div-page
   data-testid="tableA"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        ColA
-      </column-header>
-      <column-header>
-        ColB
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text>
-        a1
-      </column-text>
-      <column-set>
-        <div>
-          c1
-        </div>
-      </column-set>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            ColA
+          </th>
+          <th>
+            ColB
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text>
+              a1
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              <div>
+                c1
+              </div>
+            </column-set>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -314,158 +453,256 @@ exports[`Table enters row into list 1`] = `
 <div-page
   data-testid="tableA"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        ColA
-      </column-header>
-      <column-header>
-        ColB
-      </column-header>
-      <column-header>
-        ColC
-      </column-header>
-      <column-header>
-        ColD
-      </column-header>
-      <column-header>
-        ColE
-      </column-header>
-      <column-header>
-        ColF
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text>
-        a1
-      </column-text>
-      <column-set>
-        <div>
-          c1
-        </div>
-      </column-set>
-      <column-text>
-        2001/01/01
-      </column-text>
-      <column-text>
-        c1
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonColE1"
-        >
-          1/a1
-        </button>
-      </table-buttons>
-      <column-text>
-        -
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-    <table-item>
-      <column-text>
-        a2
-      </column-text>
-      <column-set>
-        -
-      </column-set>
-      <column-text>
-        2002/01/01
-      </column-text>
-      <column-text>
-        c2
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonColEA2"
-        >
-          A2/a2
-        </button>
-      </table-buttons>
-      <column-text>
-        B2
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonEditA2"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDelA2"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-    <table-item>
-      <column-text>
-        <input
-          data-testid="inputColA"
-          value="a"
-        />
-      </column-text>
-      <column-set>
-        <div>
-          <input
-            data-testid="inputColB1"
-            type="checkbox"
-          />
-           
-          c1
-        </div>
-      </column-set>
-      <column-text>
-        <input
-          data-testid="inputColC"
-          value="2000/01/01"
-        />
-      </column-text>
-      <column-text>
-        <input
-          data-testid="inputColD"
-          value=""
-        />
-      </column-text>
-      <column-text />
-      <column-text>
-        <input
-          data-testid="inputColF"
-          value=""
-        />
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonSave"
-        >
-          Save
-        </button>
-        <button
-          data-testid="buttonCancel"
-        >
-          Cancel
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            ColA
+          </th>
+          <th>
+            ColB
+          </th>
+          <th>
+            ColC
+          </th>
+          <th>
+            ColD
+          </th>
+          <th>
+            ColE
+          </th>
+          <th>
+            ColF
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text>
+              a1
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              <div>
+                c1
+              </div>
+            </column-set>
+          </td>
+          <td>
+            <column-text>
+              2001/01/01
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              c1
+            </column-text>
+          </td>
+          <td>
+            <table-buttons>
+              <button
+                class="btn btn-primary"
+                data-testid="buttonColE1"
+                type="button"
+              >
+                1/a1
+              </button>
+            </table-buttons>
+          </td>
+          <td>
+            <column-text>
+              -
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <column-text>
+              a2
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              -
+            </column-set>
+          </td>
+          <td>
+            <column-text>
+              2002/01/01
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              c2
+            </column-text>
+          </td>
+          <td>
+            <table-buttons>
+              <button
+                class="btn btn-primary"
+                data-testid="buttonColEA2"
+                type="button"
+              >
+                A2/a2
+              </button>
+            </table-buttons>
+          </td>
+          <td>
+            <column-text>
+              B2
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEditA2"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDelA2"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <column-text>
+              <input
+                class="form-control"
+                data-testid="inputColA"
+                style="width: 10em;"
+                value="a"
+              />
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              <div>
+                <input
+                  data-testid="inputColB1"
+                  type="checkbox"
+                />
+                 
+                c1
+              </div>
+            </column-set>
+          </td>
+          <td>
+            <column-text>
+              <input
+                class="form-control"
+                data-testid="inputColC"
+                style="width: 10em;"
+                value="2000/01/01"
+              />
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              <div>
+                id
+              </div>
+              <input
+                class="form-control"
+                data-testid="inputColD"
+                style="width: 10em; background: red;"
+                value=""
+              />
+              <div>
+                bc
+              </div>
+              <input
+                class="form-control"
+                data-testid="inputViewColD"
+                style="width: 10em; background: red;"
+                value=""
+              />
+            </column-text>
+          </td>
+          <td>
+            <column-text />
+          </td>
+          <td>
+            <column-text>
+              <div>
+                bc
+              </div>
+              <input
+                class="form-control"
+                data-testid="inputColF"
+                style="width: 10em; background: red;"
+                value=""
+              />
+              <div>
+                id
+              </div>
+              <input
+                class="form-control"
+                data-testid="inputViewColF"
+                style="width: 10em; background: red;"
+                value=""
+              />
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonSave"
+              type="button"
+            >
+              Save
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonCancel"
+              type="button"
+            >
+              Cancel
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -476,159 +713,256 @@ exports[`Table enters row into list 2`] = `
 <div-page
   data-testid="tableA"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        ColA
-      </column-header>
-      <column-header>
-        ColB
-      </column-header>
-      <column-header>
-        ColC
-      </column-header>
-      <column-header>
-        ColD
-      </column-header>
-      <column-header>
-        ColE
-      </column-header>
-      <column-header>
-        ColF
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text>
-        a1
-      </column-text>
-      <column-set>
-        <div>
-          c1
-        </div>
-      </column-set>
-      <column-text>
-        2001/01/01
-      </column-text>
-      <column-text>
-        c1
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonColE1"
-        >
-          1/a1
-        </button>
-      </table-buttons>
-      <column-text>
-        -
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-    <table-item>
-      <column-text>
-        a2
-      </column-text>
-      <column-set>
-        -
-      </column-set>
-      <column-text>
-        2002/01/01
-      </column-text>
-      <column-text>
-        c2
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonColEA2"
-        >
-          A2/a2
-        </button>
-      </table-buttons>
-      <column-text>
-        B2
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonEditA2"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDelA2"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-    <table-item>
-      <column-text>
-        <input
-          data-testid="inputColA"
-          value="a3"
-        />
-      </column-text>
-      <column-set>
-        <div>
-          <input
-            data-testid="inputColB1"
-            type="checkbox"
-          />
-           
-          c1
-        </div>
-      </column-set>
-      <column-text>
-        <input
-          data-testid="inputColC"
-          style="background: red;"
-          value="2022-01-04"
-        />
-      </column-text>
-      <column-text>
-        <input
-          data-testid="inputColD"
-          value=""
-        />
-      </column-text>
-      <column-text />
-      <column-text>
-        <input
-          data-testid="inputColF"
-          value=""
-        />
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonSave"
-        >
-          Save
-        </button>
-        <button
-          data-testid="buttonCancel"
-        >
-          Cancel
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            ColA
+          </th>
+          <th>
+            ColB
+          </th>
+          <th>
+            ColC
+          </th>
+          <th>
+            ColD
+          </th>
+          <th>
+            ColE
+          </th>
+          <th>
+            ColF
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text>
+              a1
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              <div>
+                c1
+              </div>
+            </column-set>
+          </td>
+          <td>
+            <column-text>
+              2001/01/01
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              c1
+            </column-text>
+          </td>
+          <td>
+            <table-buttons>
+              <button
+                class="btn btn-primary"
+                data-testid="buttonColE1"
+                type="button"
+              >
+                1/a1
+              </button>
+            </table-buttons>
+          </td>
+          <td>
+            <column-text>
+              -
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <column-text>
+              a2
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              -
+            </column-set>
+          </td>
+          <td>
+            <column-text>
+              2002/01/01
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              c2
+            </column-text>
+          </td>
+          <td>
+            <table-buttons>
+              <button
+                class="btn btn-primary"
+                data-testid="buttonColEA2"
+                type="button"
+              >
+                A2/a2
+              </button>
+            </table-buttons>
+          </td>
+          <td>
+            <column-text>
+              B2
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEditA2"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDelA2"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <column-text>
+              <input
+                class="form-control"
+                data-testid="inputColA"
+                style="width: 10em;"
+                value="a3"
+              />
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              <div>
+                <input
+                  data-testid="inputColB1"
+                  type="checkbox"
+                />
+                 
+                c1
+              </div>
+            </column-set>
+          </td>
+          <td>
+            <column-text>
+              <input
+                class="form-control"
+                data-testid="inputColC"
+                style="width: 10em; background: red;"
+                value="2022-01-04"
+              />
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              <div>
+                id
+              </div>
+              <input
+                class="form-control"
+                data-testid="inputColD"
+                style="width: 10em; background: red;"
+                value=""
+              />
+              <div>
+                bc
+              </div>
+              <input
+                class="form-control"
+                data-testid="inputViewColD"
+                style="width: 10em; background: red;"
+                value=""
+              />
+            </column-text>
+          </td>
+          <td>
+            <column-text />
+          </td>
+          <td>
+            <column-text>
+              <div>
+                bc
+              </div>
+              <input
+                class="form-control"
+                data-testid="inputColF"
+                style="width: 10em; background: red;"
+                value=""
+              />
+              <div>
+                id
+              </div>
+              <input
+                class="form-control"
+                data-testid="inputViewColF"
+                style="width: 10em; background: red;"
+                value=""
+              />
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonSave"
+              type="button"
+            >
+              Save
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonCancel"
+              type="button"
+            >
+              Cancel
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -639,145 +973,213 @@ exports[`Table enters row into list 3`] = `
 <div-page
   data-testid="tableA"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        ColA
-      </column-header>
-      <column-header>
-        ColB
-      </column-header>
-      <column-header>
-        ColC
-      </column-header>
-      <column-header>
-        ColD
-      </column-header>
-      <column-header>
-        ColE
-      </column-header>
-      <column-header>
-        ColF
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text>
-        a1
-      </column-text>
-      <column-set>
-        <div>
-          c1
-        </div>
-      </column-set>
-      <column-text>
-        2001/01/01
-      </column-text>
-      <column-text>
-        c1
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonColE1"
-        >
-          1/a1
-        </button>
-      </table-buttons>
-      <column-text>
-        -
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-    <table-item>
-      <column-text>
-        a2
-      </column-text>
-      <column-set>
-        -
-      </column-set>
-      <column-text>
-        2002/01/01
-      </column-text>
-      <column-text>
-        c2
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonColEA2"
-        >
-          A2/a2
-        </button>
-      </table-buttons>
-      <column-text>
-        B2
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonEditA2"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDelA2"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-    <table-item>
-      <column-text>
-        a3
-      </column-text>
-      <column-set>
-        -
-      </column-set>
-      <column-text>
-        2022/01/04
-      </column-text>
-      <column-text>
-        c1
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonColE3"
-        >
-          3/a3
-        </button>
-      </table-buttons>
-      <column-text>
-        -
-      </column-text>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit3"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel3"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            ColA
+          </th>
+          <th>
+            ColB
+          </th>
+          <th>
+            ColC
+          </th>
+          <th>
+            ColD
+          </th>
+          <th>
+            ColE
+          </th>
+          <th>
+            ColF
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text>
+              a1
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              <div>
+                c1
+              </div>
+            </column-set>
+          </td>
+          <td>
+            <column-text>
+              2001/01/01
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              c1
+            </column-text>
+          </td>
+          <td>
+            <table-buttons>
+              <button
+                class="btn btn-primary"
+                data-testid="buttonColE1"
+                type="button"
+              >
+                1/a1
+              </button>
+            </table-buttons>
+          </td>
+          <td>
+            <column-text>
+              -
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <column-text>
+              a2
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              -
+            </column-set>
+          </td>
+          <td>
+            <column-text>
+              2002/01/01
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              c2
+            </column-text>
+          </td>
+          <td>
+            <table-buttons>
+              <button
+                class="btn btn-primary"
+                data-testid="buttonColEA2"
+                type="button"
+              >
+                A2/a2
+              </button>
+            </table-buttons>
+          </td>
+          <td>
+            <column-text>
+              B2
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEditA2"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDelA2"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <column-text>
+              a3
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              -
+            </column-set>
+          </td>
+          <td>
+            <column-text>
+              2022/01/04
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              c1
+            </column-text>
+          </td>
+          <td>
+            <table-buttons>
+              <button
+                class="btn btn-primary"
+                data-testid="buttonColE3"
+                type="button"
+              >
+                3/a3
+              </button>
+            </table-buttons>
+          </td>
+          <td>
+            <column-text>
+              -
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit3"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel3"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -802,65 +1204,95 @@ exports[`Table import export 1`] = `
 <div-page
   data-testid="tableA"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        ColA
-      </column-header>
-      <column-header>
-        ColB
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text>
-        a1
-      </column-text>
-      <column-set>
-        <div>
-          c1
-        </div>
-      </column-set>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-    <table-item>
-      <column-text>
-        a2
-      </column-text>
-      <column-set>
-        -
-      </column-set>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit2"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel2"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            ColA
+          </th>
+          <th>
+            ColB
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text>
+              a1
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              <div>
+                c1
+              </div>
+            </column-set>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <column-text>
+              a2
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              -
+            </column-set>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit2"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel2"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -887,65 +1319,95 @@ exports[`Table import export 2`] = `
 <div-page
   data-testid="tableA"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        ColA
-      </column-header>
-      <column-header>
-        ColB
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text>
-        a1
-      </column-text>
-      <column-set>
-        <div>
-          c1
-        </div>
-      </column-set>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-    <table-item>
-      <column-text>
-        a2
-      </column-text>
-      <column-set>
-        -
-      </column-set>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit2"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel2"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            ColA
+          </th>
+          <th>
+            ColB
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text>
+              a1
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              <div>
+                c1
+              </div>
+            </column-set>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <column-text>
+              a2
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              -
+            </column-set>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit2"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel2"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -991,48 +1453,64 @@ exports[`Table inlineHeaders 1`] = `
 <div-page
   data-testid="tableA"
 >
-  <table-table>
-    <table-item>
-      <table-row
-        style="display: block;"
-      >
-        <column-header>
-          ColA
-        </column-header>
-        <div>
-          <column-text>
-            a1
-          </column-text>
-        </div>
-      </table-row>
-      <table-row
-        style="display: block;"
-      >
-        <column-header>
-          ColB
-        </column-header>
-        <div>
-          <column-set>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <tbody>
+        <tr>
+          <td>
             <div>
-              c1
+              <div>
+                <b>
+                  ColA
+                </b>
+              </div>
+              <div>
+                <column-text>
+                  a1
+                </column-text>
+              </div>
             </div>
-          </column-set>
-        </div>
-      </table-row>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+          </td>
+          <td>
+            <div>
+              <div>
+                <b>
+                  ColB
+                </b>
+              </div>
+              <div>
+                <column-set>
+                  <div>
+                    c1
+                  </div>
+                </column-set>
+              </div>
+            </div>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <p>
     1
      - 
@@ -1041,22 +1519,30 @@ exports[`Table inlineHeaders 1`] = `
     2
   </p>
   <button
+    class="btn btn-primary"
     data-testid="buttonPrev"
+    type="button"
   >
     Prev
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonNext"
+    type="button"
   >
     Next
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -1067,38 +1553,56 @@ exports[`Table pages 1`] = `
 <div-page
   data-testid="tableA"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        ColA
-      </column-header>
-      <column-header>
-        ColB
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text>
-        a1
-      </column-text>
-      <column-set>
-        <div>
-          c1
-        </div>
-      </column-set>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            ColA
+          </th>
+          <th>
+            ColB
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text>
+              a1
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              <div>
+                c1
+              </div>
+            </column-set>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <p>
     1
      - 
@@ -1107,22 +1611,30 @@ exports[`Table pages 1`] = `
     2
   </p>
   <button
+    class="btn btn-primary"
     data-testid="buttonPrev"
+    type="button"
   >
     Prev
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonNext"
+    type="button"
   >
     Next
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -1133,38 +1645,56 @@ exports[`Table pages next prev 1`] = `
 <div-page
   data-testid="tableA"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        ColA
-      </column-header>
-      <column-header>
-        ColB
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text>
-        a1
-      </column-text>
-      <column-set>
-        <div>
-          c1
-        </div>
-      </column-set>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            ColA
+          </th>
+          <th>
+            ColB
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text>
+              a1
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              <div>
+                c1
+              </div>
+            </column-set>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <p>
     1
      - 
@@ -1173,22 +1703,30 @@ exports[`Table pages next prev 1`] = `
     2
   </p>
   <button
+    class="btn btn-primary"
     data-testid="buttonPrev"
+    type="button"
   >
     Prev
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonNext"
+    type="button"
   >
     Next
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -1199,36 +1737,54 @@ exports[`Table pages next prev 2`] = `
 <div-page
   data-testid="tableA"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        ColA
-      </column-header>
-      <column-header>
-        ColB
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text>
-        a2
-      </column-text>
-      <column-set>
-        -
-      </column-set>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit2"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel2"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            ColA
+          </th>
+          <th>
+            ColB
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text>
+              a2
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              -
+            </column-set>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit2"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel2"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <p>
     2
      - 
@@ -1237,22 +1793,30 @@ exports[`Table pages next prev 2`] = `
     2
   </p>
   <button
+    class="btn btn-primary"
     data-testid="buttonPrev"
+    type="button"
   >
     Prev
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonNext"
+    type="button"
   >
     Next
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -1263,36 +1827,54 @@ exports[`Table pages next prev 3`] = `
 <div-page
   data-testid="tableA"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        ColA
-      </column-header>
-      <column-header>
-        ColB
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text>
-        a2
-      </column-text>
-      <column-set>
-        -
-      </column-set>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit2"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel2"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            ColA
+          </th>
+          <th>
+            ColB
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text>
+              a2
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              -
+            </column-set>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit2"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel2"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <p>
     2
      - 
@@ -1301,22 +1883,30 @@ exports[`Table pages next prev 3`] = `
     2
   </p>
   <button
+    class="btn btn-primary"
     data-testid="buttonPrev"
+    type="button"
   >
     Prev
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonNext"
+    type="button"
   >
     Next
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
@@ -1327,38 +1917,56 @@ exports[`Table pages next prev 4`] = `
 <div-page
   data-testid="tableA"
 >
-  <table-table>
-    <table-header>
-      <column-header>
-        ColA
-      </column-header>
-      <column-header>
-        ColB
-      </column-header>
-    </table-header>
-    <table-item>
-      <column-text>
-        a1
-      </column-text>
-      <column-set>
-        <div>
-          c1
-        </div>
-      </column-set>
-      <table-buttons>
-        <button
-          data-testid="buttonEdit1"
-        >
-          Edit
-        </button>
-        <button
-          data-testid="buttonDel1"
-        >
-          Del
-        </button>
-      </table-buttons>
-    </table-item>
-  </table-table>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="table table-striped table-bordered table-hover"
+    >
+      <thead>
+        <tr>
+          <th>
+            ColA
+          </th>
+          <th>
+            ColB
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <column-text>
+              a1
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              <div>
+                c1
+              </div>
+            </column-set>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit1"
+              type="button"
+            >
+              Edit
+            </button>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel1"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <p>
     1
      - 
@@ -1367,22 +1975,30 @@ exports[`Table pages next prev 4`] = `
     2
   </p>
   <button
+    class="btn btn-primary"
     data-testid="buttonPrev"
+    type="button"
   >
     Prev
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonNext"
+    type="button"
   >
     Next
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonAdd"
+    type="button"
   >
     Add
   </button>
   <button
+    class="btn btn-primary"
     data-testid="buttonClear"
+    type="button"
   >
     Clear
   </button>
