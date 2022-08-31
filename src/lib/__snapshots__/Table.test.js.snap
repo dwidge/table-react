@@ -586,7 +586,7 @@ exports[`Table enters row into list 1`] = `
           </td>
           <td>
             <column-text>
-              B2
+              c2
             </column-text>
           </td>
           <td>
@@ -664,7 +664,15 @@ exports[`Table enters row into list 1`] = `
             </column-text>
           </td>
           <td>
-            <column-text />
+            <table-buttons>
+              <button
+                class="btn btn-primary"
+                data-testid="buttonColE15"
+                type="button"
+              >
+                15/a
+              </button>
+            </table-buttons>
           </td>
           <td>
             <column-text>
@@ -852,7 +860,7 @@ exports[`Table enters row into list 2`] = `
           </td>
           <td>
             <column-text>
-              B2
+              c2
             </column-text>
           </td>
           <td>
@@ -930,7 +938,15 @@ exports[`Table enters row into list 2`] = `
             </column-text>
           </td>
           <td>
-            <column-text />
+            <table-buttons>
+              <button
+                class="btn btn-primary"
+                data-testid="buttonColE15"
+                type="button"
+              >
+                15/a3
+              </button>
+            </table-buttons>
           </td>
           <td>
             <column-text>
@@ -1118,7 +1134,7 @@ exports[`Table enters row into list 3`] = `
           </td>
           <td>
             <column-text>
-              B2
+              c2
             </column-text>
           </td>
           <td>

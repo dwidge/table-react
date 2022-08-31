@@ -32,7 +32,7 @@ const App = () => {
 				ac: ColumnDate('ColC'),
 				ad: ColumnRef('ColD', { all: [b1, b2], colRef: 'id', colView: 'bc' }),
 				ae: ColumnButton('ColE', (val, row) => setmsg('ColE - ' + row.id + '/' + row.aa), (val, row) => row.id + '/' + row.aa),
-				af: ColumnRef('ColF', { all: [b1, b2], colRef: 'bc', colView: 'id' }),
+				af: ColumnRef('ColF', { all: [b1, b2], colRef: 'bc', colView: 'id', colDisplay: 'bc' }),
 			}} newRow={a0} rows={useState(new Array(1).fill([a1, a2]).flat().map(o => ({ ...o, id: uuid() })))} pageLength={pageLength ? 1 : 50} inlineHeaders={inlineHeaders} inlineHeadersEdit={inlineHeadersEdit} />
 			<p data-testid='msg'>{msg}</p>
 		</div>

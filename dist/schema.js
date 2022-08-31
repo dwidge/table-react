@@ -155,7 +155,9 @@ var ColumnRef = function ColumnRef(name, _ref) {
       _ref$colRef = _ref.colRef,
       colRef = _ref$colRef === void 0 ? 'id' : _ref$colRef,
       _ref$colView = _ref.colView,
-      colView = _ref$colView === void 0 ? 'name' : _ref$colView;
+      colView = _ref$colView === void 0 ? 'name' : _ref$colView,
+      _ref$colDisplay = _ref.colDisplay,
+      colDisplay = _ref$colDisplay === void 0 ? colView : _ref$colDisplay;
   return {
     name: name,
     valid: function valid(value) {
@@ -164,7 +166,7 @@ var ColumnRef = function ColumnRef(name, _ref) {
     row: function row(value) {
       return /*#__PURE__*/_react.default.createElement("column-text", {
         key: name
-      }, this.lookup(value) || '-');
+      }, this.lookup(value, colDisplay) || '-');
     },
     edit: function edit(value, setvalue) {
       var _this = this;
@@ -229,8 +231,9 @@ var ColumnRef = function ColumnRef(name, _ref) {
       return value;
     },
     lookup: function lookup(value) {
+      var col = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : colView;
       var item = getItemBy(all, value, colRef) || getItemBy(all, +value, colRef) || {};
-      return item[colView];
+      return item[col];
     },
     rlookup: function rlookup(value) {
       var item = getItemBy(all, value, colView) || getItemBy(all, +value, colView) || {};
@@ -254,10 +257,8 @@ var ColumnButton = function ColumnButton(name, _onClick, toString) {
         }
       }, toString(value, _row)));
     },
-    edit: function edit(value, setvalue) {
-      return /*#__PURE__*/_react.default.createElement("column-text", {
-        key: name
-      });
+    edit: function edit(value, setvalue, row) {
+      return this.row(value, row);
     },
     cleanup: function cleanup(value) {
       return value;

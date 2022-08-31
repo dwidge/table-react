@@ -160,7 +160,7 @@ Row.propTypes = {
 const RowEdit = ({ schema, row, inlineHeadersEdit, onSave, onCancel }) => {
 	const [rowEdit, setrowEdit] = useState(load(schema, row))
 
-	const columns = Object.entries(schema).map(([key, schem]) => [key, schem.name, schem.edit(rowEdit[key], val => setrowEdit({ ...rowEdit, [key]: val }))])
+	const columns = Object.entries(schema).map(([key, schem]) => [key, schem.name, schem.edit(rowEdit[key], val => setrowEdit({ ...rowEdit, [key]: val }), rowEdit)])
 	const btnsave = ['save', '', (<BButton key='' onClick={() => isValid(schema, rowEdit) && onSave(save(schema, rowEdit))} data-testid="buttonSave">Save</BButton>)]
 	const btncancel = ['cancel', '', (<BButton key='' onClick={onCancel} data-testid="buttonCancel">Cancel</BButton>)]
 	const fields = columns.concat([btnsave, btncancel])

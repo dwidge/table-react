@@ -384,7 +384,7 @@ var RowEdit = function RowEdit(_ref22) {
 
     return [key, schem.name, schem.edit(rowEdit[key], function (val) {
       return setrowEdit(_objectSpread(_objectSpread({}, rowEdit), {}, _defineProperty({}, key, val)));
-    })];
+    }, rowEdit)];
   });
   var btnsave = ['save', '', /*#__PURE__*/_react.default.createElement(_Button.default, {
     key: "",

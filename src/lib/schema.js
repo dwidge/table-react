@@ -65,14 +65,14 @@ export const ColumnSet = (name, all, toString) => ({
 export const getItemBy = (a, v, k = 'id') =>
 	a.find(o => o[k] === v)
 
-export const ColumnRef = (name, { all, colRef = 'id', colView = 'name' }) => ({
+export const ColumnRef = (name, { all, colRef = 'id', colView = 'name', colDisplay = colView }) => ({
 	name,
 	valid(value) {
 		return !value || !!this.lookup(value)
 	},
 	row(value) {
 		return (<column-text key={name}>
-			{this.lookup(value) || '-'}
+			{this.lookup(value, colDisplay) || '-'}
 		</column-text>)
 	},
 	edit(value, setvalue) {
@@ -106,9 +106,9 @@ export const ColumnRef = (name, { all, colRef = 'id', colView = 'name' }) => ({
 	cleanup(value) {
 		return value
 	},
-	lookup(value) {
+	lookup(value, col = colView) {
 		const item = getItemBy(all, value, colRef) || getItemBy(all, +value, colRef) || {}
-		return item[colView]
+		return item[col]
 	},
 	rlookup(value) {
 		const item = getItemBy(all, value, colView) || getItemBy(all, +value, colView) || {}
@@ -123,9 +123,8 @@ export const ColumnButton = (name, onClick, toString) => ({
 			<BButton data-testid={'button' + name + row.id} onClick={() => onClick(value, row)}>{toString(value, row)}</BButton>
 		</table-buttons>)
 	},
-	edit(value, setvalue) {
-		return (<column-text key={name}>
-		</column-text>)
+	edit(value, setvalue, row) {
+		return this.row(value, row)
 	},
 	cleanup(value) {
 		return value
