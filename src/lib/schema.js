@@ -75,16 +75,14 @@ export const ColumnRef = (name, { all, colRef = 'id', colView = 'name', colDispl
 			{this.lookup(value, colDisplay) || '-'}
 		</column-text>)
 	},
-	edit(value, setvalue) {
-		const [ref, setref] = useState(value)
-		const [view, setview] = useState(this.lookup(value) || '')
+	edit(ref, setref) {
+		const [view, setview] = useState(this.lookup(ref) || '')
 
 		const onref = v => {
 			setref(v)
 			const newview = this.lookup(v)
 			if (newview) {
 				setview(newview)
-				setvalue(v)
 			}
 		}
 		const onview = v => {
@@ -92,7 +90,6 @@ export const ColumnRef = (name, { all, colRef = 'id', colView = 'name', colDispl
 			const newref = this.rlookup(v)
 			if (newref) {
 				setref(newref)
-				setvalue(newref)
 			}
 		}
 

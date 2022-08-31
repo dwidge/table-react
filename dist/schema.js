@@ -168,18 +168,13 @@ var ColumnRef = function ColumnRef(name, _ref) {
         key: name
       }, this.lookup(value, colDisplay) || '-');
     },
-    edit: function edit(value, setvalue) {
+    edit: function edit(ref, setref) {
       var _this = this;
 
-      var _useState = (0, _react.useState)(value),
+      var _useState = (0, _react.useState)(this.lookup(ref) || ''),
           _useState2 = _slicedToArray(_useState, 2),
-          ref = _useState2[0],
-          setref = _useState2[1];
-
-      var _useState3 = (0, _react.useState)(this.lookup(value) || ''),
-          _useState4 = _slicedToArray(_useState3, 2),
-          view = _useState4[0],
-          setview = _useState4[1];
+          view = _useState2[0],
+          setview = _useState2[1];
 
       var onref = function onref(v) {
         setref(v);
@@ -188,7 +183,6 @@ var ColumnRef = function ColumnRef(name, _ref) {
 
         if (newview) {
           setview(newview);
-          setvalue(v);
         }
       };
 
@@ -199,7 +193,6 @@ var ColumnRef = function ColumnRef(name, _ref) {
 
         if (newref) {
           setref(newref);
-          setvalue(newref);
         }
       };
 
