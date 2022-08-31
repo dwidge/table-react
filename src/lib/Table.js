@@ -55,24 +55,26 @@ export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHead
 	}
 
 	return (
-		<div-page data-testid={'table' + name}>
-			<BTable striped bordered hover responsive>
-				{(!inlineHeaders) && (<>
-					<thead>
-						<tr>
-							{schemaA.map(([key, schem]) =>
-								(<th key={key}>{schem.name}</th>))}
-						</tr>
-					</thead>
-				</>)}
-				<tbody>
-					{cleanrows.slice(page * pageLength, (page + 1) * pageLength).map(
-						row => (key => key === idEdit
-							? (<RowEdit {...{ key, schema, row, inlineHeadersEdit, onSave, onCancel }} />)
-							: (<Row {...{ key, schema, row, inlineHeaders, addDel, onEdit, onDel }} />)
-						)(row.id))}
-				</tbody>
-			</BTable>
+		<div data-testid={'table' + name}>
+			<div style={{ overflow: 'auto', maxHeight: '80vh' }}>
+				<BTable striped bordered hover>
+					{(!inlineHeaders) && (<>
+						<thead>
+							<tr>
+								{schemaA.map(([key, schem]) =>
+									(<th key={key}>{schem.name}</th>))}
+							</tr>
+						</thead>
+					</>)}
+					<tbody>
+						{cleanrows.slice(page * pageLength, (page + 1) * pageLength).map(
+							row => (key => key === idEdit
+								? (<RowEdit {...{ key, schema, row, inlineHeadersEdit, onSave, onCancel }} />)
+								: (<Row {...{ key, schema, row, inlineHeaders, addDel, onEdit, onDel }} />)
+							)(row.id))}
+					</tbody>
+				</BTable>
+			</div>
 			{pages > 1 && (<>
 				<p>{page * pageLength + 1} - {Math.min(cleanrows.length, (page + 1) * pageLength)} of {cleanrows.length}</p>
 				<BButton onClick={onPrev} data-testid="buttonPrev">Prev</BButton>
@@ -84,7 +86,7 @@ export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHead
 			</>)}
 			{enable.importCSV ? (<ImportFile ext='.csv' onAccept={text => setrows(cleanrows.concat(...calcObjectsFromCsv(text)))}/>) : ''}
 			{enable.exportCSV ? (<ExportFile ext='.csv' name={name + '.csv'} content={calcCsvFromObjects(cleanrows)}/>) : ''}
-		</div-page>
+		</div>
 	)
 }
 
@@ -106,23 +108,44 @@ const save = (schema, row) => Object.entries(schema).reduce((row, [key, schem]) 
 
 const isValid = (schema, row) => Object.entries(schema).every(([key, schem]) => !schem.valid || schem.valid(row[key]))
 
+const RowInline = ({ fields, inlineHeaders }) =>
+	inlineHeaders ? (<RowVert fields={fields}/>) : (<RowHorz fields={fields}/>)
+
+RowInline.propTypes = {
+	fields: PropTypes.array.isRequired,
+	inlineHeaders: PropTypes.bool,
+}
+
+const RowHorz = ({ fields }) =>
+	(
+		<tr>
+			{(fields).map(([key, name, val]) => (<td key={key}>{val}</td>))}
+		</tr>
+	)
+
+RowHorz.propTypes = {
+	fields: PropTypes.array.isRequired,
+}
+
+const RowVert = ({ fields }) =>
+	(<tr><td colSpan={fields.length}>
+		{(fields).map(([key, name, val]) => (<div key={key}><div><b>{name}</b></div><div>{val}</div></div>))}
+	</td></tr>)
+
+RowVert.propTypes = {
+	fields: PropTypes.array.isRequired,
+}
+
 const Row = ({ schema, row, inlineHeaders, addDel, onEdit, onDel }) => {
 	const rowEdit = (load(schema, row))
 	const { id } = rowEdit
 
-	const field = (name, value) => inlineHeaders ? (<div key={name}><div><b>{name}</b></div><div>{value}</div></div>) : value
+	const columns = Object.entries(schema).map(([key, schem]) => [key, schem.name, schem.row(rowEdit[key], rowEdit)])
+	const btnedit = ['edit', '', (<BButton key='' onClick={() => onEdit(id)} data-testid={'buttonEdit' + id}>Edit</BButton>)]
+	const btndel = ['del', '', (<BButton key='' onClick={() => onDel(id)} data-testid={'buttonDel' + id}>Del</BButton>)]
+	const fields = addDel ? columns.concat([btnedit, btndel]) : columns.concat([btnedit])
 
-	return (
-		<tr>
-			{Object.entries(schema).map(([key, schem]) => (<td key={key}>{field(schem.name, schem.row(rowEdit[key], rowEdit))}</td>))}
-			<td>
-				<BButton onClick={() => onEdit(id)} data-testid={'buttonEdit' + id}>Edit</BButton>
-				{addDel && (
-					<BButton onClick={() => onDel(id)} data-testid={'buttonDel' + id}>Del</BButton>
-				)}
-			</td>
-		</tr>
-	)
+	return (<RowInline inlineHeaders={inlineHeaders} fields={fields}/>)
 }
 
 Row.propTypes = {
@@ -137,17 +160,12 @@ Row.propTypes = {
 const RowEdit = ({ schema, row, inlineHeadersEdit, onSave, onCancel }) => {
 	const [rowEdit, setrowEdit] = useState(load(schema, row))
 
-	const field = (name, value) => inlineHeadersEdit ? (<div key={name}><div><b>{name}</b></div><div>{value}</div></div>) : value
+	const columns = Object.entries(schema).map(([key, schem]) => [key, schem.name, schem.edit(rowEdit[key], val => setrowEdit({ ...rowEdit, [key]: val }))])
+	const btnsave = ['save', '', (<BButton key='' onClick={() => isValid(schema, rowEdit) && onSave(save(schema, rowEdit))} data-testid="buttonSave">Save</BButton>)]
+	const btncancel = ['cancel', '', (<BButton key='' onClick={onCancel} data-testid="buttonCancel">Cancel</BButton>)]
+	const fields = columns.concat([btnsave, btncancel])
 
-	return (
-		<tr>
-			{Object.entries(schema).map(([key, schem]) => (<td key={key}>{field(schem.name, schem.edit(rowEdit[key], val => setrowEdit({ ...rowEdit, [key]: val })))}</td>))}
-			<td>
-				<BButton onClick={() => isValid(schema, rowEdit) && onSave(save(schema, rowEdit))} data-testid="buttonSave">Save</BButton>
-				<BButton onClick={onCancel} data-testid="buttonCancel">Cancel</BButton>
-			</td>
-		</tr>
-	)
+	return (<RowInline inlineHeaders={inlineHeadersEdit} fields={fields}/>)
 }
 
 RowEdit.propTypes = {

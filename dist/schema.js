@@ -50,7 +50,7 @@ var ColumnText = function ColumnText(name) {
         key: name
       }, /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
         style: {
-          width: '10em'
+          minWidth: '10em'
         },
         "data-testid": 'input' + name,
         value: value,
@@ -82,10 +82,10 @@ var ColumnDate = function ColumnDate(name) {
       }, /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
         "data-testid": 'input' + name,
         style: this.valid(value) ? {
-          width: '10em'
+          minWidth: '10em'
         } : {
-          background: 'red',
-          width: '10em'
+          borderColor: 'red',
+          minWidth: '10em'
         },
         value: value,
         onChange: (0, _libReact.onChange)(function (v) {
@@ -206,20 +206,20 @@ var ColumnRef = function ColumnRef(name, _ref) {
       }, /*#__PURE__*/_react.default.createElement("div", null, colRef), /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
         "data-testid": 'input' + name,
         style: this.lookup(ref) ? {
-          width: '10em'
+          minWidth: '10em'
         } : {
-          width: '10em',
-          background: 'red'
+          minWidth: '10em',
+          borderColor: 'red'
         },
         value: ref || '',
         onChange: (0, _libReact.onChange)(onref)
       }), /*#__PURE__*/_react.default.createElement("div", null, colView), /*#__PURE__*/_react.default.createElement(_Form.default.Control, {
         "data-testid": 'inputView' + name,
         style: this.rlookup(view) ? {
-          width: '10em'
+          minWidth: '10em'
         } : {
-          width: '10em',
-          background: 'red'
+          minWidth: '10em',
+          borderColor: 'red'
         },
         value: view || '',
         onChange: (0, _libReact.onChange)(onview)

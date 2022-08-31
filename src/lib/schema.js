@@ -14,7 +14,7 @@ export const ColumnText = (name) => ({
 	edit(value, setvalue) {
 		return (
 			<column-text key={name}>
-				<Form.Control style={{ width: '10em' }} data-testid={'input' + name} value={value} onChange={onChange(setvalue)} />
+				<Form.Control style={{ minWidth: '10em' }} data-testid={'input' + name} value={value} onChange={onChange(setvalue)} />
 			</column-text>
 		)
 	},
@@ -34,7 +34,7 @@ export const ColumnDate = (name) => ({
 	edit(value, setvalue) {
 		return (
 			<column-text key={name}>
-				<Form.Control data-testid={'input' + name} style={this.valid(value) ? { width: '10em' } : { background: 'red', width: '10em' }} value={(value)} onChange={onChange(v => setvalue((v)))} />
+				<Form.Control data-testid={'input' + name} style={this.valid(value) ? { minWidth: '10em' } : { borderColor: 'red', minWidth: '10em' }} value={(value)} onChange={onChange(v => setvalue((v)))} />
 			</column-text>
 		)
 	},
@@ -98,9 +98,9 @@ export const ColumnRef = (name, { all, colRef = 'id', colView = 'name' }) => ({
 
 		return (<column-text key={name}>
 			<div>{colRef}</div>
-			<Form.Control data-testid={'input' + name} style={this.lookup(ref) ? { width: '10em' } : { width: '10em', background: 'red' }} value={ref || ''} onChange={onChange(onref)} />
+			<Form.Control data-testid={'input' + name} style={this.lookup(ref) ? { minWidth: '10em' } : { minWidth: '10em', borderColor: 'red' }} value={ref || ''} onChange={onChange(onref)} />
 			<div>{colView}</div>
-			<Form.Control data-testid={'inputView' + name} style={this.rlookup(view) ? { width: '10em' } : { width: '10em', background: 'red' }} value={view || ''} onChange={onChange(onview)} />
+			<Form.Control data-testid={'inputView' + name} style={this.rlookup(view) ? { minWidth: '10em' } : { minWidth: '10em', borderColor: 'red' }} value={view || ''} onChange={onChange(onview)} />
 		</column-text>)
 	},
 	cleanup(value) {

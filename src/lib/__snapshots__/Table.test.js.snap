@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Table addDel 1`] = `
-<div-page
+<div
   data-testid="tableA"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
@@ -68,15 +68,15 @@ exports[`Table addDel 1`] = `
       </tbody>
     </table>
   </div>
-</div-page>
+</div>
 `;
 
 exports[`Table clears missing slot 1`] = `
-<div-page
+<div
   data-testid="tableA"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
@@ -111,6 +111,8 @@ exports[`Table clears missing slot 1`] = `
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
               data-testid="buttonDel1"
@@ -137,15 +139,15 @@ exports[`Table clears missing slot 1`] = `
   >
     Clear
   </button>
-</div-page>
+</div>
 `;
 
 exports[`Table confirms & clears list 1`] = `
-<div-page
+<div
   data-testid="tableA"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
@@ -182,6 +184,8 @@ exports[`Table confirms & clears list 1`] = `
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
               data-testid="buttonDel1"
@@ -210,6 +214,8 @@ exports[`Table confirms & clears list 1`] = `
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
               data-testid="buttonDel2"
@@ -236,15 +242,15 @@ exports[`Table confirms & clears list 1`] = `
   >
     Clear
   </button>
-</div-page>
+</div>
 `;
 
 exports[`Table confirms & clears list 2`] = `
-<div-page
+<div
   data-testid="tableA"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
@@ -281,6 +287,8 @@ exports[`Table confirms & clears list 2`] = `
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
               data-testid="buttonDel1"
@@ -309,6 +317,8 @@ exports[`Table confirms & clears list 2`] = `
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
               data-testid="buttonDel2"
@@ -335,15 +345,15 @@ exports[`Table confirms & clears list 2`] = `
   >
     Confirm
   </button>
-</div-page>
+</div>
 `;
 
 exports[`Table confirms & clears list 3`] = `
-<div-page
+<div
   data-testid="tableA"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
@@ -375,15 +385,15 @@ exports[`Table confirms & clears list 3`] = `
   >
     Clear
   </button>
-</div-page>
+</div>
 `;
 
 exports[`Table enables a slot 1`] = `
-<div-page
+<div
   data-testid="tableA"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
@@ -415,14 +425,16 @@ exports[`Table enables a slot 1`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEdit1"
+              data-testid="buttonEdit22"
               type="button"
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonDel1"
+              data-testid="buttonDel22"
               type="button"
             >
               Del
@@ -446,15 +458,15 @@ exports[`Table enables a slot 1`] = `
   >
     Clear
   </button>
-</div-page>
+</div>
 `;
 
 exports[`Table enters row into list 1`] = `
-<div-page
+<div
   data-testid="tableA"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
@@ -509,10 +521,10 @@ exports[`Table enters row into list 1`] = `
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColE1"
+                data-testid="buttonColE13"
                 type="button"
               >
-                1/a1
+                13/a1
               </button>
             </table-buttons>
           </td>
@@ -524,14 +536,16 @@ exports[`Table enters row into list 1`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEdit1"
+              data-testid="buttonEdit13"
               type="button"
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonDel1"
+              data-testid="buttonDel13"
               type="button"
             >
               Del
@@ -563,10 +577,10 @@ exports[`Table enters row into list 1`] = `
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColEA2"
+                data-testid="buttonColE14"
                 type="button"
               >
-                A2/a2
+                14/a2
               </button>
             </table-buttons>
           </td>
@@ -578,14 +592,16 @@ exports[`Table enters row into list 1`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEditA2"
+              data-testid="buttonEdit14"
               type="button"
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonDelA2"
+              data-testid="buttonDel14"
               type="button"
             >
               Del
@@ -598,7 +614,7 @@ exports[`Table enters row into list 1`] = `
               <input
                 class="form-control"
                 data-testid="inputColA"
-                style="width: 10em;"
+                style="min-width: 10em;"
                 value="a"
               />
             </column-text>
@@ -620,7 +636,7 @@ exports[`Table enters row into list 1`] = `
               <input
                 class="form-control"
                 data-testid="inputColC"
-                style="width: 10em;"
+                style="min-width: 10em;"
                 value="2000/01/01"
               />
             </column-text>
@@ -633,7 +649,7 @@ exports[`Table enters row into list 1`] = `
               <input
                 class="form-control"
                 data-testid="inputColD"
-                style="width: 10em; background: red;"
+                style="min-width: 10em; border-color: red;"
                 value=""
               />
               <div>
@@ -642,7 +658,7 @@ exports[`Table enters row into list 1`] = `
               <input
                 class="form-control"
                 data-testid="inputViewColD"
-                style="width: 10em; background: red;"
+                style="min-width: 10em; border-color: red;"
                 value=""
               />
             </column-text>
@@ -658,7 +674,7 @@ exports[`Table enters row into list 1`] = `
               <input
                 class="form-control"
                 data-testid="inputColF"
-                style="width: 10em; background: red;"
+                style="min-width: 10em; border-color: red;"
                 value=""
               />
               <div>
@@ -667,7 +683,7 @@ exports[`Table enters row into list 1`] = `
               <input
                 class="form-control"
                 data-testid="inputViewColF"
-                style="width: 10em; background: red;"
+                style="min-width: 10em; border-color: red;"
                 value=""
               />
             </column-text>
@@ -680,6 +696,8 @@ exports[`Table enters row into list 1`] = `
             >
               Save
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
               data-testid="buttonCancel"
@@ -706,15 +724,15 @@ exports[`Table enters row into list 1`] = `
   >
     Clear
   </button>
-</div-page>
+</div>
 `;
 
 exports[`Table enters row into list 2`] = `
-<div-page
+<div
   data-testid="tableA"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
@@ -769,10 +787,10 @@ exports[`Table enters row into list 2`] = `
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColE1"
+                data-testid="buttonColE13"
                 type="button"
               >
-                1/a1
+                13/a1
               </button>
             </table-buttons>
           </td>
@@ -784,14 +802,16 @@ exports[`Table enters row into list 2`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEdit1"
+              data-testid="buttonEdit13"
               type="button"
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonDel1"
+              data-testid="buttonDel13"
               type="button"
             >
               Del
@@ -823,10 +843,10 @@ exports[`Table enters row into list 2`] = `
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColEA2"
+                data-testid="buttonColE14"
                 type="button"
               >
-                A2/a2
+                14/a2
               </button>
             </table-buttons>
           </td>
@@ -838,14 +858,16 @@ exports[`Table enters row into list 2`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEditA2"
+              data-testid="buttonEdit14"
               type="button"
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonDelA2"
+              data-testid="buttonDel14"
               type="button"
             >
               Del
@@ -858,7 +880,7 @@ exports[`Table enters row into list 2`] = `
               <input
                 class="form-control"
                 data-testid="inputColA"
-                style="width: 10em;"
+                style="min-width: 10em;"
                 value="a3"
               />
             </column-text>
@@ -880,7 +902,7 @@ exports[`Table enters row into list 2`] = `
               <input
                 class="form-control"
                 data-testid="inputColC"
-                style="width: 10em; background: red;"
+                style="min-width: 10em; border-color: red;"
                 value="2022-01-04"
               />
             </column-text>
@@ -893,7 +915,7 @@ exports[`Table enters row into list 2`] = `
               <input
                 class="form-control"
                 data-testid="inputColD"
-                style="width: 10em; background: red;"
+                style="min-width: 10em; border-color: red;"
                 value=""
               />
               <div>
@@ -902,7 +924,7 @@ exports[`Table enters row into list 2`] = `
               <input
                 class="form-control"
                 data-testid="inputViewColD"
-                style="width: 10em; background: red;"
+                style="min-width: 10em; border-color: red;"
                 value=""
               />
             </column-text>
@@ -918,7 +940,7 @@ exports[`Table enters row into list 2`] = `
               <input
                 class="form-control"
                 data-testid="inputColF"
-                style="width: 10em; background: red;"
+                style="min-width: 10em; border-color: red;"
                 value=""
               />
               <div>
@@ -927,7 +949,7 @@ exports[`Table enters row into list 2`] = `
               <input
                 class="form-control"
                 data-testid="inputViewColF"
-                style="width: 10em; background: red;"
+                style="min-width: 10em; border-color: red;"
                 value=""
               />
             </column-text>
@@ -940,6 +962,8 @@ exports[`Table enters row into list 2`] = `
             >
               Save
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
               data-testid="buttonCancel"
@@ -966,15 +990,15 @@ exports[`Table enters row into list 2`] = `
   >
     Clear
   </button>
-</div-page>
+</div>
 `;
 
 exports[`Table enters row into list 3`] = `
-<div-page
+<div
   data-testid="tableA"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
@@ -1029,10 +1053,10 @@ exports[`Table enters row into list 3`] = `
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColE1"
+                data-testid="buttonColE13"
                 type="button"
               >
-                1/a1
+                13/a1
               </button>
             </table-buttons>
           </td>
@@ -1044,14 +1068,16 @@ exports[`Table enters row into list 3`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEdit1"
+              data-testid="buttonEdit13"
               type="button"
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonDel1"
+              data-testid="buttonDel13"
               type="button"
             >
               Del
@@ -1083,10 +1109,10 @@ exports[`Table enters row into list 3`] = `
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColEA2"
+                data-testid="buttonColE14"
                 type="button"
               >
-                A2/a2
+                14/a2
               </button>
             </table-buttons>
           </td>
@@ -1098,14 +1124,16 @@ exports[`Table enters row into list 3`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEditA2"
+              data-testid="buttonEdit14"
               type="button"
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonDelA2"
+              data-testid="buttonDel14"
               type="button"
             >
               Del
@@ -1137,10 +1165,10 @@ exports[`Table enters row into list 3`] = `
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColE3"
+                data-testid="buttonColE15"
                 type="button"
               >
-                3/a3
+                15/a3
               </button>
             </table-buttons>
           </td>
@@ -1152,14 +1180,16 @@ exports[`Table enters row into list 3`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEdit3"
+              data-testid="buttonEdit15"
               type="button"
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonDel3"
+              data-testid="buttonDel15"
               type="button"
             >
               Del
@@ -1183,7 +1213,7 @@ exports[`Table enters row into list 3`] = `
   >
     Clear
   </button>
-</div-page>
+</div>
 `;
 
 exports[`Table enters row into list 4`] = `
@@ -1196,16 +1226,16 @@ exports[`Table enters row into list 5`] = `
 <p
   data-testid="msg"
 >
-  ColE - 3/a3
+  ColE - 13/a1
 </p>
 `;
 
 exports[`Table import export 1`] = `
-<div-page
+<div
   data-testid="tableA"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
@@ -1242,6 +1272,8 @@ exports[`Table import export 1`] = `
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
               data-testid="buttonDel1"
@@ -1270,6 +1302,8 @@ exports[`Table import export 1`] = `
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
               data-testid="buttonDel2"
@@ -1312,15 +1346,15 @@ exports[`Table import export 1`] = `
       .csv
     </button>
   </div>
-</div-page>
+</div>
 `;
 
 exports[`Table import export 2`] = `
-<div-page
+<div
   data-testid="tableA"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
@@ -1357,6 +1391,8 @@ exports[`Table import export 2`] = `
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
               data-testid="buttonDel1"
@@ -1385,6 +1421,8 @@ exports[`Table import export 2`] = `
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
               data-testid="buttonDel2"
@@ -1446,22 +1484,24 @@ exports[`Table import export 2`] = `
       </pre>
     </div>
   </div>
-</div-page>
+</div>
 `;
 
 exports[`Table inlineHeaders 1`] = `
-<div-page
+<div
   data-testid="tableA"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
     >
       <tbody>
         <tr>
-          <td>
+          <td
+            colspan="4"
+          >
             <div>
               <div>
                 <b>
@@ -1474,8 +1514,6 @@ exports[`Table inlineHeaders 1`] = `
                 </column-text>
               </div>
             </div>
-          </td>
-          <td>
             <div>
               <div>
                 <b>
@@ -1490,22 +1528,34 @@ exports[`Table inlineHeaders 1`] = `
                 </column-set>
               </div>
             </div>
-          </td>
-          <td>
-            <button
-              class="btn btn-primary"
-              data-testid="buttonEdit1"
-              type="button"
-            >
-              Edit
-            </button>
-            <button
-              class="btn btn-primary"
-              data-testid="buttonDel1"
-              type="button"
-            >
-              Del
-            </button>
+            <div>
+              <div>
+                <b />
+              </div>
+              <div>
+                <button
+                  class="btn btn-primary"
+                  data-testid="buttonEdit1"
+                  type="button"
+                >
+                  Edit
+                </button>
+              </div>
+            </div>
+            <div>
+              <div>
+                <b />
+              </div>
+              <div>
+                <button
+                  class="btn btn-primary"
+                  data-testid="buttonDel1"
+                  type="button"
+                >
+                  Del
+                </button>
+              </div>
+            </div>
           </td>
         </tr>
       </tbody>
@@ -1546,15 +1596,15 @@ exports[`Table inlineHeaders 1`] = `
   >
     Clear
   </button>
-</div-page>
+</div>
 `;
 
 exports[`Table pages 1`] = `
-<div-page
+<div
   data-testid="tableA"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
@@ -1591,6 +1641,8 @@ exports[`Table pages 1`] = `
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
               data-testid="buttonDel1"
@@ -1638,15 +1690,15 @@ exports[`Table pages 1`] = `
   >
     Clear
   </button>
-</div-page>
+</div>
 `;
 
 exports[`Table pages next prev 1`] = `
-<div-page
+<div
   data-testid="tableA"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
@@ -1683,6 +1735,8 @@ exports[`Table pages next prev 1`] = `
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
               data-testid="buttonDel1"
@@ -1730,15 +1784,15 @@ exports[`Table pages next prev 1`] = `
   >
     Clear
   </button>
-</div-page>
+</div>
 `;
 
 exports[`Table pages next prev 2`] = `
-<div-page
+<div
   data-testid="tableA"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
@@ -1773,6 +1827,8 @@ exports[`Table pages next prev 2`] = `
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
               data-testid="buttonDel2"
@@ -1820,15 +1876,15 @@ exports[`Table pages next prev 2`] = `
   >
     Clear
   </button>
-</div-page>
+</div>
 `;
 
 exports[`Table pages next prev 3`] = `
-<div-page
+<div
   data-testid="tableA"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
@@ -1863,6 +1919,8 @@ exports[`Table pages next prev 3`] = `
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
               data-testid="buttonDel2"
@@ -1910,15 +1968,15 @@ exports[`Table pages next prev 3`] = `
   >
     Clear
   </button>
-</div-page>
+</div>
 `;
 
 exports[`Table pages next prev 4`] = `
-<div-page
+<div
   data-testid="tableA"
 >
   <div
-    class="table-responsive"
+    style="overflow: auto; max-height: 80vh;"
   >
     <table
       class="table table-striped table-bordered table-hover"
@@ -1955,6 +2013,8 @@ exports[`Table pages next prev 4`] = `
             >
               Edit
             </button>
+          </td>
+          <td>
             <button
               class="btn btn-primary"
               data-testid="buttonDel1"
@@ -2002,5 +2062,5 @@ exports[`Table pages next prev 4`] = `
   >
     Clear
   </button>
-</div-page>
+</div>
 `;

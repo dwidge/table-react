@@ -11,21 +11,15 @@ const text = J.tools(userEvent, screen, jest).text
 const type = J.type(userEvent, screen)
 const clear = J.clear(userEvent, screen)
 const click = J.click(userEvent, screen)
-const serialSpy = J.serialSpy(jest)
 const input = async (id, text) => {
 	await clear(id)
 	await type(id, text)
 }
 
-jest.mock('@dwidge/lib', () => {
-	return {
-		__esModule: true,
-		...jest.requireActual('@dwidge/lib'),
-	}
-})
-beforeEach(async () => {
-	serialSpy(Lib, 'uuid', [1, 2, 3])
-})
+jest.mock('@dwidge/lib', () => ({
+	...jest.requireActual('@dwidge/lib'),
+	uuid: ((value = 10) => () => String(++value))(),
+}))
 afterEach(() => {
 	jest.restoreAllMocks()
 })
@@ -51,7 +45,7 @@ describe('Table', () => {
 		await click('buttonSave')
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
 		expect(screen.getByTestId('msg')).toMatchSnapshot()
-		await click('buttonColE3')
+		await click('buttonColE13')
 		expect(screen.getByTestId('msg')).toMatchSnapshot()
 	})
 

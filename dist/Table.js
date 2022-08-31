@@ -161,13 +161,17 @@ var Table = function Table(_ref) {
     setconfirm(!confirm);
   };
 
-  return /*#__PURE__*/_react.default.createElement("div-page", {
+  return /*#__PURE__*/_react.default.createElement("div", {
     "data-testid": 'table' + name
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    style: {
+      overflow: 'auto',
+      maxHeight: '80vh'
+    }
   }, /*#__PURE__*/_react.default.createElement(_Table.default, {
     striped: true,
     bordered: true,
-    hover: true,
-    responsive: true
+    hover: true
   }, !inlineHeaders && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("thead", null, /*#__PURE__*/_react.default.createElement("tr", null, schemaA.map(function (_ref4) {
     var _ref5 = _slicedToArray(_ref4, 2),
         key = _ref5[0],
@@ -195,7 +199,7 @@ var Table = function Table(_ref) {
         onDel: onDel
       });
     }(row.id);
-  }))), pages > 1 && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("p", null, page * pageLength + 1, " - ", Math.min(cleanrows.length, (page + 1) * pageLength), " of ", cleanrows.length), /*#__PURE__*/_react.default.createElement(_Button.default, {
+  })))), pages > 1 && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("p", null, page * pageLength + 1, " - ", Math.min(cleanrows.length, (page + 1) * pageLength), " of ", cleanrows.length), /*#__PURE__*/_react.default.createElement(_Button.default, {
     onClick: onPrev,
     "data-testid": "buttonPrev"
   }, "Prev"), /*#__PURE__*/_react.default.createElement(_Button.default, {
@@ -262,41 +266,94 @@ var isValid = function isValid(schema, row) {
   });
 };
 
-var Row = function Row(_ref12) {
-  var schema = _ref12.schema,
-      row = _ref12.row,
-      inlineHeaders = _ref12.inlineHeaders,
-      addDel = _ref12.addDel,
-      onEdit = _ref12.onEdit,
-      onDel = _ref12.onDel;
-  var rowEdit = load(schema, row);
-  var id = rowEdit.id;
+var RowInline = function RowInline(_ref12) {
+  var fields = _ref12.fields,
+      inlineHeaders = _ref12.inlineHeaders;
+  return inlineHeaders ? /*#__PURE__*/_react.default.createElement(RowVert, {
+    fields: fields
+  }) : /*#__PURE__*/_react.default.createElement(RowHorz, {
+    fields: fields
+  });
+};
 
-  var field = function field(name, value) {
-    return inlineHeaders ? /*#__PURE__*/_react.default.createElement("div", {
-      key: name
-    }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("b", null, name)), /*#__PURE__*/_react.default.createElement("div", null, value)) : value;
-  };
+RowInline.propTypes = {
+  fields: _propTypes.default.array.isRequired,
+  inlineHeaders: _propTypes.default.bool
+};
 
-  return /*#__PURE__*/_react.default.createElement("tr", null, Object.entries(schema).map(function (_ref13) {
-    var _ref14 = _slicedToArray(_ref13, 2),
-        key = _ref14[0],
-        schem = _ref14[1];
+var RowHorz = function RowHorz(_ref13) {
+  var fields = _ref13.fields;
+  return /*#__PURE__*/_react.default.createElement("tr", null, fields.map(function (_ref14) {
+    var _ref15 = _slicedToArray(_ref14, 3),
+        key = _ref15[0],
+        name = _ref15[1],
+        val = _ref15[2];
 
     return /*#__PURE__*/_react.default.createElement("td", {
       key: key
-    }, field(schem.name, schem.row(rowEdit[key], rowEdit)));
-  }), /*#__PURE__*/_react.default.createElement("td", null, /*#__PURE__*/_react.default.createElement(_Button.default, {
+    }, val);
+  }));
+};
+
+RowHorz.propTypes = {
+  fields: _propTypes.default.array.isRequired
+};
+
+var RowVert = function RowVert(_ref16) {
+  var fields = _ref16.fields;
+  return /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("td", {
+    colSpan: fields.length
+  }, fields.map(function (_ref17) {
+    var _ref18 = _slicedToArray(_ref17, 3),
+        key = _ref18[0],
+        name = _ref18[1],
+        val = _ref18[2];
+
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: key
+    }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("b", null, name)), /*#__PURE__*/_react.default.createElement("div", null, val));
+  })));
+};
+
+RowVert.propTypes = {
+  fields: _propTypes.default.array.isRequired
+};
+
+var Row = function Row(_ref19) {
+  var schema = _ref19.schema,
+      row = _ref19.row,
+      inlineHeaders = _ref19.inlineHeaders,
+      addDel = _ref19.addDel,
+      onEdit = _ref19.onEdit,
+      onDel = _ref19.onDel;
+  var rowEdit = load(schema, row);
+  var id = rowEdit.id;
+  var columns = Object.entries(schema).map(function (_ref20) {
+    var _ref21 = _slicedToArray(_ref20, 2),
+        key = _ref21[0],
+        schem = _ref21[1];
+
+    return [key, schem.name, schem.row(rowEdit[key], rowEdit)];
+  });
+  var btnedit = ['edit', '', /*#__PURE__*/_react.default.createElement(_Button.default, {
+    key: "",
     onClick: function onClick() {
       return onEdit(id);
     },
     "data-testid": 'buttonEdit' + id
-  }, "Edit"), addDel && /*#__PURE__*/_react.default.createElement(_Button.default, {
+  }, "Edit")];
+  var btndel = ['del', '', /*#__PURE__*/_react.default.createElement(_Button.default, {
+    key: "",
     onClick: function onClick() {
       return onDel(id);
     },
     "data-testid": 'buttonDel' + id
-  }, "Del")));
+  }, "Del")];
+  var fields = addDel ? columns.concat([btnedit, btndel]) : columns.concat([btnedit]);
+  return /*#__PURE__*/_react.default.createElement(RowInline, {
+    inlineHeaders: inlineHeaders,
+    fields: fields
+  });
 };
 
 Row.propTypes = {
@@ -308,43 +365,44 @@ Row.propTypes = {
   onDel: _propTypes.default.func.isRequired
 };
 
-var RowEdit = function RowEdit(_ref15) {
-  var schema = _ref15.schema,
-      row = _ref15.row,
-      inlineHeadersEdit = _ref15.inlineHeadersEdit,
-      onSave = _ref15.onSave,
-      onCancel = _ref15.onCancel;
+var RowEdit = function RowEdit(_ref22) {
+  var schema = _ref22.schema,
+      row = _ref22.row,
+      inlineHeadersEdit = _ref22.inlineHeadersEdit,
+      onSave = _ref22.onSave,
+      onCancel = _ref22.onCancel;
 
   var _useState7 = (0, _react.useState)(load(schema, row)),
       _useState8 = _slicedToArray(_useState7, 2),
       rowEdit = _useState8[0],
       setrowEdit = _useState8[1];
 
-  var field = function field(name, value) {
-    return inlineHeadersEdit ? /*#__PURE__*/_react.default.createElement("div", {
-      key: name
-    }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("b", null, name)), /*#__PURE__*/_react.default.createElement("div", null, value)) : value;
-  };
+  var columns = Object.entries(schema).map(function (_ref23) {
+    var _ref24 = _slicedToArray(_ref23, 2),
+        key = _ref24[0],
+        schem = _ref24[1];
 
-  return /*#__PURE__*/_react.default.createElement("tr", null, Object.entries(schema).map(function (_ref16) {
-    var _ref17 = _slicedToArray(_ref16, 2),
-        key = _ref17[0],
-        schem = _ref17[1];
-
-    return /*#__PURE__*/_react.default.createElement("td", {
-      key: key
-    }, field(schem.name, schem.edit(rowEdit[key], function (val) {
+    return [key, schem.name, schem.edit(rowEdit[key], function (val) {
       return setrowEdit(_objectSpread(_objectSpread({}, rowEdit), {}, _defineProperty({}, key, val)));
-    })));
-  }), /*#__PURE__*/_react.default.createElement("td", null, /*#__PURE__*/_react.default.createElement(_Button.default, {
+    })];
+  });
+  var btnsave = ['save', '', /*#__PURE__*/_react.default.createElement(_Button.default, {
+    key: "",
     onClick: function onClick() {
       return isValid(schema, rowEdit) && onSave(save(schema, rowEdit));
     },
     "data-testid": "buttonSave"
-  }, "Save"), /*#__PURE__*/_react.default.createElement(_Button.default, {
+  }, "Save")];
+  var btncancel = ['cancel', '', /*#__PURE__*/_react.default.createElement(_Button.default, {
+    key: "",
     onClick: onCancel,
     "data-testid": "buttonCancel"
-  }, "Cancel")));
+  }, "Cancel")];
+  var fields = columns.concat([btnsave, btncancel]);
+  return /*#__PURE__*/_react.default.createElement(RowInline, {
+    inlineHeaders: inlineHeadersEdit,
+    fields: fields
+  });
 };
 
 RowEdit.propTypes = {
