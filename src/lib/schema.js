@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { onChange, onChangeChecks } from '@dwidge/lib-react'
 import { getItemById } from '@dwidge/lib'
 import BButton from 'react-bootstrap/Button'
@@ -77,6 +77,10 @@ export const ColumnRef = (name, { all, colRef = 'id', colView = 'name', colDispl
 	},
 	edit(ref, setref) {
 		const [view, setview] = useState(this.lookup(ref) || '')
+
+		useEffect(() => {
+			setview(this.lookup(ref) || '')
+		}, [all])
 
 		const onref = v => {
 			setref(v)

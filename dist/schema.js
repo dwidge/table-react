@@ -176,6 +176,10 @@ var ColumnRef = function ColumnRef(name, _ref) {
           view = _useState2[0],
           setview = _useState2[1];
 
+      (0, _react.useEffect)(function () {
+        setview(_this.lookup(ref) || '');
+      }, [all]);
+
       var onref = function onref(v) {
         setref(v);
 
