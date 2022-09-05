@@ -425,7 +425,7 @@ exports[`Table enables a slot 1`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEdit22"
+              data-testid="buttonEdit20"
               type="button"
             >
               Edit
@@ -434,7 +434,7 @@ exports[`Table enables a slot 1`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonDel22"
+              data-testid="buttonDel20"
               type="button"
             >
               Del
@@ -521,10 +521,10 @@ exports[`Table enters row into list 1`] = `
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColE13"
+                data-testid="buttonColE11"
                 type="button"
               >
-                13/a1
+                11/a1
               </button>
             </table-buttons>
           </td>
@@ -536,7 +536,7 @@ exports[`Table enters row into list 1`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEdit13"
+              data-testid="buttonEdit11"
               type="button"
             >
               Edit
@@ -545,7 +545,7 @@ exports[`Table enters row into list 1`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonDel13"
+              data-testid="buttonDel11"
               type="button"
             >
               Del
@@ -577,10 +577,10 @@ exports[`Table enters row into list 1`] = `
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColE14"
+                data-testid="buttonColE12"
                 type="button"
               >
-                14/a2
+                12/a2
               </button>
             </table-buttons>
           </td>
@@ -592,7 +592,7 @@ exports[`Table enters row into list 1`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEdit14"
+              data-testid="buttonEdit12"
               type="button"
             >
               Edit
@@ -601,7 +601,7 @@ exports[`Table enters row into list 1`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonDel14"
+              data-testid="buttonDel12"
               type="button"
             >
               Del
@@ -644,56 +644,168 @@ exports[`Table enters row into list 1`] = `
           <td>
             <column-text>
               <div>
-                id
+                <label
+                  class="form-label"
+                >
+                  id
+                </label>
+                <div
+                  class="rbt"
+                  style="min-width: 10em; border-color: red; outline: none; position: relative;"
+                  tabindex="-1"
+                >
+                  <div
+                    style="display: flex; flex: 1; height: 100%; position: relative;"
+                  >
+                    <input
+                      aria-autocomplete="both"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      autocomplete="off"
+                      class="rbt-input-main form-control rbt-input"
+                      data-testid="inputColD"
+                      placeholder="Choose..."
+                      role="combobox"
+                      type="text"
+                      value=""
+                    />
+                    <input
+                      aria-hidden="true"
+                      class="rbt-input-hint"
+                      readonly=""
+                      style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.54); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%;"
+                      tabindex="-1"
+                      value=""
+                    />
+                  </div>
+                </div>
               </div>
-              <input
-                class="form-control"
-                data-testid="inputColD"
-                style="min-width: 10em; border-color: red;"
-                value=""
-              />
               <div>
-                bc
+                <label
+                  class="form-label"
+                >
+                  bc
+                </label>
+                <div
+                  class="rbt"
+                  style="min-width: 10em; border-color: red; outline: none; position: relative;"
+                  tabindex="-1"
+                >
+                  <div
+                    style="display: flex; flex: 1; height: 100%; position: relative;"
+                  >
+                    <input
+                      aria-autocomplete="both"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      autocomplete="off"
+                      class="rbt-input-main form-control rbt-input"
+                      data-testid="inputViewColD"
+                      placeholder="Choose..."
+                      role="combobox"
+                      type="text"
+                      value=""
+                    />
+                    <input
+                      aria-hidden="true"
+                      class="rbt-input-hint"
+                      readonly=""
+                      style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.54); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%;"
+                      tabindex="-1"
+                      value=""
+                    />
+                  </div>
+                </div>
               </div>
-              <input
-                class="form-control"
-                data-testid="inputViewColD"
-                style="min-width: 10em; border-color: red;"
-                value=""
-              />
             </column-text>
           </td>
           <td>
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColE15"
+                data-testid="buttonColE13"
                 type="button"
               >
-                15/a
+                13/a
               </button>
             </table-buttons>
           </td>
           <td>
             <column-text>
               <div>
-                bc
+                <label
+                  class="form-label"
+                >
+                  bc
+                </label>
+                <div
+                  class="rbt"
+                  style="min-width: 10em; border-color: red; outline: none; position: relative;"
+                  tabindex="-1"
+                >
+                  <div
+                    style="display: flex; flex: 1; height: 100%; position: relative;"
+                  >
+                    <input
+                      aria-autocomplete="both"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      autocomplete="off"
+                      class="rbt-input-main form-control rbt-input"
+                      data-testid="inputColF"
+                      placeholder="Choose..."
+                      role="combobox"
+                      type="text"
+                      value=""
+                    />
+                    <input
+                      aria-hidden="true"
+                      class="rbt-input-hint"
+                      readonly=""
+                      style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.54); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%;"
+                      tabindex="-1"
+                      value=""
+                    />
+                  </div>
+                </div>
               </div>
-              <input
-                class="form-control"
-                data-testid="inputColF"
-                style="min-width: 10em; border-color: red;"
-                value=""
-              />
               <div>
-                id
+                <label
+                  class="form-label"
+                >
+                  id
+                </label>
+                <div
+                  class="rbt"
+                  style="min-width: 10em; border-color: red; outline: none; position: relative;"
+                  tabindex="-1"
+                >
+                  <div
+                    style="display: flex; flex: 1; height: 100%; position: relative;"
+                  >
+                    <input
+                      aria-autocomplete="both"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      autocomplete="off"
+                      class="rbt-input-main form-control rbt-input"
+                      data-testid="inputViewColF"
+                      placeholder="Choose..."
+                      role="combobox"
+                      type="text"
+                      value=""
+                    />
+                    <input
+                      aria-hidden="true"
+                      class="rbt-input-hint"
+                      readonly=""
+                      style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.54); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%;"
+                      tabindex="-1"
+                      value=""
+                    />
+                  </div>
+                </div>
               </div>
-              <input
-                class="form-control"
-                data-testid="inputViewColF"
-                style="min-width: 10em; border-color: red;"
-                value=""
-              />
             </column-text>
           </td>
           <td>
@@ -795,10 +907,10 @@ exports[`Table enters row into list 2`] = `
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColE13"
+                data-testid="buttonColE11"
                 type="button"
               >
-                13/a1
+                11/a1
               </button>
             </table-buttons>
           </td>
@@ -810,7 +922,7 @@ exports[`Table enters row into list 2`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEdit13"
+              data-testid="buttonEdit11"
               type="button"
             >
               Edit
@@ -819,7 +931,7 @@ exports[`Table enters row into list 2`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonDel13"
+              data-testid="buttonDel11"
               type="button"
             >
               Del
@@ -851,10 +963,10 @@ exports[`Table enters row into list 2`] = `
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColE14"
+                data-testid="buttonColE12"
                 type="button"
               >
-                14/a2
+                12/a2
               </button>
             </table-buttons>
           </td>
@@ -866,7 +978,7 @@ exports[`Table enters row into list 2`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEdit14"
+              data-testid="buttonEdit12"
               type="button"
             >
               Edit
@@ -875,7 +987,7 @@ exports[`Table enters row into list 2`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonDel14"
+              data-testid="buttonDel12"
               type="button"
             >
               Del
@@ -918,56 +1030,168 @@ exports[`Table enters row into list 2`] = `
           <td>
             <column-text>
               <div>
-                id
+                <label
+                  class="form-label"
+                >
+                  id
+                </label>
+                <div
+                  class="rbt"
+                  style="min-width: 10em; border-color: red; outline: none; position: relative;"
+                  tabindex="-1"
+                >
+                  <div
+                    style="display: flex; flex: 1; height: 100%; position: relative;"
+                  >
+                    <input
+                      aria-autocomplete="both"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      autocomplete="off"
+                      class="rbt-input-main form-control rbt-input"
+                      data-testid="inputColD"
+                      placeholder="Choose..."
+                      role="combobox"
+                      type="text"
+                      value=""
+                    />
+                    <input
+                      aria-hidden="true"
+                      class="rbt-input-hint"
+                      readonly=""
+                      style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.54); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%; border-style: inset inset inset inset; border-width: 2px 2px 2px 2px; line-height: normal; padding: 1px 1px 1px 1px;"
+                      tabindex="-1"
+                      value=""
+                    />
+                  </div>
+                </div>
               </div>
-              <input
-                class="form-control"
-                data-testid="inputColD"
-                style="min-width: 10em; border-color: red;"
-                value=""
-              />
               <div>
-                bc
+                <label
+                  class="form-label"
+                >
+                  bc
+                </label>
+                <div
+                  class="rbt"
+                  style="min-width: 10em; border-color: red; outline: none; position: relative;"
+                  tabindex="-1"
+                >
+                  <div
+                    style="display: flex; flex: 1; height: 100%; position: relative;"
+                  >
+                    <input
+                      aria-autocomplete="both"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      autocomplete="off"
+                      class="rbt-input-main form-control rbt-input"
+                      data-testid="inputViewColD"
+                      placeholder="Choose..."
+                      role="combobox"
+                      type="text"
+                      value=""
+                    />
+                    <input
+                      aria-hidden="true"
+                      class="rbt-input-hint"
+                      readonly=""
+                      style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.54); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%; border-style: inset inset inset inset; border-width: 2px 2px 2px 2px; line-height: normal; padding: 1px 1px 1px 1px;"
+                      tabindex="-1"
+                      value=""
+                    />
+                  </div>
+                </div>
               </div>
-              <input
-                class="form-control"
-                data-testid="inputViewColD"
-                style="min-width: 10em; border-color: red;"
-                value=""
-              />
             </column-text>
           </td>
           <td>
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColE15"
+                data-testid="buttonColE13"
                 type="button"
               >
-                15/a3
+                13/a3
               </button>
             </table-buttons>
           </td>
           <td>
             <column-text>
               <div>
-                bc
+                <label
+                  class="form-label"
+                >
+                  bc
+                </label>
+                <div
+                  class="rbt"
+                  style="min-width: 10em; border-color: red; outline: none; position: relative;"
+                  tabindex="-1"
+                >
+                  <div
+                    style="display: flex; flex: 1; height: 100%; position: relative;"
+                  >
+                    <input
+                      aria-autocomplete="both"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      autocomplete="off"
+                      class="rbt-input-main form-control rbt-input"
+                      data-testid="inputColF"
+                      placeholder="Choose..."
+                      role="combobox"
+                      type="text"
+                      value=""
+                    />
+                    <input
+                      aria-hidden="true"
+                      class="rbt-input-hint"
+                      readonly=""
+                      style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.54); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%; border-style: inset inset inset inset; border-width: 2px 2px 2px 2px; line-height: normal; padding: 1px 1px 1px 1px;"
+                      tabindex="-1"
+                      value=""
+                    />
+                  </div>
+                </div>
               </div>
-              <input
-                class="form-control"
-                data-testid="inputColF"
-                style="min-width: 10em; border-color: red;"
-                value=""
-              />
               <div>
-                id
+                <label
+                  class="form-label"
+                >
+                  id
+                </label>
+                <div
+                  class="rbt"
+                  style="min-width: 10em; border-color: red; outline: none; position: relative;"
+                  tabindex="-1"
+                >
+                  <div
+                    style="display: flex; flex: 1; height: 100%; position: relative;"
+                  >
+                    <input
+                      aria-autocomplete="both"
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      autocomplete="off"
+                      class="rbt-input-main form-control rbt-input"
+                      data-testid="inputViewColF"
+                      placeholder="Choose..."
+                      role="combobox"
+                      type="text"
+                      value=""
+                    />
+                    <input
+                      aria-hidden="true"
+                      class="rbt-input-hint"
+                      readonly=""
+                      style="background-color: transparent; border-color: transparent; box-shadow: none; color: rgba(0, 0, 0, 0.54); left: 0px; pointer-events: none; position: absolute; top: 0px; width: 100%; border-style: inset inset inset inset; border-width: 2px 2px 2px 2px; line-height: normal; padding: 1px 1px 1px 1px;"
+                      tabindex="-1"
+                      value=""
+                    />
+                  </div>
+                </div>
               </div>
-              <input
-                class="form-control"
-                data-testid="inputViewColF"
-                style="min-width: 10em; border-color: red;"
-                value=""
-              />
             </column-text>
           </td>
           <td>
@@ -1069,10 +1293,10 @@ exports[`Table enters row into list 3`] = `
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColE13"
+                data-testid="buttonColE11"
                 type="button"
               >
-                13/a1
+                11/a1
               </button>
             </table-buttons>
           </td>
@@ -1084,7 +1308,7 @@ exports[`Table enters row into list 3`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEdit13"
+              data-testid="buttonEdit11"
               type="button"
             >
               Edit
@@ -1093,7 +1317,7 @@ exports[`Table enters row into list 3`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonDel13"
+              data-testid="buttonDel11"
               type="button"
             >
               Del
@@ -1125,10 +1349,10 @@ exports[`Table enters row into list 3`] = `
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColE14"
+                data-testid="buttonColE12"
                 type="button"
               >
-                14/a2
+                12/a2
               </button>
             </table-buttons>
           </td>
@@ -1140,7 +1364,7 @@ exports[`Table enters row into list 3`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEdit14"
+              data-testid="buttonEdit12"
               type="button"
             >
               Edit
@@ -1149,7 +1373,7 @@ exports[`Table enters row into list 3`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonDel14"
+              data-testid="buttonDel12"
               type="button"
             >
               Del
@@ -1174,17 +1398,17 @@ exports[`Table enters row into list 3`] = `
           </td>
           <td>
             <column-text>
-              c1
+              -
             </column-text>
           </td>
           <td>
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColE15"
+                data-testid="buttonColE13"
                 type="button"
               >
-                15/a3
+                13/a3
               </button>
             </table-buttons>
           </td>
@@ -1196,7 +1420,7 @@ exports[`Table enters row into list 3`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEdit15"
+              data-testid="buttonEdit13"
               type="button"
             >
               Edit
@@ -1205,7 +1429,7 @@ exports[`Table enters row into list 3`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonDel15"
+              data-testid="buttonDel13"
               type="button"
             >
               Del
@@ -1242,7 +1466,7 @@ exports[`Table enters row into list 5`] = `
 <p
   data-testid="msg"
 >
-  ColE - 13/a1
+  ColE - 13/a3
 </p>
 `;
 

@@ -17,6 +17,19 @@ Object.keys(_schema).forEach(function (key) {
   });
 });
 
+var _ColumnRef = require("./ColumnRef");
+
+Object.keys(_ColumnRef).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (key in exports && exports[key] === _ColumnRef[key]) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _ColumnRef[key];
+    }
+  });
+});
+
 var _file = require("./file");
 
 Object.keys(_file).forEach(function (key) {

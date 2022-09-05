@@ -31,14 +31,16 @@ describe('Table', () => {
 	const a2 = { id: 2, aa: 'a2', ab: [], ac: '2002/01/01', ad: 1 }
 
 	it('enters row into list', async () => {
-		Lib.uuid()
-		Lib.uuid()
+		// Lib.uuid()
+		// Lib.uuid()
 		render(<App/>)
 		await click('buttonAdd')
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
+
 		await input('inputColA', 'a3')
 		await input('inputColC', '2022-01-04')
 		await click('buttonSave')
+
 		expect(screen.getByTestId('tableA')).toMatchSnapshot()
 		await input('inputColC', '2022/01/04')
 		await input('inputColD', '1')
@@ -47,7 +49,7 @@ describe('Table', () => {
 		expect(screen.getByTestId('msg')).toMatchSnapshot()
 		await click('buttonColE13')
 		expect(screen.getByTestId('msg')).toMatchSnapshot()
-	})
+	}, 10000)
 
 	it('enables a slot', async () => {
 		const Frag = () => (<Table name='A' schema={{

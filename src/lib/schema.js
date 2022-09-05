@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { onChange, onChangeChecks } from '@dwidge/lib-react'
 import { getItemById } from '@dwidge/lib'
 import BButton from 'react-bootstrap/Button'
@@ -59,61 +59,6 @@ export const ColumnSet = (name, all, toString) => ({
 	},
 	cleanup(value) {
 		return value.filter(id => getItemById(all, id))
-	},
-})
-
-export const getItemBy = (a, v, k = 'id') =>
-	a.find(o => o[k] === v)
-
-export const ColumnRef = (name, { all, colRef = 'id', colView = 'name', colDisplay = colView }) => ({
-	name,
-	valid(value) {
-		return !value || !!this.lookup(value)
-	},
-	row(value) {
-		return (<column-text key={name}>
-			{this.lookup(value, colDisplay) || '-'}
-		</column-text>)
-	},
-	edit(ref, setref) {
-		const [view, setview] = useState(this.lookup(ref) || '')
-
-		useEffect(() => {
-			setview(this.lookup(ref) || '')
-		}, [all])
-
-		const onref = v => {
-			setref(v)
-			const newview = this.lookup(v)
-			if (newview) {
-				setview(newview)
-			}
-		}
-		const onview = v => {
-			setview(v)
-			const newref = this.rlookup(v)
-			if (newref) {
-				setref(newref)
-			}
-		}
-
-		return (<column-text key={name}>
-			<div>{colRef}</div>
-			<Form.Control data-testid={'input' + name} style={this.lookup(ref) ? { minWidth: '10em' } : { minWidth: '10em', borderColor: 'red' }} value={ref || ''} onChange={onChange(onref)} />
-			<div>{colView}</div>
-			<Form.Control data-testid={'inputView' + name} style={this.rlookup(view) ? { minWidth: '10em' } : { minWidth: '10em', borderColor: 'red' }} value={view || ''} onChange={onChange(onview)} />
-		</column-text>)
-	},
-	cleanup(value) {
-		return value
-	},
-	lookup(value, col = colView) {
-		const item = getItemBy(all, value, colRef) || getItemBy(all, +value, colRef) || {}
-		return item[col]
-	},
-	rlookup(value) {
-		const item = getItemBy(all, value, colView) || getItemBy(all, +value, colView) || {}
-		return item[colRef]
 	},
 })
 
