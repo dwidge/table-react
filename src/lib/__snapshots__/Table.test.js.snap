@@ -1348,7 +1348,9 @@ exports[`Table import export 1`] = `
   </button>
   <div>
     <button
+      class="btn btn-primary"
       data-testid="buttonImport.csv"
+      type="button"
     >
       Import 
       .csv
@@ -1356,7 +1358,9 @@ exports[`Table import export 1`] = `
   </div>
   <div>
     <button
+      class="btn btn-primary"
       data-testid="buttonExport.csv"
+      type="button"
     >
       Export 
       .csv
@@ -1467,7 +1471,9 @@ exports[`Table import export 2`] = `
   </button>
   <div>
     <button
+      class="btn btn-primary"
       data-testid="buttonImport.csv"
+      type="button"
     >
       Import 
       .csv
@@ -1475,7 +1481,9 @@ exports[`Table import export 2`] = `
   </div>
   <div>
     <button
+      class="btn btn-primary"
       data-testid="buttonExport.csv"
+      type="button"
     >
       Export 
       .csv
@@ -1484,7 +1492,9 @@ exports[`Table import export 2`] = `
       style="border: 1px solid orange; margin: .5em;"
     >
       <button
+        class="btn btn-primary"
         data-testid="buttonExportAccept.csv"
+        type="button"
       >
         Accept
       </button>

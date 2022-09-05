@@ -13,6 +13,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _file = require("./file");
 
+var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -34,14 +36,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function ExportFile(_ref) {
   var name = _ref.name,
       ext = _ref.ext,
-      content = _ref.content;
+      content = _ref.content,
+      _ref$preview = _ref.preview,
+      preview = _ref$preview === void 0 ? true : _ref$preview;
 
   var _useState = (0, _react.useState)(),
       _useState2 = _slicedToArray(_useState, 2),
       file = _useState2[0],
       setfile = _useState2[1];
 
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Button.default, {
     "data-testid": 'buttonExport' + ext,
     onClick: function onClick() {
       return setfile({
@@ -54,22 +58,23 @@ function ExportFile(_ref) {
       border: 'solid 1px orange',
       margin: '.5em'
     }
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement(_Button.default, {
     "data-testid": 'buttonExportAccept' + ext,
     onClick: function onClick() {
       (0, _file.saveText)(file.content, file.name);
       setfile();
     }
-  }, "Accept"), /*#__PURE__*/_react.default.createElement("h4", null, file.name), /*#__PURE__*/_react.default.createElement("pre", {
+  }, "Accept"), /*#__PURE__*/_react.default.createElement("h4", null, file.name), preview ? /*#__PURE__*/_react.default.createElement("pre", {
     style: {
       overflow: 'scroll',
       whiteSpace: 'pre-wrap'
     }
-  }, file.content)) : '');
+  }, file.content) : '') : '');
 }
 
 ExportFile.propTypes = {
   name: _propTypes.default.string.isRequired,
   ext: _propTypes.default.string.isRequired,
-  content: _propTypes.default.string.isRequired
+  content: _propTypes.default.string.isRequired,
+  preview: _propTypes.default.bool
 };

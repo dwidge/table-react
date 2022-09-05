@@ -13,6 +13,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _useFilePicker3 = require("use-file-picker");
 
+var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -33,7 +35,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function ImportFile(_ref) {
   var ext = _ref.ext,
-      onAccept = _ref.onAccept;
+      onAccept = _ref.onAccept,
+      _ref$preview = _ref.preview,
+      preview = _ref$preview === void 0 ? true : _ref$preview;
 
   var _useFilePicker = (0, _useFilePicker3.useFilePicker)({
     accept: ext,
@@ -56,7 +60,7 @@ function ImportFile(_ref) {
   (0, _react.useEffect)(function () {
     setfile(filesContent[0]);
   }, [filesContent]);
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Button.default, {
     "data-testid": 'buttonImport' + ext,
     onClick: function onClick() {
       return openFileSelector();
@@ -66,20 +70,21 @@ function ImportFile(_ref) {
       border: 'solid 1px orange',
       margin: '.5em'
     }
-  }, /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement(_Button.default, {
     onClick: function onClick() {
       onAccept(file.content);
       setfile();
     }
-  }, "Accept"), /*#__PURE__*/_react.default.createElement("h4", null, file.name), /*#__PURE__*/_react.default.createElement("pre", {
+  }, "Accept"), /*#__PURE__*/_react.default.createElement("h4", null, file.name), preview ? /*#__PURE__*/_react.default.createElement("pre", {
     style: {
       overflow: 'scroll',
       whiteSpace: 'pre-wrap'
     }
-  }, file.content)) : '');
+  }, file.content) : '') : '');
 }
 
 ImportFile.propTypes = {
   ext: _propTypes.default.string,
-  onAccept: _propTypes.default.func.isRequired
+  onAccept: _propTypes.default.func.isRequired,
+  preview: _propTypes.default.bool
 };

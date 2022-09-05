@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useFilePicker } from 'use-file-picker'
+import Button from 'react-bootstrap/Button'
 
-export function ImportFile({ ext, onAccept }) {
+export function ImportFile({ ext, onAccept, preview = true }) {
 	const [openFileSelector, { filesContent, loading }] = useFilePicker({
 		accept: ext,
 		multiple: false,
@@ -16,15 +17,15 @@ export function ImportFile({ ext, onAccept }) {
 
 	return (
 		<div>
-			<button data-testid={'buttonImport' + ext} onClick={() => openFileSelector()}>Import {ext}</button>
+			<Button data-testid={'buttonImport' + ext} onClick={() => openFileSelector()}>Import {ext}</Button>
 			{loading
 				? (<div>Loading...</div>)
 				: file
 					? (
 						<div style={{ border: 'solid 1px orange', margin: '.5em' }}>
-							<button onClick={() => { onAccept(file.content); setfile() }}>Accept</button>
+							<Button onClick={() => { onAccept(file.content); setfile() }}>Accept</Button>
 							<h4>{file.name}</h4>
-							<pre style={{ overflow: 'scroll', whiteSpace: 'pre-wrap' }}>{file.content}</pre>
+							{preview ? (<pre style={{ overflow: 'scroll', whiteSpace: 'pre-wrap' }}>{file.content}</pre>) : ''}
 						</div>)
 					: ''}
 		</div>
@@ -34,4 +35,5 @@ export function ImportFile({ ext, onAccept }) {
 ImportFile.propTypes = {
 	ext: PropTypes.string,
 	onAccept: PropTypes.func.isRequired,
+	preview: PropTypes.bool,
 }
