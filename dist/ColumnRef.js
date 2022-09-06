@@ -40,6 +40,12 @@ var getItemBy = function getItemBy(a, v) {
 
 exports.getItemBy = getItemBy;
 
+var se = function se(x) {
+  var f = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var t = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '' + x;
+  return x == null || x === '' ? f : t;
+};
+
 var ColumnRef = function ColumnRef(name, _ref) {
   var all = _ref.all,
       _ref$colRef = _ref.colRef,
@@ -54,64 +60,54 @@ var ColumnRef = function ColumnRef(name, _ref) {
       return !value || !!this.lookup(value);
     },
     row: function row(value) {
+      var display = this.lookup(value, colDisplay);
       return /*#__PURE__*/_react.default.createElement("column-text", {
         key: name
-      }, this.lookup(value, colDisplay) || '-');
+      }, se(display, '-'));
     },
     edit: function edit(ref, setref) {
       var _this = this;
 
-      var _useState = (0, _react.useState)(this.lookup(ref) || ''),
+      var _useState = (0, _react.useState)(se(this.lookup(ref))),
           _useState2 = _slicedToArray(_useState, 2),
           view = _useState2[0],
           setview = _useState2[1];
 
       (0, _react.useEffect)(function () {
-        setview(_this.lookup(ref) || '');
+        setview(se(_this.lookup(ref)));
       }, [all]);
 
       var onref = function onref(v) {
         setref(v);
-
-        var newview = _this.lookup(v);
-
-        if (newview) {
-          setview(newview);
-        }
+        setview(se(_this.lookup(v)));
       };
 
       var onview = function onview(v) {
         setview(v);
-
-        var newref = _this.rlookup(v);
-
-        if (newref) {
-          setref(newref);
-        }
+        setref(se(_this.rlookup(v)));
       };
 
-      var refTa = ref ? ['' + ref] : [],
-          refTaSet = function refTaSet(_ref2) {
-        var _ref3 = _slicedToArray(_ref2, 1),
-            x = _ref3[0];
+      var _ref2 = [se(ref, [], ['' + ref]), function (_ref3) {
+        var _ref4 = _slicedToArray(_ref3, 1),
+            s = _ref4[0];
 
-        return onref(x ? '' + x : '');
-      };
-
+        return onref(se(s));
+      }],
+          refTa = _ref2[0],
+          refTaSet = _ref2[1];
       var refOptions = all.map(function (v) {
-        return '' + v[colRef];
+        return se(v[colRef]);
       });
+      var _ref5 = [se(view, [], ['' + view]), function (_ref6) {
+        var _ref7 = _slicedToArray(_ref6, 1),
+            s = _ref7[0];
 
-      var viewTa = view ? ['' + view] : [],
-          viewTaSet = function viewTaSet(_ref4) {
-        var _ref5 = _slicedToArray(_ref4, 1),
-            x = _ref5[0];
-
-        return onview(x ? '' + x : '');
-      };
-
+        return onview(se(s));
+      }],
+          viewTa = _ref5[0],
+          viewTaSet = _ref5[1];
       var viewOptions = all.map(function (v) {
-        return '' + v[colView];
+        return se(v[colView]);
       });
       return /*#__PURE__*/_react.default.createElement("column-text", {
         key: name

@@ -5,43 +5,41 @@ import { Typeahead } from 'react-bootstrap-typeahead'
 export const getItemBy = (a, v, k = 'id') =>
 	a.find(o => o[k] === v)
 
+const se = (x, f = '', t = '' + x) => x == null || x === '' ? f : t
+
 export const ColumnRef = (name, { all, colRef = 'id', colView = 'name', colDisplay = colView }) => ({
 	name,
 	valid(value) {
 		return !value || !!this.lookup(value)
 	},
 	row(value) {
+		const display = this.lookup(value, colDisplay)
 		return (<column-text key={name}>
-			{this.lookup(value, colDisplay) || '-'}
+			{se(display, '-')}
 		</column-text>)
 	},
 	edit(ref, setref) {
-		const [view, setview] = useState(this.lookup(ref) || '')
+		const [view, setview] = useState(se(this.lookup(ref)))
 
 		useEffect(() => {
-			setview(this.lookup(ref) || '')
+			setview(se(this.lookup(ref)))
 		}, [all])
 
 		const onref = v => {
 			setref(v)
-			const newview = this.lookup(v)
-			if (newview) {
-				setview(newview)
-			}
+			setview(se(this.lookup(v)))
 		}
 		const onview = v => {
 			setview(v)
-			const newref = this.rlookup(v)
-			if (newref) {
-				setref(newref)
-			}
+			setref(se(this.rlookup(v)))
 		}
 
-		const [refTa, refTaSet] = [ref ? ['' + ref] : [], ([x]) => onref(x ? '' + x : '')]
-		const refOptions = all.map(v => '' + v[colRef])
+		const [refTa, refTaSet] = [se(ref, [], ['' + ref]), ([s]) => onref(se(s))]
+		const refOptions = all.map(v => se(v[colRef]))
 
-		const [viewTa, viewTaSet] = [view ? ['' + view] : [], ([x]) => onview(x ? '' + x : '')]
-		const viewOptions = all.map(v => '' + v[colView])
+		const [viewTa, viewTaSet] = [se(view, [], ['' + view]), ([s]) => onview(se(s))]
+
+		const viewOptions = all.map(v => se(v[colView]))
 
 		return (<column-text key={name}>
 			<Form.Group>
