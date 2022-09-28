@@ -20,12 +20,15 @@ var _isMatch = _interopRequireDefault(require("date-fns/isMatch"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ColumnText = function ColumnText(name) {
+  var toString = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (v) {
+    return v;
+  };
   return {
     name: name,
     row: function row(value) {
       return /*#__PURE__*/_react.default.createElement("column-text", {
         key: name
-      }, value);
+      }, toString(value));
     },
     edit: function edit(value, setvalue) {
       return /*#__PURE__*/_react.default.createElement("column-text", {
@@ -48,6 +51,9 @@ var ColumnText = function ColumnText(name) {
 exports.ColumnText = ColumnText;
 
 var ColumnDate = function ColumnDate(name) {
+  var toString = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function (v) {
+    return v;
+  };
   return {
     name: name,
     valid: function valid(value) {
@@ -56,7 +62,7 @@ var ColumnDate = function ColumnDate(name) {
     row: function row(value) {
       return /*#__PURE__*/_react.default.createElement("column-text", {
         key: name
-      }, value);
+      }, toString(value));
     },
     edit: function edit(value, setvalue) {
       return /*#__PURE__*/_react.default.createElement("column-text", {

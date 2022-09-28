@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 export const sortString = (a, b) =>
-	(a).localeCompare(b)
+	('' + a).localeCompare('' + b)
 
 export const sortAny = (a, b) =>
 	typeof (a) === 'string' || typeof (b) === 'string' ? sortString(a, b) : a - b

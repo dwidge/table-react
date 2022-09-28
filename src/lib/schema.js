@@ -6,10 +6,10 @@ import Form from 'react-bootstrap/Form'
 
 import isMatch from 'date-fns/isMatch'
 
-export const ColumnText = (name) => ({
+export const ColumnText = (name, toString = v => v) => ({
 	name,
 	row(value) {
-		return (<column-text key={name}>{value}</column-text>)
+		return (<column-text key={name}>{toString(value)}</column-text>)
 	},
 	edit(value, setvalue) {
 		return (
@@ -23,13 +23,13 @@ export const ColumnText = (name) => ({
 	},
 })
 
-export const ColumnDate = (name) => ({
+export const ColumnDate = (name, toString = v => v) => ({
 	name,
 	valid(value) {
 		return isMatch(value, 'yyyy/MM/dd')
 	},
 	row(value) {
-		return (<column-text key={name}>{(value)}</column-text>)
+		return (<column-text key={name}>{toString(value)}</column-text>)
 	},
 	edit(value, setvalue) {
 		return (
