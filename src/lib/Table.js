@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { replaceItemById, dropItemById, calcCsvFromObjects, calcObjectsFromCsv } from '@dwidge/lib'
-// import './Table.css'
 import { ImportFile } from './ImportFile'
 import { ExportFile } from './ExportFile'
 import { useSort } from './sort'
@@ -11,10 +10,18 @@ import BButton from 'react-bootstrap/Button'
 export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHeaders = false, inlineHeadersEdit = false, addDel = true, enable = { importCSV: false, exportCSV: false } }) => {
 	const schemaA = Object.entries(schema)
 	const [rawrows, setrows] = rows
-	const [idEdit, setidEdit] = useState(0)
+	const [idEdit, idEditSet] = useState()
+	const [isEdited, isEditedSet] = useState(false)
 	const [confirm, setconfirm] = useState(false)
 	const [page, setpage] = useState(0)
 	const sort = useSort(key => schema[key]?.sort?.bind(schema[key]))
+
+	const setidEdit = (id, ask = true) => {
+		if (ask && isEdited && id !== idEdit && !window.confirm('Cancel changes?')) { return }
+
+		idEditSet(id)
+		isEditedSet(false)
+	}
 
 	const cleanup = row => schemaA.reduce((row, [key, schem]) => ({
 		...row,
@@ -39,13 +46,18 @@ export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHead
 		if (page < pages - 1) { setpage(page + 1) }
 	}
 
-	const onEdit = setidEdit
+	const onClickEdit = setidEdit
+	const onEdit = (val, key) => {
+		isEditedSet(true)
+		return val
+	}
+
 	const onDel = delrow
 	const onSave = row => {
 		setrow(row)
-		setidEdit()
+		setidEdit(undefined, false)
 	}
-	const onCancel = () => setidEdit()
+	const onCancel = () => setidEdit(undefined, false)
 	const onAdd = () => {
 		const row = newRow()
 		addrow(row)
@@ -53,6 +65,7 @@ export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHead
 	}
 	const onClear = () => {
 		confirm && setrows([])
+		setidEdit(undefined, false)
 		setconfirm(!confirm)
 	}
 
@@ -71,8 +84,8 @@ export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHead
 					<tbody>
 						{cleanrows.sort(sort.sort).slice(page * pageLength, (page + 1) * pageLength).map(
 							row => (key => key === idEdit
-								? (<RowEdit {...{ key, schema, row, inlineHeadersEdit, onSave, onCancel }} />)
-								: (<Row {...{ key, schema, row, inlineHeaders, addDel, onEdit, onDel }} />)
+								? (<RowEdit {...{ key, schema, row, inlineHeadersEdit, onEdit, onSave, onCancel }} />)
+								: (<Row {...{ key, schema, row, inlineHeaders, addDel, onEdit: onClickEdit, onDel }} />)
 							)(row.id))}
 					</tbody>
 				</BTable>
@@ -159,10 +172,13 @@ Row.propTypes = {
 	onDel: PropTypes.func.isRequired,
 }
 
-const RowEdit = ({ schema, row, inlineHeadersEdit, onSave, onCancel }) => {
-	const [rowEdit, setrowEdit] = useState(load(schema, row))
+const RowEdit = ({ schema, row, inlineHeadersEdit, onEdit = o => o, onSave, onCancel }) => {
+	const [rowEdit, rowEditSet] = useState(load(schema, row))
 
-	const columns = Object.entries(schema).map(([key, schem]) => [key, schem.name, schem.edit(rowEdit[key], val => setrowEdit({ ...rowEdit, [key]: val }), rowEdit)])
+	const setrowEdit = key => val =>
+		rowEditSet({ ...rowEdit, [key]: onEdit(val, key) })
+
+	const columns = Object.entries(schema).map(([key, schem]) => [key, schem.name, schem.edit(rowEdit[key], setrowEdit(key), rowEdit)])
 	const btnsave = ['save', '', (<BButton key='' onClick={() => isValid(schema, rowEdit) && onSave(save(schema, rowEdit))} data-testid="buttonSave">Save</BButton>)]
 	const btncancel = ['cancel', '', (<BButton key='' onClick={onCancel} data-testid="buttonCancel">Cancel</BButton>)]
 	const fields = columns.concat([btnsave, btncancel])
@@ -174,6 +190,7 @@ RowEdit.propTypes = {
 	schema: PropTypes.object.isRequired,
 	row: PropTypes.object.isRequired,
 	inlineHeadersEdit: PropTypes.bool,
+	onEdit: PropTypes.func,
 	onSave: PropTypes.func.isRequired,
 	onCancel: PropTypes.func.isRequired,
 }

@@ -79,26 +79,42 @@ var Table = function Table(_ref) {
       rawrows = _rows[0],
       setrows = _rows[1];
 
-  var _useState = (0, _react.useState)(0),
+  var _useState = (0, _react.useState)(),
       _useState2 = _slicedToArray(_useState, 2),
       idEdit = _useState2[0],
-      setidEdit = _useState2[1];
+      idEditSet = _useState2[1];
 
   var _useState3 = (0, _react.useState)(false),
       _useState4 = _slicedToArray(_useState3, 2),
-      confirm = _useState4[0],
-      setconfirm = _useState4[1];
+      isEdited = _useState4[0],
+      isEditedSet = _useState4[1];
 
-  var _useState5 = (0, _react.useState)(0),
+  var _useState5 = (0, _react.useState)(false),
       _useState6 = _slicedToArray(_useState5, 2),
-      page = _useState6[0],
-      setpage = _useState6[1];
+      confirm = _useState6[0],
+      setconfirm = _useState6[1];
+
+  var _useState7 = (0, _react.useState)(0),
+      _useState8 = _slicedToArray(_useState7, 2),
+      page = _useState8[0],
+      setpage = _useState8[1];
 
   var sort = (0, _sort.useSort)(function (key) {
     var _schema$key, _schema$key$sort;
 
     return (_schema$key = schema[key]) === null || _schema$key === void 0 ? void 0 : (_schema$key$sort = _schema$key.sort) === null || _schema$key$sort === void 0 ? void 0 : _schema$key$sort.bind(schema[key]);
   });
+
+  var setidEdit = function setidEdit(id) {
+    var ask = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+
+    if (ask && isEdited && id !== idEdit && !window.confirm('Cancel changes?')) {
+      return;
+    }
+
+    idEditSet(id);
+    isEditedSet(false);
+  };
 
   var cleanup = function cleanup(row) {
     return schemaA.reduce(function (row, _ref2) {
@@ -146,16 +162,22 @@ var Table = function Table(_ref) {
     }
   };
 
-  var onEdit = setidEdit;
+  var onClickEdit = setidEdit;
+
+  var onEdit = function onEdit(val, key) {
+    isEditedSet(true);
+    return val;
+  };
+
   var onDel = delrow;
 
   var onSave = function onSave(row) {
     setrow(row);
-    setidEdit();
+    setidEdit(undefined, false);
   };
 
   var onCancel = function onCancel() {
-    return setidEdit();
+    return setidEdit(undefined, false);
   };
 
   var onAdd = function onAdd() {
@@ -166,6 +188,7 @@ var Table = function Table(_ref) {
 
   var onClear = function onClear() {
     confirm && setrows([]);
+    setidEdit(undefined, false);
     setconfirm(!confirm);
   };
 
@@ -199,6 +222,7 @@ var Table = function Table(_ref) {
         schema: schema,
         row: row,
         inlineHeadersEdit: inlineHeadersEdit,
+        onEdit: onEdit,
         onSave: onSave,
         onCancel: onCancel
       }) : /*#__PURE__*/_react.default.createElement(Row, {
@@ -207,7 +231,7 @@ var Table = function Table(_ref) {
         row: row,
         inlineHeaders: inlineHeaders,
         addDel: addDel,
-        onEdit: onEdit,
+        onEdit: onClickEdit,
         onDel: onDel
       });
     }(row.id);
@@ -381,22 +405,30 @@ var RowEdit = function RowEdit(_ref22) {
   var schema = _ref22.schema,
       row = _ref22.row,
       inlineHeadersEdit = _ref22.inlineHeadersEdit,
+      _ref22$onEdit = _ref22.onEdit,
+      onEdit = _ref22$onEdit === void 0 ? function (o) {
+    return o;
+  } : _ref22$onEdit,
       onSave = _ref22.onSave,
       onCancel = _ref22.onCancel;
 
-  var _useState7 = (0, _react.useState)(load(schema, row)),
-      _useState8 = _slicedToArray(_useState7, 2),
-      rowEdit = _useState8[0],
-      setrowEdit = _useState8[1];
+  var _useState9 = (0, _react.useState)(load(schema, row)),
+      _useState10 = _slicedToArray(_useState9, 2),
+      rowEdit = _useState10[0],
+      rowEditSet = _useState10[1];
+
+  var setrowEdit = function setrowEdit(key) {
+    return function (val) {
+      return rowEditSet(_objectSpread(_objectSpread({}, rowEdit), {}, _defineProperty({}, key, onEdit(val, key))));
+    };
+  };
 
   var columns = Object.entries(schema).map(function (_ref23) {
     var _ref24 = _slicedToArray(_ref23, 2),
         key = _ref24[0],
         schem = _ref24[1];
 
-    return [key, schem.name, schem.edit(rowEdit[key], function (val) {
-      return setrowEdit(_objectSpread(_objectSpread({}, rowEdit), {}, _defineProperty({}, key, val)));
-    }, rowEdit)];
+    return [key, schem.name, schem.edit(rowEdit[key], setrowEdit(key), rowEdit)];
   });
   var btnsave = ['save', '', /*#__PURE__*/_react.default.createElement(_Button.default, {
     key: "",
@@ -421,6 +453,7 @@ RowEdit.propTypes = {
   schema: _propTypes.default.object.isRequired,
   row: _propTypes.default.object.isRequired,
   inlineHeadersEdit: _propTypes.default.bool,
+  onEdit: _propTypes.default.func,
   onSave: _propTypes.default.func.isRequired,
   onCancel: _propTypes.default.func.isRequired
 };
