@@ -13,6 +13,7 @@ export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHead
 	const [idEdit, setidEdit] = useState(0)
 	const [confirm, setconfirm] = useState(false)
 	const [page, setpage] = useState(0)
+	const sort = useSort(key => schema[key]?.sort?.bind(schema[key]))
 
 	const cleanup = row => schemaA.reduce((row, [key, schem]) => ({
 		...row,
@@ -62,12 +63,12 @@ export const Table = ({ name, schema, newRow, rows, pageLength = 100, inlineHead
 						<thead>
 							<tr>
 								{schemaA.map(([key, schem]) =>
-									(<th key={key}>{schem.name}</th>))}
+									(<th key={key}><a onClick={() => sort.set(key)}>{schem.name} {sort.key !== key ? '' : sort.asc ? <>&uarr;</> : <>&darr;</>}</a></th>))}
 							</tr>
 						</thead>
 					</>)}
 					<tbody>
-						{cleanrows.slice(page * pageLength, (page + 1) * pageLength).map(
+						{cleanrows.sort(sort.sort).slice(page * pageLength, (page + 1) * pageLength).map(
 							row => (key => key === idEdit
 								? (<RowEdit {...{ key, schema, row, inlineHeadersEdit, onSave, onCancel }} />)
 								: (<Row {...{ key, schema, row, inlineHeaders, addDel, onEdit, onDel }} />)
@@ -107,6 +108,31 @@ const load = (schema, row) => Object.entries(schema).reduce((row, [key, schem]) 
 const save = (schema, row) => Object.entries(schema).reduce((row, [key, schem]) => ({ ...row, [key]: (schem.save && schem.save(row[key])) || row[key] }), row)
 
 const isValid = (schema, row) => Object.entries(schema).every(([key, schem]) => !schem.valid || schem.valid(row[key]))
+
+const useSort = (getSorter) => {
+	const [key, keySet] = useState()
+	const [asc, ascSet] = useState(false)
+
+	const set = newkey => {
+		if (newkey === key) {
+			if (asc) keySet()
+			else ascSet(true)
+		} else {
+			keySet(newkey)
+			ascSet(false)
+		}
+	}
+
+	const sortString = (a, b) =>
+		('' + a).localeCompare('' + b)
+
+	const sortAsc = getSorter(key) || sortString
+
+	const sort = (a, b) =>
+		asc ? sortAsc(b[key], a[key], b, a) : sortAsc(a[key], b[key], a, b)
+
+	return { key, asc, sort, set }
+}
 
 const RowInline = ({ fields, inlineHeaders }) =>
 	inlineHeaders ? (<RowVert fields={fields}/>) : (<RowHorz fields={fields}/>)

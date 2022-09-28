@@ -65,6 +65,11 @@ var ColumnRef = function ColumnRef(name, _ref) {
         key: name
       }, se(display, '-'));
     },
+    sort: function sort(a, b) {
+      var astr = this.lookup(a, colDisplay);
+      var bstr = this.lookup(b, colDisplay);
+      return ('' + astr).localeCompare('' + bstr);
+    },
     edit: function edit(ref, setref) {
       var _this = this;
 

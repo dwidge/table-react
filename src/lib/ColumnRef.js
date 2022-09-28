@@ -18,6 +18,11 @@ export const ColumnRef = (name, { all, colRef = 'id', colView = 'name', colDispl
 			{se(display, '-')}
 		</column-text>)
 	},
+	sort(a, b) {
+		const astr = this.lookup(a, colDisplay)
+		const bstr = this.lookup(b, colDisplay)
+		return ('' + astr).localeCompare('' + bstr)
+	},
 	edit(ref, setref) {
 		const [view, setview] = useState(se(this.lookup(ref)))
 

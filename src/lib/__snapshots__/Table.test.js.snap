@@ -13,10 +13,16 @@ exports[`Table addDel 1`] = `
       <thead>
         <tr>
           <th>
-            ColA
+            <a>
+              ColA
+               
+            </a>
           </th>
           <th>
-            ColB
+            <a>
+              ColB
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -84,10 +90,16 @@ exports[`Table clears missing slot 1`] = `
       <thead>
         <tr>
           <th>
-            ColA
+            <a>
+              ColA
+               
+            </a>
           </th>
           <th>
-            ColB
+            <a>
+              ColB
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -155,10 +167,16 @@ exports[`Table confirms & clears list 1`] = `
       <thead>
         <tr>
           <th>
-            ColA
+            <a>
+              ColA
+               
+            </a>
           </th>
           <th>
-            ColB
+            <a>
+              ColB
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -258,10 +276,16 @@ exports[`Table confirms & clears list 2`] = `
       <thead>
         <tr>
           <th>
-            ColA
+            <a>
+              ColA
+               
+            </a>
           </th>
           <th>
-            ColB
+            <a>
+              ColB
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -361,10 +385,16 @@ exports[`Table confirms & clears list 3`] = `
       <thead>
         <tr>
           <th>
-            ColA
+            <a>
+              ColA
+               
+            </a>
           </th>
           <th>
-            ColB
+            <a>
+              ColB
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -401,10 +431,16 @@ exports[`Table enables a slot 1`] = `
       <thead>
         <tr>
           <th>
-            ColA
+            <a>
+              ColA
+               
+            </a>
           </th>
           <th>
-            ColB
+            <a>
+              ColB
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -425,7 +461,7 @@ exports[`Table enables a slot 1`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonEdit20"
+              data-testid="buttonEdit24"
               type="button"
             >
               Edit
@@ -434,7 +470,7 @@ exports[`Table enables a slot 1`] = `
           <td>
             <button
               class="btn btn-primary"
-              data-testid="buttonDel20"
+              data-testid="buttonDel24"
               type="button"
             >
               Del
@@ -474,22 +510,40 @@ exports[`Table enters row into list 1`] = `
       <thead>
         <tr>
           <th>
-            ColA
+            <a>
+              ColA
+               
+            </a>
           </th>
           <th>
-            ColB
+            <a>
+              ColB
+               
+            </a>
           </th>
           <th>
-            ColC
+            <a>
+              ColC
+               
+            </a>
           </th>
           <th>
-            ColD
+            <a>
+              ColD
+               
+            </a>
           </th>
           <th>
-            ColE
+            <a>
+              ColE
+               
+            </a>
           </th>
           <th>
-            ColF
+            <a>
+              ColF
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -611,6 +665,62 @@ exports[`Table enters row into list 1`] = `
         <tr>
           <td>
             <column-text>
+              a3
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              -
+            </column-set>
+          </td>
+          <td>
+            <column-text>
+              2003/01/01
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              c0
+            </column-text>
+          </td>
+          <td>
+            <table-buttons>
+              <button
+                class="btn btn-primary"
+                data-testid="buttonColE13"
+                type="button"
+              >
+                13/a3
+              </button>
+            </table-buttons>
+          </td>
+          <td>
+            <column-text>
+              -
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit13"
+              type="button"
+            >
+              Edit
+            </button>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel13"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <column-text>
               <input
                 class="form-control"
                 data-testid="inputColA"
@@ -723,10 +833,10 @@ exports[`Table enters row into list 1`] = `
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColE13"
+                data-testid="buttonColE14"
                 type="button"
               >
-                13/a
+                14/a
               </button>
             </table-buttons>
           </td>
@@ -860,22 +970,40 @@ exports[`Table enters row into list 2`] = `
       <thead>
         <tr>
           <th>
-            ColA
+            <a>
+              ColA
+               
+            </a>
           </th>
           <th>
-            ColB
+            <a>
+              ColB
+               
+            </a>
           </th>
           <th>
-            ColC
+            <a>
+              ColC
+               
+            </a>
           </th>
           <th>
-            ColD
+            <a>
+              ColD
+               
+            </a>
           </th>
           <th>
-            ColE
+            <a>
+              ColE
+               
+            </a>
           </th>
           <th>
-            ColF
+            <a>
+              ColF
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -997,6 +1125,62 @@ exports[`Table enters row into list 2`] = `
         <tr>
           <td>
             <column-text>
+              a3
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              -
+            </column-set>
+          </td>
+          <td>
+            <column-text>
+              2003/01/01
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              c0
+            </column-text>
+          </td>
+          <td>
+            <table-buttons>
+              <button
+                class="btn btn-primary"
+                data-testid="buttonColE13"
+                type="button"
+              >
+                13/a3
+              </button>
+            </table-buttons>
+          </td>
+          <td>
+            <column-text>
+              -
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit13"
+              type="button"
+            >
+              Edit
+            </button>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel13"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <column-text>
               <input
                 class="form-control"
                 data-testid="inputColA"
@@ -1109,10 +1293,10 @@ exports[`Table enters row into list 2`] = `
             <table-buttons>
               <button
                 class="btn btn-primary"
-                data-testid="buttonColE13"
+                data-testid="buttonColE14"
                 type="button"
               >
-                13/a3
+                14/a3
               </button>
             </table-buttons>
           </td>
@@ -1246,22 +1430,40 @@ exports[`Table enters row into list 3`] = `
       <thead>
         <tr>
           <th>
-            ColA
+            <a>
+              ColA
+               
+            </a>
           </th>
           <th>
-            ColB
+            <a>
+              ColB
+               
+            </a>
           </th>
           <th>
-            ColC
+            <a>
+              ColC
+               
+            </a>
           </th>
           <th>
-            ColD
+            <a>
+              ColD
+               
+            </a>
           </th>
           <th>
-            ColE
+            <a>
+              ColE
+               
+            </a>
           </th>
           <th>
-            ColF
+            <a>
+              ColF
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -1393,12 +1595,12 @@ exports[`Table enters row into list 3`] = `
           </td>
           <td>
             <column-text>
-              2022/01/04
+              2003/01/01
             </column-text>
           </td>
           <td>
             <column-text>
-              -
+              c0
             </column-text>
           </td>
           <td>
@@ -1430,6 +1632,62 @@ exports[`Table enters row into list 3`] = `
             <button
               class="btn btn-primary"
               data-testid="buttonDel13"
+              type="button"
+            >
+              Del
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <column-text>
+              a3
+            </column-text>
+          </td>
+          <td>
+            <column-set>
+              -
+            </column-set>
+          </td>
+          <td>
+            <column-text>
+              2022/01/04
+            </column-text>
+          </td>
+          <td>
+            <column-text>
+              -
+            </column-text>
+          </td>
+          <td>
+            <table-buttons>
+              <button
+                class="btn btn-primary"
+                data-testid="buttonColE14"
+                type="button"
+              >
+                14/a3
+              </button>
+            </table-buttons>
+          </td>
+          <td>
+            <column-text>
+              -
+            </column-text>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonEdit14"
+              type="button"
+            >
+              Edit
+            </button>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              data-testid="buttonDel14"
               type="button"
             >
               Del
@@ -1483,10 +1741,16 @@ exports[`Table import export 1`] = `
       <thead>
         <tr>
           <th>
-            ColA
+            <a>
+              ColA
+               
+            </a>
           </th>
           <th>
-            ColB
+            <a>
+              ColB
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -1606,10 +1870,16 @@ exports[`Table import export 2`] = `
       <thead>
         <tr>
           <th>
-            ColA
+            <a>
+              ColA
+               
+            </a>
           </th>
           <th>
-            ColB
+            <a>
+              ColB
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -1862,10 +2132,16 @@ exports[`Table pages 1`] = `
       <thead>
         <tr>
           <th>
-            ColA
+            <a>
+              ColA
+               
+            </a>
           </th>
           <th>
-            ColB
+            <a>
+              ColB
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -1956,10 +2232,16 @@ exports[`Table pages next prev 1`] = `
       <thead>
         <tr>
           <th>
-            ColA
+            <a>
+              ColA
+               
+            </a>
           </th>
           <th>
-            ColB
+            <a>
+              ColB
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -2050,10 +2332,16 @@ exports[`Table pages next prev 2`] = `
       <thead>
         <tr>
           <th>
-            ColA
+            <a>
+              ColA
+               
+            </a>
           </th>
           <th>
-            ColB
+            <a>
+              ColB
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -2142,10 +2430,16 @@ exports[`Table pages next prev 3`] = `
       <thead>
         <tr>
           <th>
-            ColA
+            <a>
+              ColA
+               
+            </a>
           </th>
           <th>
-            ColB
+            <a>
+              ColB
+               
+            </a>
           </th>
         </tr>
       </thead>
@@ -2234,10 +2528,16 @@ exports[`Table pages next prev 4`] = `
       <thead>
         <tr>
           <th>
-            ColA
+            <a>
+              ColA
+               
+            </a>
           </th>
           <th>
-            ColB
+            <a>
+              ColB
+               
+            </a>
           </th>
         </tr>
       </thead>
