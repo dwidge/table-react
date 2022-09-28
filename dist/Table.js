@@ -17,6 +17,8 @@ var _ImportFile = require("./ImportFile");
 
 var _ExportFile = require("./ExportFile");
 
+var _sort = require("./sort");
+
 var _Table = _interopRequireDefault(require("react-bootstrap/Table"));
 
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
@@ -92,7 +94,7 @@ var Table = function Table(_ref) {
       page = _useState6[0],
       setpage = _useState6[1];
 
-  var sort = useSort(function (key) {
+  var sort = (0, _sort.useSort)(function (key) {
     var _schema$key, _schema$key$sort;
 
     return (_schema$key = schema[key]) === null || _schema$key === void 0 ? void 0 : (_schema$key$sort = _schema$key.sort) === null || _schema$key$sort === void 0 ? void 0 : _schema$key$sort.bind(schema[key]);
@@ -276,44 +278,6 @@ var isValid = function isValid(schema, row) {
   });
 };
 
-var useSort = function useSort(getSorter) {
-  var _useState7 = (0, _react.useState)(),
-      _useState8 = _slicedToArray(_useState7, 2),
-      key = _useState8[0],
-      keySet = _useState8[1];
-
-  var _useState9 = (0, _react.useState)(false),
-      _useState10 = _slicedToArray(_useState9, 2),
-      asc = _useState10[0],
-      ascSet = _useState10[1];
-
-  var set = function set(newkey) {
-    if (newkey === key) {
-      if (asc) keySet();else ascSet(true);
-    } else {
-      keySet(newkey);
-      ascSet(false);
-    }
-  };
-
-  var sortString = function sortString(a, b) {
-    return ('' + a).localeCompare('' + b);
-  };
-
-  var sortAsc = getSorter(key) || sortString;
-
-  var sort = function sort(a, b) {
-    return asc ? sortAsc(b[key], a[key], b, a) : sortAsc(a[key], b[key], a, b);
-  };
-
-  return {
-    key: key,
-    asc: asc,
-    sort: sort,
-    set: set
-  };
-};
-
 var RowInline = function RowInline(_ref12) {
   var fields = _ref12.fields,
       inlineHeaders = _ref12.inlineHeaders;
@@ -420,10 +384,10 @@ var RowEdit = function RowEdit(_ref22) {
       onSave = _ref22.onSave,
       onCancel = _ref22.onCancel;
 
-  var _useState11 = (0, _react.useState)(load(schema, row)),
-      _useState12 = _slicedToArray(_useState11, 2),
-      rowEdit = _useState12[0],
-      setrowEdit = _useState12[1];
+  var _useState7 = (0, _react.useState)(load(schema, row)),
+      _useState8 = _slicedToArray(_useState7, 2),
+      rowEdit = _useState8[0],
+      setrowEdit = _useState8[1];
 
   var columns = Object.entries(schema).map(function (_ref23) {
     var _ref24 = _slicedToArray(_ref23, 2),

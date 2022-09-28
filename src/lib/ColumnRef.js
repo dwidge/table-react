@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Form from 'react-bootstrap/Form'
 import { Typeahead } from 'react-bootstrap-typeahead'
+import { sortAny } from './sort'
 
 export const getItemBy = (a, v, k = 'id') =>
 	a.find(o => o[k] === v)
@@ -19,9 +20,7 @@ export const ColumnRef = (name, { all, colRef = 'id', colView = 'name', colDispl
 		</column-text>)
 	},
 	sort(a, b) {
-		const astr = this.lookup(a, colDisplay)
-		const bstr = this.lookup(b, colDisplay)
-		return ('' + astr).localeCompare('' + bstr)
+		return sortAny(this.lookup(a, colDisplay), this.lookup(b, colDisplay))
 	},
 	edit(ref, setref) {
 		const [view, setview] = useState(se(this.lookup(ref)))

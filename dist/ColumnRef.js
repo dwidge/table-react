@@ -13,6 +13,8 @@ var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 
 var _reactBootstrapTypeahead = require("react-bootstrap-typeahead");
 
+var _sort = require("./sort");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -66,9 +68,7 @@ var ColumnRef = function ColumnRef(name, _ref) {
       }, se(display, '-'));
     },
     sort: function sort(a, b) {
-      var astr = this.lookup(a, colDisplay);
-      var bstr = this.lookup(b, colDisplay);
-      return ('' + astr).localeCompare('' + bstr);
+      return (0, _sort.sortAny)(this.lookup(a, colDisplay), this.lookup(b, colDisplay));
     },
     edit: function edit(ref, setref) {
       var _this = this;

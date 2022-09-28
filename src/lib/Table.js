@@ -4,6 +4,7 @@ import { replaceItemById, dropItemById, calcCsvFromObjects, calcObjectsFromCsv }
 // import './Table.css'
 import { ImportFile } from './ImportFile'
 import { ExportFile } from './ExportFile'
+import { useSort } from './sort'
 import BTable from 'react-bootstrap/Table'
 import BButton from 'react-bootstrap/Button'
 
@@ -108,31 +109,6 @@ const load = (schema, row) => Object.entries(schema).reduce((row, [key, schem]) 
 const save = (schema, row) => Object.entries(schema).reduce((row, [key, schem]) => ({ ...row, [key]: (schem.save && schem.save(row[key])) || row[key] }), row)
 
 const isValid = (schema, row) => Object.entries(schema).every(([key, schem]) => !schem.valid || schem.valid(row[key]))
-
-const useSort = (getSorter) => {
-	const [key, keySet] = useState()
-	const [asc, ascSet] = useState(false)
-
-	const set = newkey => {
-		if (newkey === key) {
-			if (asc) keySet()
-			else ascSet(true)
-		} else {
-			keySet(newkey)
-			ascSet(false)
-		}
-	}
-
-	const sortString = (a, b) =>
-		('' + a).localeCompare('' + b)
-
-	const sortAsc = getSorter(key) || sortString
-
-	const sort = (a, b) =>
-		asc ? sortAsc(b[key], a[key], b, a) : sortAsc(a[key], b[key], a, b)
-
-	return { key, asc, sort, set }
-}
 
 const RowInline = ({ fields, inlineHeaders }) =>
 	inlineHeaders ? (<RowVert fields={fields}/>) : (<RowHorz fields={fields}/>)
