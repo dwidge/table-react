@@ -1,6 +1,6 @@
 {
   "name": "@dwidge/table-react",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "license": "BSL-1.0",
   "exports": {
     ".": "./dist/index.js"
